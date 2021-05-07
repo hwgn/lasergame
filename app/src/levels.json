@@ -1,0 +1,182 @@
+[
+  {
+    "tiles": [
+      {
+        "x": 1,
+        "y": 5,
+        "type": "STONE",
+        "state": "0"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 15,
+        "y": 16,
+        "type": "MIRROR",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 10,
+        "type": "LASER_GREEN",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "type": "FLOOR",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 8,
+        "type": "MIRROR",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 8,
+        "type": "FLOOR",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "type": "FLOOR",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 12,
+        "type": "FLOOR",
+        "state": "0"
+      },
+      {
+        "x": 9,
+        "y": 8,
+        "type": "MIRROR",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 8,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 8,
+        "y": 8,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 9,
+        "y": 6,
+        "type": "STONE",
+        "state": "0"
+      },
+      {
+        "x": 9,
+        "y": 7,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 7,
+        "y": 9,
+        "type": "SWITCH_CYAN",
+        "state": "0"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "type": "SWITCH_CYAN",
+        "state": "1"
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "type": "STONE_TARGET",
+        "state": "0"
+      },
+      {
+        "x": 5,
+        "y": 6,
+        "type": "SWITCH_GREEN",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "type": "LASER_RED",
+        "state": "2"
+      },
+      {
+        "x": 6,
+        "y": 9,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "type": "NULL",
+        "state": "0"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "type": "MIRROR",
+        "state": "0"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "type": "NULL",
+        "state": "0"
+      }
+    ],
+    "description": "Level 1",
+    "min_moves": 10
+  }
+]
