@@ -35,40 +35,58 @@ public class App extends PApplet {
 
     public void draw() {
         engine.updateLasers();
+        setMousePointer();
 
         background(15, 22, 41);
+
+        drawBoard();
+
+        drawUpperBox();
+        drawLowerBox();
+
+
+    }
+
+    private void drawUpperBox() {
         stroke(0);
         strokeWeight(5);
         rect(0, 0, width, 100);
+    }
+
+    private void drawLowerBox() {
         rect(0, height, width, -100);
         strokeWeight(2);
+    }
 
+    private void drawBoard() {
+        // Draws a floor image for every tile present
         engine.getTiles().keySet()
                 .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
+        // Draws all tiles once
         engine.getTiles()
                 .forEach((key, value) ->
                         Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
 
         //Sorts lasers by color to avoid flickering when lasers go across each other
-        engine.getLasers().stream().sorted(Comparator.comparing(Laser::getColor)).forEach(this::drawLaser);
+        engine.getLasers().stream().sorted(Comparator.comparing(Laser::color)).forEach(this::drawLaser);
 
+        // Draws all tiles which have collision to cover the laser
         engine.getTiles().entrySet().stream()
                 .filter(t -> t.getValue().getCollision())
                 .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET)
                 .forEach(t ->
                         Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
-
-        setMousePointer();
     }
 
     public void drawLaser(Laser l) {
-        switch (l.getColor()) {
+        switch (l.color()) {
             case RED -> stroke(255, 0, 0, 150);
             case BLUE -> stroke(0, 0, 255, 150);
             case GREEN -> stroke(0, 255, 0, 150);
         }
-        PVector[] points = l.getPoints();
+
+        PVector[] points = l.points().toArray(new PVector[0]);
         for (int i = 0; i < points.length - 1; i++) {
             PVector start = vectorOfTile((int) points[i].x, (int) points[i].y);
             PVector stop = vectorOfTile((int) points[i + 1].x, (int) points[i + 1].y);

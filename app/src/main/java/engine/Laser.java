@@ -4,16 +4,7 @@ import processing.core.PVector;
 
 import java.util.*;
 
-public class Laser {
-    private final Color color;
-    private final List<PVector> points;
-    private boolean isComplete;
-
-    private Laser(Color color, List<PVector> points, boolean isComplete) {
-        this.color = color;
-        this.points = points;
-        this.isComplete = isComplete;
-    }
+public record Laser(engine.Laser.Color color, List<PVector> points, boolean isComplete) {
 
     public static Set<Laser> getLasers(Map<Pair<Integer, Integer>, Tile> tiles) {
         Set<Laser> lasers = new HashSet<>();
@@ -75,24 +66,10 @@ public class Laser {
 
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public PVector[] getPoints() {
-        return points.toArray(new PVector[0]);
-    }
-
-    public boolean isComplete() {
-        return isComplete;
-    }
-
+    /**
+     * Enum for the various colors a laser can have.
+     */
     public enum Color {
-        RED(1), BLUE(2), GREEN(3);
-        public int rotation;
-
-        Color(int rotation) {
-            this.rotation = rotation;
-        }
+        RED, BLUE, GREEN
     }
 }

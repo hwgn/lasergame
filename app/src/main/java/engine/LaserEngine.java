@@ -38,16 +38,16 @@ public class LaserEngine implements Engine {
     }
 
     public int getOptimalMoves() {
-        return levels[currentLevel].getMinMoves();
+        return levels[currentLevel].minMoves();
     }
 
     public String getLevelDescription() {
-        return levels[currentLevel].getDescription();
+        return levels[currentLevel].description();
     }
 
     public Map<Pair<Integer, Integer>, Tile> getTiles() {
         Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
-        tiles.forEach((key, value) -> output.put(key.clone(), value.clone()));
+        tiles.forEach((key, value) -> output.put(key, value.clone()));
         return output;
     }
 
@@ -56,7 +56,7 @@ public class LaserEngine implements Engine {
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
         lasers.stream().filter(Laser::isComplete)
                 .forEach(l -> tiles.values().stream()
-                        .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.getColor())))
+                        .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
                         .forEach(t -> t.interact(0, tiles)));
     }
 

@@ -9,16 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Level {
-    private final String description;
-    private final Map<Pair<Integer, Integer>, Tile> tiles;
-    private final int minMoves;
-
-    Level(Map<Pair<Integer, Integer>, Tile> tiles, String description, int minMoves) {
-        this.description = description;
-        this.tiles = tiles;
-        this.minMoves = minMoves;
-    }
+record Level(Map<Pair<Integer, Integer>, Tile> tiles,
+             String description, int minMoves) {
 
     /**
      * Reads all levels from the json file and replaces the static levels value with them.
@@ -31,7 +23,7 @@ class Level {
 
         for (int i = 0; i < levelArray.size(); i++) {
             JSONArray tileArray = levelArray.getJSONObject(i).getJSONArray("tiles");
-            Map<Pair<Integer, Integer>, Tile> tiles = new HashMap<Pair<Integer, Integer>, Tile>();
+            Map<Pair<Integer, Integer>, Tile> tiles = new HashMap<>();
 
             for (int k = 0; k < tileArray.size(); k++) {
                 JSONObject tile = tileArray.getJSONObject(k);
@@ -47,15 +39,7 @@ class Level {
 
     public Map<Pair<Integer, Integer>, Tile> getTiles() {
         Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
-        tiles.forEach((key, value) -> output.put(key.clone(), value.clone()));
+        tiles.forEach((key, value) -> output.put(key, value.clone()));
         return output;
-    }
-
-    public int getMinMoves() {
-        return minMoves;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }
