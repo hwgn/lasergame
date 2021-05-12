@@ -25,7 +25,7 @@ public class LaserEngine implements Engine {
     public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) {
         if (tiles.get(pos) == null)
             throw new IndexOutOfBoundsException("Specified position does not correspond to a tile!");
-        if (!tiles.get(pos).getType().canInteract)
+        if (!tiles.get(pos).getType().canInteract())
             throw new IllegalArgumentException("Specified Tile cannot be interacted with!");
 
         tiles.get(pos).interact(mouseButton, tiles);

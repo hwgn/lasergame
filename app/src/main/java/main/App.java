@@ -9,28 +9,46 @@ import processing.core.PVector;
 
 import java.util.Comparator;
 
+/**
+ * Main Class.
+ * <p>
+ * Handles drawing of and interaction with the game. Initialises and maintains the game engine.
+ */
 public class App extends PApplet {
-    private static final int tileSize = 32, tileVerticalOffset = 48 + 100, tileHorizontalOffset = 48, maxTiles = 16;
+    private static final int tileSize = 32, tilePadding = 48, tileTopOffset = 50, tileBottomOffset = 100, maxTiles = 16;
     private int currentLevel;
     private Engine engine;
 
+    /**
+     * Initialises Processing functionality.
+     *
+     * @param args Launch arguments.
+     */
     public static void main(String[] args) {
         String[] appArgs = {"lasergame"};
         App mySketch = new App();
         PApplet.runSketch(appArgs, mySketch);
     }
 
+    /**
+     * Sets canvas size.
+     */
     public void settings() {
-        size(tileSize * maxTiles + tileHorizontalOffset * 2, tileSize * maxTiles + tileVerticalOffset * 2);
+        size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileTopOffset + tileBottomOffset + tilePadding * 2);
         System.out.println("Initializing game with w:" + width + ", h:" + height);
     }
 
+    /**
+     * Sets up engine and images. Configures drawing settings.
+     */
     public void setup() {
         currentLevel = 0;
         engine = new LaserEngine(currentLevel, this);
         Image.initialise(this, tileSize);
 
         imageMode(CENTER);
+        textAlign(CENTER);
+        textFont(createFont("img/EdgeOfTheGalaxy.otf", 40));
     }
 
     public void draw() {
@@ -43,14 +61,16 @@ public class App extends PApplet {
 
         drawUpperBox();
         drawLowerBox();
-
-
     }
 
     private void drawUpperBox() {
-        stroke(0);
-        strokeWeight(5);
-        rect(0, 0, width, 100);
+        noStroke();
+        fill(0, 24, 69);
+        rect(0, 0, width, tileTopOffset);
+
+        fill(255);
+        text(engine.getLevelDescription(), width / 2f, tileTopOffset - 5);
+
     }
 
     private void drawLowerBox() {
@@ -98,7 +118,7 @@ public class App extends PApplet {
         Pair<Integer, Integer> mousePos = canvasToTile(new PVector(mouseX, mouseY));
 
         if (mousePos != null && engine.getTiles().get(mousePos) != null
-                && engine.getTiles().get(mousePos).getType().canInteract)
+                && engine.getTiles().get(mousePos).getType().canInteract())
             cursor(HAND);
         else
             cursor(ARROW);
@@ -132,7 +152,7 @@ public class App extends PApplet {
      * @return The PVector pointing to the center of the given Tile position.
      */
     private PVector vectorOfTile(int x, int y) {
-        return new PVector(x * tileSize + tileHorizontalOffset, y * tileSize + tileVerticalOffset);
+        return new PVector(x * tileSize + tilePadding, y * tileSize + tileTopOffset + tilePadding);
     }
 
     /**
@@ -143,8 +163,8 @@ public class App extends PApplet {
      * Null if the given Vector points outside of the Tile field.
      */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
-        int x = floor((pos.x - tileHorizontalOffset + (tileSize / 2f)) / tileSize);
-        int y = floor((pos.y - tileVerticalOffset + (tileSize / 2f)) / tileSize);
+        int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
+        int y = floor((pos.y - (tileTopOffset + tilePadding) + (tileSize / 2f)) / tileSize);
 
         return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
                 Pair.of(x, y) : null;

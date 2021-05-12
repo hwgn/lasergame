@@ -37,7 +37,11 @@ public enum Image {
     SWITCH_GREEN("floor_green.png", "stone_green.png"),
     SWITCH_CYAN("floor_cyan.png", "stone_cyan.png"),
     SWITCH_YELLOW("floor_yellow.png", "stone_yellow.png"),
-    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png");
+    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png"),
+
+    // Backgrounds
+    BG_DARK_GREEN("bg_dark_green.png"),
+    BG_LIGHT_VIOLET("bg_light_violet.png");
 
     static private final String IMAGE_PATH = "img/";
     static App app = null;
@@ -100,5 +104,9 @@ public enum Image {
         if (state >= images.size())
             throw new IllegalArgumentException("Tried to fetch image for nonexistent state!");
         app.image(images.get(state), p.x, p.y, tileSize, tileSize);
+    }
+
+    public PImage getImage() {
+        return images.get(0);
     }
 }

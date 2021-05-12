@@ -14,7 +14,7 @@ public class Tile {
     private Tile(Tile.Type type, int state) {
         this.type = type;
         this.state = this.initialState = state;
-        this.collision = Objects.requireNonNullElseGet(type.collision, () -> state == 1);
+        this.collision = Objects.requireNonNullElseGet(type.getCollision(), () -> state == 1);
     }
 
     private Tile(Tile.Type type, int initialState, int currentState, boolean collision) {
@@ -66,32 +66,30 @@ public class Tile {
     }
 
     public enum Type {
-        STONE(true, false, 1),
-        STONE_BROKEN(true, false, 1),
-        STONE_TARGET(true, false, 1),
+        STONE(true, false),
+        STONE_BROKEN(true, false),
+        STONE_TARGET(true, false),
 
-        LASER_RED(false, false, 1),
-        LASER_GREEN(false, false, 1),
-        LASER_BLUE(false, false, 1),
+        LASER_RED(false, false),
+        LASER_GREEN(false, false),
+        LASER_BLUE(false, false),
 
-        FLOOR(false, false, 0),
-        NULL(false, false, 0),
-        MIRROR(true, true, 1),
+        FLOOR(false, false),
+        NULL(false, false),
+        MIRROR(true, true),
 
-        SWITCH_RED(null, false, null),
-        SWITCH_BLUE(null, false, null),
-        SWITCH_GREEN(null, false, null),
-        SWITCH_CYAN(null, true, null),
-        SWITCH_YELLOW(null, true, null),
-        SWITCH_MAGENTA(null, true, null);
+        SWITCH_RED(null, false),
+        SWITCH_BLUE(null, false),
+        SWITCH_GREEN(null, false),
+        SWITCH_CYAN(null, true),
+        SWITCH_YELLOW(null, true),
+        SWITCH_MAGENTA(null, true);
 
-        public final Boolean collision, canInteract;
-        public final Integer layer;
+        private final Boolean collision, canInteract;
 
-        Type(Boolean collision, Boolean canInteract, Integer layer) {
+        Type(Boolean collision, Boolean canInteract) {
             this.collision = collision;
             this.canInteract = canInteract;
-            this.layer = layer;
         }
 
         public static Type getSwitchByColor(Laser.Color c) {
@@ -108,6 +106,14 @@ public class Tile {
 
         public boolean isLaserSource() {
             return this == LASER_RED || this == LASER_GREEN || this == LASER_BLUE;
+        }
+
+        public Boolean canInteract() {
+            return canInteract;
+        }
+
+        public Boolean getCollision() {
+            return collision;
         }
     }
 }
