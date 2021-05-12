@@ -15,15 +15,14 @@ import java.util.List;
  */
 public enum Image {
     // Wall blocks
-    STONE_CLEAN("stone_clean.png"),
-    STONE_BROKEN_1("stone_broken1_0.png", "stone_broken1_90.png", "stone_broken1_180.png", "stone_broken1_270.png"),
+    STONE("stone_clean.png"),
+    STONE_BROKEN("stone_broken1_0.png", "stone_broken1_90.png", "stone_broken1_180.png", "stone_broken1_270.png"),
     STONE_TARGET("stone_target.png"),
 
     // Laser emitters
-    // STONE_LASER("stone_laser.png"), // Unused
-    STONE_LASER_RED("stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png"),
-    STONE_LASER_GREEN("stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png"),
-    STONE_LASER_BLUE("stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png"),
+    LASER_RED("stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png"),
+    LASER_GREEN("stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png"),
+    LASER_BLUE("stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png"),
 
     // Floor blocks
     FLOOR("floor_0.png", "floor_90.png", "floor_180.png", "floor_270.png"),

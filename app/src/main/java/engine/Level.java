@@ -12,7 +12,7 @@ import java.util.Map;
 class Level {
     private final String description;
     private final Map<Pair<Integer, Integer>, Tile> tiles;
-    private int minMoves;
+    private final int minMoves;
 
     Level(Map<Pair<Integer, Integer>, Tile> tiles, String description, int minMoves) {
         this.description = description;
@@ -25,7 +25,7 @@ class Level {
      *
      * @param app App instance, needed for Processing methods regarding json files
      */
-    static Level[] initialize(App app) {
+    public static Level[] initialize(App app) {
         JSONArray levelArray = app.loadJSONArray("src/levels.json");
         List<Level> levels = new ArrayList<>();
 
@@ -46,10 +46,16 @@ class Level {
     }
 
     public Map<Pair<Integer, Integer>, Tile> getTiles() {
-        return tiles;
+        Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
+        tiles.forEach((key, value) -> output.put(key.clone(), value.clone()));
+        return output;
     }
 
     public int getMinMoves() {
         return minMoves;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

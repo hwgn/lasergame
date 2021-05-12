@@ -2,6 +2,7 @@ package engine;
 
 import main.App;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -22,12 +23,12 @@ public class LaserEngine implements Engine {
     }
 
     public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) {
-        if (getTiles().get(pos) == null)
+        if (tiles.get(pos) == null)
             throw new IndexOutOfBoundsException("Specified position does not correspond to a tile!");
-        if (!getTiles().get(pos).getType().canInteract)
+        if (!tiles.get(pos).getType().canInteract)
             throw new IllegalArgumentException("Specified Tile cannot be interacted with!");
 
-        getTiles().get(pos).interact(mouseButton, tiles);
+        tiles.get(pos).interact(mouseButton, tiles);
         moves++;
 
     }
@@ -41,19 +42,21 @@ public class LaserEngine implements Engine {
     }
 
     public String getLevelDescription() {
-        return null;
+        return levels[currentLevel].getDescription();
     }
 
     public Map<Pair<Integer, Integer>, Tile> getTiles() {
-        return tiles;
+        Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
+        tiles.forEach((key, value) -> output.put(key.clone(), value.clone()));
+        return output;
     }
 
     public void updateLasers() {
-        lasers = Laser.getLasers(tiles);
+        lasers = Laser.getLasers(getTiles());
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
-        lasers.stream().filter(l -> l.isComplete)
+        lasers.stream().filter(Laser::isComplete)
                 .forEach(l -> tiles.values().stream()
-                        .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color)))
+                        .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.getColor())))
                         .forEach(t -> t.interact(0, tiles)));
     }
 

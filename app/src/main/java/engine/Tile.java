@@ -1,7 +1,6 @@
 package engine;
 
 import main.App;
-import main.Image;
 
 import java.util.Map;
 import java.util.Objects;
@@ -12,10 +11,16 @@ public class Tile {
     private int state;
     private boolean collision;
 
-    Tile(Tile.Type type, int state) {
+    private Tile(Tile.Type type, int state) {
         this.type = type;
         this.state = this.initialState = state;
         this.collision = Objects.requireNonNullElseGet(type.collision, () -> state == 1);
+    }
+
+    private Tile(Tile.Type type, int initialState, int currentState, boolean collision) {
+        this(type, initialState);
+        this.state = currentState;
+        this.collision = collision;
     }
 
     public static Tile of(Tile.Type type, int rotation) {
@@ -28,10 +33,6 @@ public class Tile {
 
     public int getState() {
         return state;
-    }
-
-    public void setState(int i) {
-        state = i;
     }
 
     public void resetState() {
@@ -60,32 +61,34 @@ public class Tile {
         }
     }
 
+    public Tile clone() {
+        return new Tile(type, initialState, state, collision);
+    }
+
     public enum Type {
-        STONE(Image.STONE_CLEAN, true, false, 1),
-        STONE_BROKEN(Image.STONE_BROKEN_1, true, false, 1),
-        STONE_TARGET(Image.STONE_TARGET, true, false, 1),
+        STONE(true, false, 1),
+        STONE_BROKEN(true, false, 1),
+        STONE_TARGET(true, false, 1),
 
-        LASER_RED(Image.STONE_LASER_RED, false, false, 1),
-        LASER_GREEN(Image.STONE_LASER_GREEN, false, false, 1),
-        LASER_BLUE(Image.STONE_LASER_BLUE, false, false, 1),
+        LASER_RED(false, false, 1),
+        LASER_GREEN(false, false, 1),
+        LASER_BLUE(false, false, 1),
 
-        FLOOR(Image.FLOOR, false, false, 0),
-        NULL(Image.NULL, false, false, 0),
-        MIRROR(Image.MIRROR, true, true, 1),
+        FLOOR(false, false, 0),
+        NULL(false, false, 0),
+        MIRROR(true, true, 1),
 
-        SWITCH_RED(Image.SWITCH_RED, null, false, null),
-        SWITCH_BLUE(Image.SWITCH_BLUE, null, false, null),
-        SWITCH_GREEN(Image.SWITCH_GREEN, null, false, null),
-        SWITCH_CYAN(Image.SWITCH_CYAN, null, true, null),
-        SWITCH_YELLOW(Image.SWITCH_YELLOW, null, true, null),
-        SWITCH_MAGENTA(Image.SWITCH_MAGENTA, null, true, null);
+        SWITCH_RED(null, false, null),
+        SWITCH_BLUE(null, false, null),
+        SWITCH_GREEN(null, false, null),
+        SWITCH_CYAN(null, true, null),
+        SWITCH_YELLOW(null, true, null),
+        SWITCH_MAGENTA(null, true, null);
 
         public final Boolean collision, canInteract;
         public final Integer layer;
-        Image img;
 
-        Type(Image img, Boolean collision, Boolean canInteract, Integer layer) {
-            this.img = img;
+        Type(Boolean collision, Boolean canInteract, Integer layer) {
             this.collision = collision;
             this.canInteract = canInteract;
             this.layer = layer;
@@ -97,10 +100,6 @@ public class Tile {
                 case RED -> SWITCH_RED;
                 case GREEN -> SWITCH_GREEN;
             };
-        }
-
-        public Image getImage() {
-            return img;
         }
 
         public boolean isLaserSwitch() {

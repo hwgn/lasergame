@@ -7,6 +7,8 @@ import engine.*;
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.util.Comparator;
+
 public class App extends PApplet {
     private static final int tileSize = 32, tileVerticalOffset = 48 + 100, tileHorizontalOffset = 48, maxTiles = 16;
     private int currentLevel;
@@ -16,12 +18,11 @@ public class App extends PApplet {
         String[] appArgs = {"lasergame"};
         App mySketch = new App();
         PApplet.runSketch(appArgs, mySketch);
-        System.out.println(new App().getGreeting());
     }
 
     public void settings() {
         size(tileSize * maxTiles + tileHorizontalOffset * 2, tileSize * maxTiles + tileVerticalOffset * 2);
-        System.out.println(width + ", " + height);
+        System.out.println("Initializing game with w:" + width + ", h:" + height);
     }
 
     public void setup() {
@@ -30,10 +31,6 @@ public class App extends PApplet {
         Image.initialise(this, tileSize);
 
         imageMode(CENTER);
-    }
-
-    public String getGreeting() {
-        return "Hello World!";
     }
 
     public void draw() {
@@ -46,17 +43,21 @@ public class App extends PApplet {
         rect(0, height, width, -100);
         strokeWeight(2);
 
-        engine.getTiles().forEach((key, value) -> {
-            Image.FLOOR.draw(tileVector(key.x(), key.y()), (key.x() + key.y()) % 4);
-            value.getType().getImage().draw(tileVector(key.x(), key.y()), value.getState());
-        });
+        engine.getTiles().keySet()
+                .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
-        engine.getLasers().forEach(this::drawLaser);
+        engine.getTiles()
+                .forEach((key, value) ->
+                        Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
 
-        engine.getTiles().forEach((key, value) -> {
-            if (value.getCollision() && value.getType() != Tile.Type.STONE_TARGET)
-                value.getType().getImage().draw(tileVector(key.x(), key.y()), value.getState());
-        });
+        //Sorts lasers by color to avoid flickering when lasers go across each other
+        engine.getLasers().stream().sorted(Comparator.comparing(Laser::getColor)).forEach(this::drawLaser);
+
+        engine.getTiles().entrySet().stream()
+                .filter(t -> t.getValue().getCollision())
+                .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET)
+                .forEach(t ->
+                        Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
 
         setMousePointer();
     }
@@ -69,8 +70,8 @@ public class App extends PApplet {
         }
         PVector[] points = l.getPoints();
         for (int i = 0; i < points.length - 1; i++) {
-            PVector start = tileVector((int) points[i].x, (int) points[i].y);
-            PVector stop = tileVector((int) points[i + 1].x, (int) points[i + 1].y);
+            PVector start = vectorOfTile((int) points[i].x, (int) points[i].y);
+            PVector stop = vectorOfTile((int) points[i + 1].x, (int) points[i + 1].y);
             line(start.x, start.y, stop.x, stop.y);
         }
     }
@@ -91,23 +92,38 @@ public class App extends PApplet {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
         } catch (IllegalArgumentException | IndexOutOfBoundsException ignored) {
         }
-
     }
 
     public void keyReleased() {
-        if (key == CODED) {
-            switch (keyCode) {
-                case LEFT -> previousLevel();
-                case DOWN -> restartLevel();
-                case RIGHT -> nextLevel();
-            }
+        if (key != CODED)
+            return;
+
+        switch (keyCode) {
+            case LEFT -> previousLevel();
+            case DOWN, UP -> restartLevel();
+            case RIGHT -> nextLevel();
         }
     }
 
-    private PVector tileVector(int x, int y) {
+    /**
+     * Converts a tile position on the tile map into its relative position on the canvas.
+     * Does not require the position to contain a tile.
+     *
+     * @param x x-Position of the Tile (index).
+     * @param y y-Position of the Tile (index).
+     * @return The PVector pointing to the center of the given Tile position.
+     */
+    private PVector vectorOfTile(int x, int y) {
         return new PVector(x * tileSize + tileHorizontalOffset, y * tileSize + tileVerticalOffset);
     }
 
+    /**
+     * Converts a position on the canvas into the Tile position (index) which it is pointing to.
+     *
+     * @param pos Position from which to get the Tile index.
+     * @return The Pair representing the position which the PVector points to.
+     * Null if the given Vector points outside of the Tile field.
+     */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
         int x = floor((pos.x - tileHorizontalOffset + (tileSize / 2f)) / tileSize);
         int y = floor((pos.y - tileVerticalOffset + (tileSize / 2f)) / tileSize);

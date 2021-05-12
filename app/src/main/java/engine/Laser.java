@@ -5,9 +5,9 @@ import processing.core.PVector;
 import java.util.*;
 
 public class Laser {
-    Color color;
-    List<PVector> points;
-    boolean isComplete;
+    private final Color color;
+    private final List<PVector> points;
+    private boolean isComplete;
 
     private Laser(Color color, List<PVector> points, boolean isComplete) {
         this.color = color;
@@ -17,10 +17,10 @@ public class Laser {
 
     public static Set<Laser> getLasers(Map<Pair<Integer, Integer>, Tile> tiles) {
         Set<Laser> lasers = new HashSet<>();
-        tiles.forEach((pos, tile) -> {
-            if (tile.getType().isLaserSource())
-                lasers.add(determinePath(pos, tile.getState(), tiles));
-        });
+        tiles.entrySet().stream()
+                .filter(tile -> tile.getValue().getType().isLaserSource())
+                .forEach(tile -> lasers.add(determinePath(tile.getKey(), tile.getValue().getState(), tiles)));
+
         return lasers;
     }
 
@@ -81,6 +81,10 @@ public class Laser {
 
     public PVector[] getPoints() {
         return points.toArray(new PVector[0]);
+    }
+
+    public boolean isComplete() {
+        return isComplete;
     }
 
     public enum Color {

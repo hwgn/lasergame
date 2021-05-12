@@ -23,6 +23,10 @@ public record Pair<T1, T2>(T1 x, T2 y) {
         return new Pair<A, B>(x, y);
     }
 
+    public Pair<T1, T2> clone() {
+        return new Pair<T1, T2>(x, y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
