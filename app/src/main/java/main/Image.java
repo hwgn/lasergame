@@ -14,40 +14,92 @@ import java.util.List;
  * of App to load all Images into memory.
  */
 public enum Image {
-    // Wall blocks
+    /**
+     * Stone wall.
+     */
     STONE("stone_clean.png"),
+    /**
+     * Broken stone wall.
+     */
     STONE_BROKEN("stone_broken1_0.png", "stone_broken1_90.png", "stone_broken1_180.png", "stone_broken1_270.png"),
+    /**
+     * Stone target.
+     */
     STONE_TARGET("stone_target.png"),
 
-    // Laser emitters
+    /**
+     * Stone with red laser source.
+     */
     LASER_RED("stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png"),
+    /**
+     * Stone with green laser source.
+     */
     LASER_GREEN("stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png"),
+    /**
+     * Stone with blue laser source.
+     */
     LASER_BLUE("stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png"),
 
     // Floor blocks
+    /**
+     * Floor tile.
+     */
     FLOOR("floor_0.png", "floor_90.png", "floor_180.png", "floor_270.png"),
-    NULL("null.png"), // empty block, to be used as standard floor in json files
+    /**
+     * Null image - contains no pixels and is used for the standard floor to enable automatic floor pattern generation.
+     */
+    NULL("null.png"),
 
-    // Mirror
+    /**
+     * Transparent images representing the mirror.
+     */
     MIRROR("mirror_0.png", "mirror_90.png", "mirror_180.png", "mirror_270.png"),
 
-    // Switching blocks
+    /**
+     * Red (laser) switch.
+     */
     SWITCH_RED("floor_red.png", "stone_red.png"),
+    /**
+     * Blue (laser) switch.
+     */
     SWITCH_BLUE("floor_blue.png", "stone_blue.png"),
+    /**
+     * Green (laser) switch.
+     */
     SWITCH_GREEN("floor_green.png", "stone_green.png"),
+    /**
+     * Cyan (intractable) switch.
+     */
     SWITCH_CYAN("floor_cyan.png", "stone_cyan.png"),
+    /**
+     * Yellow (intractable) switch.
+     */
     SWITCH_YELLOW("floor_yellow.png", "stone_yellow.png"),
-    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png"),
+    /**
+     * Magenta (intractable) switch.
+     */
+    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png");
 
-    // Backgrounds
-    BG_DARK_GREEN("bg_dark_green.png"),
-    BG_LIGHT_VIOLET("bg_light_violet.png");
-
+    /**
+     * The Image path. Allows easily changing the folder location of all images.
+     */
     static private final String IMAGE_PATH = "img/";
+    /**
+     * The App. Is stored to later enable usage of draw().
+     */
     static App app = null;
+    /**
+     * Tile size. Must be updated when the image is initialized.
+     */
     static int tileSize = 0;
 
+    /**
+     * Stores the filenames of any given Image instance.
+     */
     String[] filenames;
+    /**
+     * Storage of all images relating to that instance, once they have been initialized.
+     */
     List<PImage> images = new ArrayList<>();
 
     /**
@@ -106,7 +158,12 @@ public enum Image {
         app.image(images.get(state), p.x, p.y, tileSize, tileSize);
     }
 
-    public PImage getImage() {
-        return images.get(0);
+    /**
+     * Gets image of specific state.
+     *
+     * @return The image.
+     */
+    public PImage getImage(int i) {
+        return images.get(i);
     }
 }

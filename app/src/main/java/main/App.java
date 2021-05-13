@@ -15,8 +15,33 @@ import java.util.Comparator;
  * Handles drawing of and interaction with the game. Initialises and maintains the game engine.
  */
 public class App extends PApplet {
-    private static final int tileSize = 32, tilePadding = 48, tileTopOffset = 50, tileBottomOffset = 100, maxTiles = 16;
+    /**
+     * The size of tiles, both in width and height.
+     */
+    private static final int tileSize = 32,
+    /**
+     * The space within the tile board to its edges, where no tiles are drawn yet.
+     */
+    tilePadding = 48,
+    /**
+     * The space between the upper edge of the screen and the tile board.
+     */
+    tileTopOffset = 50,
+    /**
+     * The space between the tile board and the lower edge of the screen.
+     */
+    tileBottomOffset = 100,
+    /**
+     * The maximum tiles in each direction.
+     */
+    maxTiles = 16;
+    /**
+     * The current level index.
+     */
     private int currentLevel;
+    /**
+     * The Engine relating to the current level and playthrough.
+     */
     private Engine engine;
 
     /**
@@ -43,14 +68,22 @@ public class App extends PApplet {
      */
     public void setup() {
         currentLevel = 0;
-        engine = new LaserEngine(currentLevel, this);
+        engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
         Image.initialise(this, tileSize);
 
         imageMode(CENTER);
         textAlign(CENTER);
+
+        /*
+            license: Public Domain
+            link: https://www.fontspace.com/edge-of-the-galaxy-font-f45748
+         */
         textFont(createFont("img/EdgeOfTheGalaxy.otf", 40));
     }
 
+    /**
+     * Main draw loop. Updates the engine as well as the frontend.
+     */
     public void draw() {
         engine.updateLasers();
         setMousePointer();
@@ -63,6 +96,9 @@ public class App extends PApplet {
         drawLowerBox();
     }
 
+    /**
+     * Draws upper box.
+     */
     private void drawUpperBox() {
         noStroke();
         fill(0, 24, 69);
@@ -73,18 +109,29 @@ public class App extends PApplet {
 
     }
 
+    /**
+     * Draws lower box.
+     */
     private void drawLowerBox() {
         rect(0, height, width, -100);
         strokeWeight(2);
     }
 
+    /**
+     * Draws board of tiles.
+     * <p>
+     * First draws the floor using a pattern, then all tiles at once over it.
+     * <p>
+     * After drawing all lasers, it now draws all tiles which have collision except for the target block, to cover
+     * a potential laser hitting a wall.
+     */
     private void drawBoard() {
         // Draws a floor image for every tile present
-        engine.getTiles().keySet()
+        engine.getCopyOfTiles().keySet()
                 .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
-        engine.getTiles()
+        engine.getCopyOfTiles()
                 .forEach((key, value) ->
                         Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
 
@@ -92,13 +139,18 @@ public class App extends PApplet {
         engine.getLasers().stream().sorted(Comparator.comparing(Laser::color)).forEach(this::drawLaser);
 
         // Draws all tiles which have collision to cover the laser
-        engine.getTiles().entrySet().stream()
+        engine.getCopyOfTiles().entrySet().stream()
                 .filter(t -> t.getValue().getCollision())
                 .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET)
                 .forEach(t ->
                         Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
     }
 
+    /**
+     * Draws a specific laser.
+     *
+     * @param l the Laser.
+     */
     public void drawLaser(Laser l) {
         switch (l.color()) {
             case RED -> stroke(255, 0, 0, 150);
@@ -106,7 +158,7 @@ public class App extends PApplet {
             case GREEN -> stroke(0, 255, 0, 150);
         }
 
-        PVector[] points = l.points().toArray(new PVector[0]);
+        final PVector[] points = l.points().toArray(new PVector[0]);
         for (int i = 0; i < points.length - 1; i++) {
             PVector start = vectorOfTile((int) points[i].x, (int) points[i].y);
             PVector stop = vectorOfTile((int) points[i + 1].x, (int) points[i + 1].y);
@@ -114,17 +166,25 @@ public class App extends PApplet {
         }
     }
 
+    /**
+     * Updates mouse pointer.
+     * <p>
+     * If the mouse is above an intractable tile, the cursor changes to HAND.
+     */
     private void setMousePointer() {
         Pair<Integer, Integer> mousePos = canvasToTile(new PVector(mouseX, mouseY));
 
-        if (mousePos != null && engine.getTiles().get(mousePos) != null
-                && engine.getTiles().get(mousePos).getType().canInteract())
+        if (mousePos != null && engine.getCopyOfTiles().get(mousePos) != null
+                && engine.getCopyOfTiles().get(mousePos).getType().canInteract())
             cursor(HAND);
         else
             cursor(ARROW);
 
     }
 
+    /**
+     * Upon mouse release, there is an attempt at interacting with the tile board.
+     */
     public void mouseReleased() {
         try {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
@@ -132,6 +192,9 @@ public class App extends PApplet {
         }
     }
 
+    /**
+     * Upon key release, if the key was an arrow key, the level is reset or changed.
+     */
     public void keyReleased() {
         if (key != CODED)
             return;
@@ -159,8 +222,7 @@ public class App extends PApplet {
      * Converts a position on the canvas into the Tile position (index) which it is pointing to.
      *
      * @param pos Position from which to get the Tile index.
-     * @return The Pair representing the position which the PVector points to.
-     * Null if the given Vector points outside of the Tile field.
+     * @return The Pair representing the position which the PVector points to. Null if the given Vector points outside of the Tile field.
      */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
         int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
@@ -170,16 +232,30 @@ public class App extends PApplet {
                 Pair.of(x, y) : null;
     }
 
+    /**
+     * Loads next level, provided there is one. Otherwise restarts current level.
+     */
     public void nextLevel() {
-        engine = new LaserEngine(++currentLevel, this);
+        if (loadJSONArray("src/levels.json").size() > currentLevel + 1)
+            engine = new LaserEngine(++currentLevel, loadJSONArray("src/levels.json"));
+        else
+            restartLevel();
     }
 
+    /**
+     * Loads previous level, provided there is one. Otherwise restarts current level.
+     */
     public void previousLevel() {
         if (currentLevel - 1 >= 0)
-            engine = new LaserEngine(--currentLevel, this);
+            engine = new LaserEngine(--currentLevel, loadJSONArray("src/levels.json"));
+        else
+            restartLevel();
     }
 
+    /**
+     * Restarts level.
+     */
     public void restartLevel() {
-        engine = new LaserEngine(currentLevel, this);
+        engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
     }
 }

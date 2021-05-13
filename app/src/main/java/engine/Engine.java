@@ -47,7 +47,7 @@ public interface Engine {
      *
      * @return all tiles for this level.
      */
-    Map<Pair<Integer, Integer>, Tile> getTiles();
+    Map<Pair<Integer, Integer>, Tile> getCopyOfTiles();
 
     /**
      * Returns all lasers active in their current state.

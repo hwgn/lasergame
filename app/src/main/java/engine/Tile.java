@@ -22,7 +22,6 @@ public class Tile {
         this.state = currentState;
         this.collision = collision;
     }
-
     public static Tile of(Tile.Type type, int rotation) {
         return new Tile(type, rotation);
     }

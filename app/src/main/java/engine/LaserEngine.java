@@ -1,24 +1,32 @@
 package engine;
 
-import main.App;
+import processing.data.JSONArray;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The main Engine running the game.
+ * <p>
+ * Handles interactions and storage of tile data, and hands important information
+ * to the frontend.
+ * <p>
+ * An instance of Engine is tied to one play-through of a specific level only,
+ * and therefore can modify the level it is given at will, as all level data
+ * will be reloaded whenever a new game is started.
+ */
 public class LaserEngine implements Engine {
     public static final int maxTiles = 16;
-    private static Level[] levels;
-    private final int currentLevel;
+    private static Level level;
     private final Map<Pair<Integer, Integer>, Tile> tiles;
     private Set<Laser> lasers;
     private int moves = 0;
 
-    public LaserEngine(int l, App app) {
-        levels = Level.initialize(app);
-        tiles = levels[l].getTiles();
-        currentLevel = l;
+    public LaserEngine(int l, JSONArray array) {
+        level = Level.initialize(array)[l];
+        tiles = level.tiles();
         lasers = new HashSet<>();
     }
 
@@ -38,21 +46,21 @@ public class LaserEngine implements Engine {
     }
 
     public int getOptimalMoves() {
-        return levels[currentLevel].minMoves();
+        return level.minMoves();
     }
 
     public String getLevelDescription() {
-        return levels[currentLevel].description();
+        return level.description();
     }
 
-    public Map<Pair<Integer, Integer>, Tile> getTiles() {
+    public Map<Pair<Integer, Integer>, Tile> getCopyOfTiles() {
         Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
         tiles.forEach((key, value) -> output.put(key, value.clone()));
         return output;
     }
 
     public void updateLasers() {
-        lasers = Laser.getLasers(getTiles());
+        lasers = Laser.getLasers(getCopyOfTiles());
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
         lasers.stream().filter(Laser::isComplete)
                 .forEach(l -> tiles.values().stream()

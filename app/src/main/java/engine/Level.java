@@ -1,6 +1,5 @@
 package engine;
 
-import main.App;
 import processing.data.JSONArray;
 import processing.data.JSONObject;
 
@@ -13,12 +12,12 @@ record Level(Map<Pair<Integer, Integer>, Tile> tiles,
              String description, int minMoves) {
 
     /**
-     * Reads all levels from the json file and replaces the static levels value with them.
+     * Reads all levels from the given json array and returns them in an array.
      *
-     * @param app App instance, needed for Processing methods regarding json files
+     * @param levelArray JSONArray storing the levels file.
+     * @return Array of all levels in their initial state.
      */
-    public static Level[] initialize(App app) {
-        JSONArray levelArray = app.loadJSONArray("src/levels.json");
+    public static Level[] initialize(JSONArray levelArray) {
         List<Level> levels = new ArrayList<>();
 
         for (int i = 0; i < levelArray.size(); i++) {
@@ -35,11 +34,5 @@ record Level(Map<Pair<Integer, Integer>, Tile> tiles,
             levels.add(new Level(tiles, levelArray.getJSONObject(i).getString("description"), levelArray.getJSONObject(i).getInt("min_moves")));
         }
         return levels.toArray(new Level[0]);
-    }
-
-    public Map<Pair<Integer, Integer>, Tile> getTiles() {
-        Map<Pair<Integer, Integer>, Tile> output = new HashMap<>();
-        tiles.forEach((key, value) -> output.put(key, value.clone()));
-        return output;
     }
 }
