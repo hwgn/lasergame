@@ -123,6 +123,7 @@ public class Tile {
 
     /**
      * Clones the instance.
+     *
      * @return new instance with the same values.
      */
     public Tile clone() {
@@ -161,10 +162,10 @@ public class Tile {
 
         /**
          * Basic floor tile.
-         *
+         * <p>
          * Generally speaking, using this tile is bad practice as it will override the rotation effects
          * generated when drawing floor tiles under all tiles in a specific map.
-         *
+         * <p>
          * Use Type NULL instead for encoding levels.
          */
         FLOOR(false, false),
@@ -214,8 +215,8 @@ public class Tile {
         /**
          * Instantiates a new Type.
          *
-         * @param collision   the collision
-         * @param canInteract the can interact
+         * @param collision   if tiles of this type have collision. May be null for undetermined (interchangable) collision.
+         * @param canInteract if tiles of this type can be interacted with.
          */
         Type(Boolean collision, Boolean canInteract) {
             this.collision = collision;
@@ -223,10 +224,10 @@ public class Tile {
         }
 
         /**
-         * Gets switch by color.
+         * Gets switch by laser color.
          *
-         * @param c the c
-         * @return the switch by color
+         * @param c the laser color.
+         * @return the appropriate switch for the given laser color.
          */
         public static Type getSwitchByColor(Laser.Color c) {
             return switch (c) {
@@ -237,36 +238,36 @@ public class Tile {
         }
 
         /**
-         * Is laser switch boolean.
+         * Determines if the instance is of type laser switch.
          *
-         * @return the boolean
+         * @return true, if a switch which a laser can interact with.
          */
         public boolean isLaserSwitch() {
             return this == SWITCH_RED || this == SWITCH_GREEN || this == SWITCH_BLUE;
         }
 
         /**
-         * Is laser source boolean.
+         * Determines if the instance is of type laser source.
          *
-         * @return the boolean
+         * @return true, if a laser source.
          */
         public boolean isLaserSource() {
             return this == LASER_RED || this == LASER_GREEN || this == LASER_BLUE;
         }
 
         /**
-         * Can interact boolean.
+         * Getter for canInteract variable.
          *
-         * @return the boolean
+         * @return true, if canInteract.
          */
         public Boolean canInteract() {
             return canInteract;
         }
 
         /**
-         * Gets collision.
+         * Getter for collision variable.
          *
-         * @return the collision
+         * @return true, if collision. May be null.
          */
         public Boolean getCollision() {
             return collision;

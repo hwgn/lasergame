@@ -26,7 +26,7 @@ public class App extends PApplet {
     /**
      * The space between the upper edge of the screen and the tile board.
      */
-    tileTopOffset = 50,
+    tileTopOffset = 60,
     /**
      * The space between the tile board and the lower edge of the screen.
      */
@@ -34,7 +34,12 @@ public class App extends PApplet {
     /**
      * The maximum tiles in each direction.
      */
-    maxTiles = 16;
+    maxTiles = 16,
+
+    /**
+     * The visual border surrounding all tiles.
+     */
+    fieldBorder = 10;
     /**
      * The current level index.
      */
@@ -88,7 +93,7 @@ public class App extends PApplet {
         engine.updateLasers();
         setMousePointer();
 
-        background(15, 22, 41);
+        background(18);
 
         drawBoard();
 
@@ -100,12 +105,12 @@ public class App extends PApplet {
      * Draws upper box.
      */
     private void drawUpperBox() {
-        noStroke();
-        fill(0, 24, 69);
-        rect(0, 0, width, tileTopOffset);
+        stroke(255);
+        fill(33);
+        rect(-10, -10, width + 20, tileTopOffset + 10);
 
         fill(255);
-        text(engine.getLevelDescription(), width / 2f, tileTopOffset - 5);
+        text(engine.getLevelDescription(), width / 2f, tileTopOffset - 10);
 
     }
 
@@ -113,7 +118,11 @@ public class App extends PApplet {
      * Draws lower box.
      */
     private void drawLowerBox() {
-        rect(0, height, width, -100);
+        stroke(255);
+        fill(33);
+        rect(-10, height + 10, width + 20, -tileBottomOffset - 10);
+        fill(255);
+        text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width / 4f, height - tileBottomOffset * 0.3f);
         strokeWeight(2);
     }
 
@@ -126,9 +135,20 @@ public class App extends PApplet {
      * a potential laser hitting a wall.
      */
     private void drawBoard() {
+        fill(66);
+        noStroke();
+        // Draws outline around all tiles
+        engine.getCopyOfTiles().keySet().forEach(key -> {
+            PVector pos = vectorOfTile(key.x(), key.y());
+            square(pos.x - ((tileSize / 2f) + fieldBorder), pos.y - ((tileSize / 2f) + fieldBorder), tileSize + fieldBorder * 2);
+        });
+
         // Draws a floor image for every tile present
         engine.getCopyOfTiles().keySet()
-                .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
+                .forEach(key -> {
+
+                    Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4);
+                });
 
         // Draws all tiles once
         engine.getCopyOfTiles()
@@ -153,9 +173,9 @@ public class App extends PApplet {
      */
     public void drawLaser(Laser l) {
         switch (l.color()) {
-            case RED -> stroke(255, 0, 0, 150);
-            case BLUE -> stroke(0, 0, 255, 150);
-            case GREEN -> stroke(0, 255, 0, 150);
+            case RED -> stroke(255, 0, 0, 150 + random(50));
+            case BLUE -> stroke(0, 0, 255, 150 + random(50));
+            case GREEN -> stroke(0, 255, 0, 150 + random(50));
         }
 
         final PVector[] points = l.points().toArray(new PVector[0]);
