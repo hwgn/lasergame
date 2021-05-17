@@ -78,7 +78,9 @@ public enum Image {
     /**
      * Magenta (intractable) switch.
      */
-    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png");
+    SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png"),
+
+    MEDAL("gold.png", "silver.png", "bronze.png", "none.png");
 
     /**
      * The Image path. Allows easily changing the folder location of all images.
@@ -104,6 +106,8 @@ public enum Image {
 
     /**
      * When initialising an Image with four image paths, the Tile-State is considered the four directions.
+     *
+     * Note: For the medal image, these are instead considered as gold - silver - bronze - none.
      *
      * @param north Image for Tile facing north / 0 degrees rotation.
      * @param east  Image for Tile facing east / 90 degrees rotation.
@@ -142,8 +146,8 @@ public enum Image {
     public static void initialise(App a, int size) {
         app = a;
         tileSize = size;
-        Arrays.stream(Image.values()).forEach(i ->
-                Arrays.stream(i.filenames).forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
+        Arrays.stream(Image.values())
+                .forEach(i -> Arrays.stream(i.filenames).forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
     }
 
     /**
@@ -159,11 +163,11 @@ public enum Image {
     }
 
     /**
-     * Gets image of specific state.
+     * Gets the list of images for this specific instance.
      *
-     * @return The image.
+     * @return the list of images.
      */
-    public PImage getImage(int i) {
-        return images.get(i);
+    public List<PImage> getImages() {
+        return images;
     }
 }

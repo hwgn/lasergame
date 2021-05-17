@@ -5,6 +5,7 @@ package main;
 
 import engine.*;
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PVector;
 
 import java.util.Comparator;
@@ -45,9 +46,11 @@ public class App extends PApplet {
      */
     private int currentLevel;
     /**
-     * The Engine relating to the current level and playthrough.
+     * The Engine relating to the current level and play-through.
      */
     private Engine engine;
+
+    private PFont font;
 
     /**
      * Initialises Processing functionality.
@@ -55,7 +58,7 @@ public class App extends PApplet {
      * @param args Launch arguments.
      */
     public static void main(String[] args) {
-        String[] appArgs = {"lasergame"};
+        String[] appArgs = {"LaserGame"};
         App mySketch = new App();
         PApplet.runSketch(appArgs, mySketch);
     }
@@ -74,6 +77,7 @@ public class App extends PApplet {
     public void setup() {
         currentLevel = 0;
         engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
+        font = createFont("img/EdgeOfTheGalaxy.otf", 40);
         Image.initialise(this, tileSize);
 
         imageMode(CENTER);
@@ -83,7 +87,6 @@ public class App extends PApplet {
             license: Public Domain
             link: https://www.fontspace.com/edge-of-the-galaxy-font-f45748
          */
-        textFont(createFont("img/EdgeOfTheGalaxy.otf", 40));
     }
 
     /**
@@ -110,6 +113,7 @@ public class App extends PApplet {
         rect(-10, -10, width + 20, tileTopOffset + 10);
 
         fill(255);
+        textFont(font, 40);
         text(engine.getLevelDescription(), width / 2f, tileTopOffset - 10);
 
     }
@@ -122,6 +126,7 @@ public class App extends PApplet {
         fill(33);
         rect(-10, height + 10, width + 20, -tileBottomOffset - 10);
         fill(255);
+        textFont(font, 60);
         text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width / 4f, height - tileBottomOffset * 0.3f);
         strokeWeight(2);
     }
@@ -145,10 +150,7 @@ public class App extends PApplet {
 
         // Draws a floor image for every tile present
         engine.getCopyOfTiles().keySet()
-                .forEach(key -> {
-
-                    Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4);
-                });
+                .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
         engine.getCopyOfTiles()
@@ -171,7 +173,7 @@ public class App extends PApplet {
      *
      * @param l the Laser.
      */
-    public void drawLaser(Laser l) {
+    private void drawLaser(Laser l) {
         switch (l.color()) {
             case RED -> stroke(255, 0, 0, 150 + random(50));
             case BLUE -> stroke(0, 0, 255, 150 + random(50));
@@ -255,7 +257,7 @@ public class App extends PApplet {
     /**
      * Loads next level, provided there is one. Otherwise restarts current level.
      */
-    public void nextLevel() {
+    private void nextLevel() {
         if (loadJSONArray("src/levels.json").size() > currentLevel + 1)
             engine = new LaserEngine(++currentLevel, loadJSONArray("src/levels.json"));
         else
@@ -265,7 +267,7 @@ public class App extends PApplet {
     /**
      * Loads previous level, provided there is one. Otherwise restarts current level.
      */
-    public void previousLevel() {
+    private void previousLevel() {
         if (currentLevel - 1 >= 0)
             engine = new LaserEngine(--currentLevel, loadJSONArray("src/levels.json"));
         else
@@ -275,7 +277,7 @@ public class App extends PApplet {
     /**
      * Restarts level.
      */
-    public void restartLevel() {
+    private void restartLevel() {
         engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
     }
 }
