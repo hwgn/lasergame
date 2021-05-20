@@ -27,6 +27,11 @@ public class Tile {
     private boolean collision;
 
     /**
+     * The initial collision as set by the constructor.
+     */
+    private final boolean initialCollision;
+
+    /**
      * Instantiates a new tile using a given type and state.
      *
      * @param type  the tile type.
@@ -35,7 +40,7 @@ public class Tile {
     private Tile(Tile.Type type, int state) {
         this.type = type;
         this.state = this.initialState = state;
-        this.collision = Objects.requireNonNullElseGet(type.getCollision(), () -> state == 1);
+        this.collision = this.initialCollision = Objects.requireNonNullElseGet(type.getCollision(), () -> state == 1);
     }
 
     /**
@@ -115,8 +120,8 @@ public class Tile {
                     });
 
             case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
-                state = (state + 1) % 2;
-                collision = !collision;
+                state = (initialState + 1) % 2;
+                collision = !initialCollision;
             }
         }
     }

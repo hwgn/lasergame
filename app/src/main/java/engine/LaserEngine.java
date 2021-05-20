@@ -2,10 +2,7 @@ package engine;
 
 import processing.data.JSONArray;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The main Engine running the game.
@@ -23,6 +20,7 @@ public class LaserEngine implements Engine {
     private final Map<Pair<Integer, Integer>, Tile> tiles;
     private Set<Laser> lasers;
     private int moves = 0;
+    private boolean completed = false;
 
     public LaserEngine(int l, JSONArray array) {
         level = Level.initialize(array)[l];
@@ -60,15 +58,23 @@ public class LaserEngine implements Engine {
     }
 
     public void updateLasers() {
-        lasers = Laser.getLasers(getCopyOfTiles());
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
-        lasers.stream().filter(Laser::isComplete)
-                .forEach(l -> tiles.values().stream()
-                        .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
-                        .forEach(t -> t.interact(0, tiles)));
+        lasers = Laser.getLasers(getCopyOfTiles());
+        for(int i = 0; i < lasers.size(); i++) {
+            lasers.stream().sorted(Comparator.comparing(l -> l.color().ordinal())).filter(Laser::isComplete)
+                    .forEach(l -> tiles.values().stream()
+                            .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
+                            .forEach(t -> t.interact(0, tiles)));
+            lasers = Laser.getLasers(getCopyOfTiles());
+        }
+        completed = lasers.stream().filter(Laser::isComplete).count() == lasers.size();
     }
 
     public Set<Laser> getLasers() {
         return lasers;
+    }
+
+    public boolean isCompleted() {
+        return completed;
     }
 }

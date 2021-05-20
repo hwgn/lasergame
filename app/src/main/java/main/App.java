@@ -208,6 +208,10 @@ public class App extends PApplet {
      * Upon mouse release, there is an attempt at interacting with the tile board.
      */
     public void mouseReleased() {
+        if (engine.isCompleted()) {
+            restartLevel();
+            return;
+        }
         try {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
         } catch (IllegalArgumentException | IndexOutOfBoundsException ignored) {
@@ -247,6 +251,9 @@ public class App extends PApplet {
      * @return The Pair representing the position which the PVector points to. Null if the given Vector points outside of the Tile field.
      */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
+        //int x = (int) map(pos.x + tileSize / 2f, tilePadding, width - tilePadding, 0, maxTiles);
+        //int y = (int) map(pos.y + tileSize / 2f, tilePadding + tileTopOffset, height - (tilePadding + tileBottomOffset), 0, maxTiles);
+
         int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
         int y = floor((pos.y - (tileTopOffset + tilePadding) + (tileSize / 2f)) / tileSize);
 

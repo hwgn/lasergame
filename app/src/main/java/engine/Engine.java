@@ -56,5 +56,6 @@ public interface Engine {
      */
     Set<Laser> getLasers();
 
+    boolean isCompleted();
 
 }
