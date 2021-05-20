@@ -6,9 +6,11 @@ package main;
 import engine.*;
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PImage;
 import processing.core.PVector;
+import processing.data.JSONArray;
 
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Main Class.
@@ -36,7 +38,6 @@ public class App extends PApplet {
      * The maximum tiles in each direction.
      */
     maxTiles = 16,
-
     /**
      * The visual border surrounding all tiles.
      */
@@ -52,13 +53,17 @@ public class App extends PApplet {
 
     private PFont font;
 
+    private JSONArray levelArray;
+
+    private List<Medal> medals;
+
     /**
      * Initialises Processing functionality.
      *
      * @param args Launch arguments.
      */
     public static void main(String[] args) {
-        String[] appArgs = {"LaserGame"};
+        String[] appArgs = {"App"};
         App mySketch = new App();
         PApplet.runSketch(appArgs, mySketch);
     }
@@ -68,7 +73,6 @@ public class App extends PApplet {
      */
     public void settings() {
         size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileTopOffset + tileBottomOffset + tilePadding * 2);
-        System.out.println("Initializing game with w:" + width + ", h:" + height);
     }
 
     /**
@@ -76,9 +80,12 @@ public class App extends PApplet {
      */
     public void setup() {
         currentLevel = 0;
-        engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
+        levelArray = loadJSONArray("src/levels.json");
+        engine = new LaserEngine(currentLevel, levelArray);
         font = createFont("img/EdgeOfTheGalaxy.otf", 40);
+
         Image.initialise(this, tileSize);
+        medals = new ArrayList<>(Collections.nCopies(levelArray.size(), Medal.NONE));
 
         imageMode(CENTER);
         textAlign(CENTER);
@@ -97,7 +104,6 @@ public class App extends PApplet {
         setMousePointer();
 
         background(18);
-
         drawBoard();
 
         drawUpperBox();
@@ -125,10 +131,13 @@ public class App extends PApplet {
         stroke(255);
         fill(33);
         rect(-10, height + 10, width + 20, -tileBottomOffset - 10);
+
         fill(255);
         textFont(font, 60);
         text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width / 4f, height - tileBottomOffset * 0.3f);
         strokeWeight(2);
+
+        drawMedal();
     }
 
     /**
@@ -154,8 +163,7 @@ public class App extends PApplet {
 
         // Draws all tiles once
         engine.getCopyOfTiles()
-                .forEach((key, value) ->
-                        Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
+                .forEach((key, value) -> Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
 
         //Sorts lasers by color to avoid flickering when lasers go across each other
         engine.getLasers().stream().sorted(Comparator.comparing(Laser::color)).forEach(this::drawLaser);
@@ -164,8 +172,7 @@ public class App extends PApplet {
         engine.getCopyOfTiles().entrySet().stream()
                 .filter(t -> t.getValue().getCollision())
                 .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET)
-                .forEach(t ->
-                        Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
+                .forEach(t -> Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
     }
 
     /**
@@ -209,6 +216,7 @@ public class App extends PApplet {
      */
     public void mouseReleased() {
         if (engine.isCompleted()) {
+            medals.set(currentLevel, getMedal());
             restartLevel();
             return;
         }
@@ -251,9 +259,6 @@ public class App extends PApplet {
      * @return The Pair representing the position which the PVector points to. Null if the given Vector points outside of the Tile field.
      */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
-        //int x = (int) map(pos.x + tileSize / 2f, tilePadding, width - tilePadding, 0, maxTiles);
-        //int y = (int) map(pos.y + tileSize / 2f, tilePadding + tileTopOffset, height - (tilePadding + tileBottomOffset), 0, maxTiles);
-
         int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
         int y = floor((pos.y - (tileTopOffset + tilePadding) + (tileSize / 2f)) / tileSize);
 
@@ -265,8 +270,8 @@ public class App extends PApplet {
      * Loads next level, provided there is one. Otherwise restarts current level.
      */
     private void nextLevel() {
-        if (loadJSONArray("src/levels.json").size() > currentLevel + 1)
-            engine = new LaserEngine(++currentLevel, loadJSONArray("src/levels.json"));
+        if (levelArray.size() > currentLevel + 1)
+            engine = new LaserEngine(++currentLevel, levelArray);
         else
             restartLevel();
     }
@@ -276,7 +281,7 @@ public class App extends PApplet {
      */
     private void previousLevel() {
         if (currentLevel - 1 >= 0)
-            engine = new LaserEngine(--currentLevel, loadJSONArray("src/levels.json"));
+            engine = new LaserEngine(--currentLevel, levelArray);
         else
             restartLevel();
     }
@@ -285,6 +290,31 @@ public class App extends PApplet {
      * Restarts level.
      */
     private void restartLevel() {
-        engine = new LaserEngine(currentLevel, loadJSONArray("src/levels.json"));
+        engine = new LaserEngine(currentLevel, levelArray);
+    }
+
+    private Medal getMedal() {
+        return Arrays.stream(Medal.values())
+                .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
+                .findFirst().orElseThrow();
+    }
+
+    private void drawMedal() {
+        image(medals.get(currentLevel).image, width - 50, height - 50, 50, 50);
+    }
+
+    private enum Medal {
+        GOLD(0, 0),
+        SILVER(1, 3),
+        BRONZE(2, 9),
+        NONE(3, Integer.MAX_VALUE);
+
+        public final PImage image;
+        public final int maxMistakes;
+
+        Medal(int imageCode, int maxMistakes) {
+            this.image = Image.MEDAL.getImages().get(imageCode);
+            this.maxMistakes = maxMistakes;
+        }
     }
 }

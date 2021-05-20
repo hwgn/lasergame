@@ -13,7 +13,7 @@ import java.util.List;
  * Images are initialised with the static method initialise(), which will use the instance
  * of App to load all Images into memory.
  */
-public enum Image {
+enum Image {
     /**
      * Stone wall.
      */
@@ -106,7 +106,7 @@ public enum Image {
 
     /**
      * When initialising an Image with four image paths, the Tile-State is considered the four directions.
-     *
+     * <p>
      * Note: For the medal image, these are instead considered as gold - silver - bronze - none.
      *
      * @param north Image for Tile facing north / 0 degrees rotation.
@@ -170,4 +170,5 @@ public enum Image {
     public List<PImage> getImages() {
         return images;
     }
+
 }
