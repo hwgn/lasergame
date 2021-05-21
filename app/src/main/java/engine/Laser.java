@@ -27,9 +27,9 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
     /**
      * Creates a Laser instance using a given starting position and rotation as well as the tile map the Laser is navigating through.
      *
-     * @param pos starting position.
+     * @param pos      starting position.
      * @param rotation starting rotation (0 = north, 1 = east, ...)
-     * @param tiles the tile map.
+     * @param tiles    the tile map.
      * @return instance of Laser generated using the given parameters.
      */
     private static Laser determinePath(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles) {
@@ -52,10 +52,10 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
     /**
      * The pathfinder method will set up the points list of the laser by walking through the tiles and rotating / stopping as needed.
      *
-     * @param pos the starting position of the Laser.
+     * @param pos      the starting position of the Laser.
      * @param rotation the initial direction the laser is facing.
-     * @param tiles the tile map.
-     * @param points the points list. This list will be appended to during the method execution.
+     * @param tiles    the tile map.
+     * @param points   the points list. This list will be appended to during the method execution.
      * @return true, if the Laser is complete (ends on a target).
      */
     private static boolean pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
@@ -89,7 +89,7 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
     /**
      * Returns the position one step ahead of the current position, in the direction of the given rotation.
      *
-     * @param pos current position.
+     * @param pos      current position.
      * @param rotation current rotation.
      * @return new position one step into the given direction, from the given position.
      */
