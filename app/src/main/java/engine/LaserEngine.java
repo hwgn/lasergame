@@ -15,7 +15,6 @@ import java.util.*;
  * will be reloaded whenever a new game is started.
  */
 public class LaserEngine implements Engine {
-    public static final int maxTiles = 16;
     private final JSONArray levelArray;
     private Level level;
     private Map<Pair<Integer, Integer>, Tile> tiles;
