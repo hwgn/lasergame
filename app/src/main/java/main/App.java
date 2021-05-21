@@ -296,10 +296,11 @@ public class App extends PApplet {
     private Medal getMedal() {
         levelArray.getJSONObject(currentLevel).getInt("medal", 3);
 
-        returnArrays.stream()
+        // levelArray.getJSONObject(currentLevel).setInt("medal", Arrays.stream(Medal.values()).filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
+        //                 .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
+        //         .findFirst().orElse(medals.get(currentLevel)).ordinal());
 
-        return Arrays.stream(Medal.values())
-                .filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
+        return Arrays.stream(Medal.values()).filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
                 .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
                 .findFirst().orElse(medals.get(currentLevel));
     }
