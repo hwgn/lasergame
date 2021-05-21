@@ -16,23 +16,34 @@ import java.util.*;
  */
 public class LaserEngine implements Engine {
     public static final int maxTiles = 16;
-    private static Level level;
-    private final Map<Pair<Integer, Integer>, Tile> tiles;
+    private final JSONArray levelArray;
+    private Level level;
+    private Map<Pair<Integer, Integer>, Tile> tiles;
     private Set<Laser> lasers;
-    private int moves = 0;
+    private int moves, levelID = 0;
     private boolean completed = false;
 
-    public LaserEngine(int l, JSONArray array) {
-        level = Level.initialize(array)[l];
+    public LaserEngine(JSONArray array) {
+        this.levelArray = array;
+        levelSetup();
+    }
+
+    private void levelSetup() {
+        level = Level.initialize(levelArray)[levelID];
         tiles = level.tiles();
-        lasers = new HashSet<>();
+        completed = false;
+        moves = 0;
+    }
+
+    public void update() {
+        updateLasers();
+        if(completed)
+            updateMedal();
     }
 
     public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) {
-        if (tiles.get(pos) == null)
-            throw new IndexOutOfBoundsException("Specified position does not correspond to a tile!");
-        if (!tiles.get(pos).getType().canInteract())
-            throw new IllegalArgumentException("Specified Tile cannot be interacted with!");
+        if (tiles.get(pos) == null || !tiles.get(pos).getType().canInteract() || completed)
+            throw new IllegalStateException("This interaction is impossible at this time.");
 
         tiles.get(pos).interact(mouseButton, tiles);
         moves++;
@@ -60,7 +71,7 @@ public class LaserEngine implements Engine {
     public void updateLasers() {
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
         lasers = Laser.getLasers(getCopyOfTiles());
-        for(int i = 0; i < lasers.size(); i++) {
+        for (int i = 0; i < lasers.size(); i++) {
             lasers.stream().sorted(Comparator.comparing(l -> l.color().ordinal())).filter(Laser::isComplete)
                     .forEach(l -> tiles.values().stream()
                             .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
@@ -70,11 +81,44 @@ public class LaserEngine implements Engine {
         completed = lasers.stream().filter(Laser::isComplete).count() == lasers.size();
     }
 
+    public void requestLevel(int direction) {
+        if (levelID + direction < 0 || levelID + direction >= levelArray.size())
+            direction = 0;
+        levelID += direction;
+        levelSetup();
+    }
+
     public Set<Laser> getLasers() {
         return lasers;
     }
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    public int getMedalID() {
+        return levelArray.getJSONObject(levelID).getInt("medal", 3);
+    }
+
+
+    private void updateMedal() {
+        levelArray.getJSONObject(levelID).setInt("medal", Arrays.stream(Medal.values())
+                .filter(m -> moves - getOptimalMoves() <= m.maxMistakes)
+                .mapToInt(Enum::ordinal)
+                .filter(m -> m <= levelArray.getJSONObject(levelID).getInt("medal", 3))
+                .findFirst().orElse(levelArray.getJSONObject(levelID).getInt("medal", 3)));
+    }
+
+    private enum Medal {
+        GOLD(0),
+        SILVER(4),
+        BRONZE(9),
+        NONE(Integer.MAX_VALUE);
+
+        public final int maxMistakes;
+
+        Medal(int maxMistakes) {
+            this.maxMistakes = maxMistakes;
+        }
     }
 }

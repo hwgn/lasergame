@@ -1,5 +1,6 @@
 package main;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -89,7 +90,7 @@ enum Image {
     /**
      * The App. Is stored to later enable usage of draw().
      */
-    static App app = null;
+    static PApplet app = null;
     /**
      * Tile size. Must be updated when the image is initialized.
      */
@@ -143,7 +144,7 @@ enum Image {
      * @param a    instance of the app, needed to load images.
      * @param size size at which images should be drawn at.
      */
-    public static void initialise(App a, int size) {
+    public static <T extends PApplet> void initialise(T a, int size) {
         app = a;
         tileSize = size;
         Arrays.stream(Image.values())

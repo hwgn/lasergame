@@ -6,11 +6,9 @@ package main;
 import engine.*;
 import processing.core.PApplet;
 import processing.core.PFont;
-import processing.core.PImage;
 import processing.core.PVector;
-import processing.data.JSONArray;
 
-import java.util.*;
+import java.util.Comparator;
 
 /**
  * Main Class.
@@ -43,19 +41,11 @@ public class App extends PApplet {
      */
     fieldBorder = 10;
     /**
-     * The current level index.
-     */
-    private int currentLevel;
-    /**
      * The Engine relating to the current level and play-through.
      */
     private Engine engine;
 
     private PFont font;
-
-    private JSONArray levelArray;
-
-    private List<Medal> medals;
 
     /**
      * Initialises Processing functionality.
@@ -63,7 +53,7 @@ public class App extends PApplet {
      * @param args Launch arguments.
      */
     public static void main(String[] args) {
-        String[] appArgs = {"App"};
+        String[] appArgs = {"Laser Game App"};
         App mySketch = new App();
         PApplet.runSketch(appArgs, mySketch);
     }
@@ -79,13 +69,10 @@ public class App extends PApplet {
      * Sets up engine and images. Configures drawing settings.
      */
     public void setup() {
-        currentLevel = 0;
-        levelArray = loadJSONArray("src/levels.json");
-        engine = new LaserEngine(currentLevel, levelArray);
+        engine = new LaserEngine(loadJSONArray("src/levels.json"));
         font = createFont("img/EdgeOfTheGalaxy.otf", 40);
 
         Image.initialise(this, tileSize);
-        medals = new ArrayList<>(Collections.nCopies(levelArray.size(), Medal.NONE));
 
         imageMode(CENTER);
         textAlign(CENTER);
@@ -100,7 +87,7 @@ public class App extends PApplet {
      * Main draw loop. Updates the engine as well as the frontend.
      */
     public void draw() {
-        engine.updateLasers();
+        engine.update();
         setMousePointer();
 
         background(18);
@@ -108,6 +95,8 @@ public class App extends PApplet {
 
         drawUpperBox();
         drawLowerBox();
+
+        surface.setTitle("Laser Game | " + engine.getLevelDescription());
     }
 
     /**
@@ -187,11 +176,12 @@ public class App extends PApplet {
             case GREEN -> stroke(0, 255, 0, 150 + random(50));
         }
 
-        final PVector[] points = l.points().toArray(new PVector[0]);
-        for (int i = 0; i < points.length - 1; i++) {
-            PVector start = vectorOfTile((int) points[i].x, (int) points[i].y);
-            PVector stop = vectorOfTile((int) points[i + 1].x, (int) points[i + 1].y);
-            line(start.x, start.y, stop.x, stop.y);
+        /*
+        https://stackoverflow.com/questions/67643914/how-can-i-iterate-over-two-items-of-a-stream-at-once?noredirect=1#comment119564123_67643914
+         */
+        PVector[] a = l.points().stream().map(v -> vectorOfTile((int) v.x, (int) v.y)).toArray(PVector[]::new);
+        for (int i = 0; i < a.length - 1; i++) {
+            line(a[i].x, a[i].y, a[i + 1].x, a[i + 1].y);
         }
     }
 
@@ -204,10 +194,8 @@ public class App extends PApplet {
         Pair<Integer, Integer> mousePos = canvasToTile(new PVector(mouseX, mouseY));
 
         if (mousePos != null && engine.getCopyOfTiles().get(mousePos) != null
-                && engine.getCopyOfTiles().get(mousePos).getType().canInteract())
-            cursor(HAND);
-        else
-            cursor(ARROW);
+                && engine.getCopyOfTiles().get(mousePos).getType().canInteract()) cursor(HAND);
+        else cursor(ARROW);
 
     }
 
@@ -216,13 +204,12 @@ public class App extends PApplet {
      */
     public void mouseReleased() {
         if (engine.isCompleted()) {
-            medals.set(currentLevel, getMedal());
-            restartLevel();
+            engine.requestLevel(0);
             return;
         }
         try {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
-        } catch (IllegalArgumentException | IndexOutOfBoundsException ignored) {
+        } catch (IllegalStateException ignored) {
         }
     }
 
@@ -234,9 +221,9 @@ public class App extends PApplet {
             return;
 
         switch (keyCode) {
-            case LEFT -> previousLevel();
-            case DOWN, UP -> restartLevel();
-            case RIGHT -> nextLevel();
+            case LEFT -> engine.requestLevel(-1);
+            case DOWN, UP -> engine.requestLevel(0);
+            case RIGHT -> engine.requestLevel(1);
         }
     }
 
@@ -267,62 +254,10 @@ public class App extends PApplet {
     }
 
     /**
-     * Loads next level, provided there is one. Otherwise restarts current level.
+     * Fetches and draws the medal.
      */
-    private void nextLevel() {
-        if (levelArray.size() > currentLevel + 1)
-            engine = new LaserEngine(++currentLevel, levelArray);
-        else
-            restartLevel();
-    }
-
-    /**
-     * Loads previous level, provided there is one. Otherwise restarts current level.
-     */
-    private void previousLevel() {
-        if (currentLevel - 1 >= 0)
-            engine = new LaserEngine(--currentLevel, levelArray);
-        else
-            restartLevel();
-    }
-
-    /**
-     * Restarts level.
-     */
-    private void restartLevel() {
-        engine = new LaserEngine(currentLevel, levelArray);
-    }
-
-    private Medal getMedal() {
-        levelArray.getJSONObject(currentLevel).getInt("medal", 3);
-
-        // levelArray.getJSONObject(currentLevel).setInt("medal", Arrays.stream(Medal.values()).filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
-        //                 .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
-        //         .findFirst().orElse(medals.get(currentLevel)).ordinal());
-
-        return Arrays.stream(Medal.values()).filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
-                .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
-                .findFirst().orElse(medals.get(currentLevel));
-
-        //TODO change engine to work for all levels instead of making new instances
-    }
-
     private void drawMedal() {
-        image(medals.get(currentLevel).image, width - 50, height - 50, 50, 50);
+        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 50, height - 50, 80, 80);
     }
 
-    private enum Medal {
-        GOLD(0, 0),
-        SILVER(1, 3),
-        BRONZE(2, 9),
-        NONE(3, Integer.MAX_VALUE);
-
-        public final PImage image;
-        public final int maxMistakes;
-
-        Medal(int imageCode, int maxMistakes) {
-            this.image = Image.MEDAL.getImages().get(imageCode);
-            this.maxMistakes = maxMistakes;
-        }
-    }
 }

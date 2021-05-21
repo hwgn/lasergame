@@ -80,8 +80,7 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
 
             do {
                 pos = getNextPosition(pos, rotation);
-            } while (tiles.get(pos) != null && !tiles.get(pos).getCollision()
-                    && pos.x() <= LaserEngine.maxTiles && pos.y() <= LaserEngine.maxTiles);
+            } while (tiles.get(pos) != null && !tiles.get(pos).getCollision());
 
         }
         return isComplete;

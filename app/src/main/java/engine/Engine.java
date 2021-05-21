@@ -18,7 +18,7 @@ public interface Engine {
     /**
      * Updates (reloads) lasers, including their position, path and state.
      */
-    void updateLasers();
+    void update();
 
     /**
      * Returns the current amount of moves taken.
@@ -56,6 +56,10 @@ public interface Engine {
      */
     Set<Laser> getLasers();
 
+    int getMedalID();
+
     boolean isCompleted();
+
+    void requestLevel(int direction);
 
 }

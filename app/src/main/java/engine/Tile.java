@@ -110,7 +110,7 @@ public class Tile {
      */
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
         switch (type) {
-            case MIRROR -> state = button == PConstants.RIGHT ? (state + 3) % 4 : (state + 1) % 4;
+            case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
 
             case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA -> tiles.values().stream()
                     .filter(t -> t.type.equals(this.type))
