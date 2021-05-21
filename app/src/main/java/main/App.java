@@ -171,7 +171,7 @@ public class App extends PApplet {
         // Draws all tiles which have collision to cover the laser
         engine.getCopyOfTiles().entrySet().stream()
                 .filter(t -> t.getValue().getCollision())
-                .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET &&  !t.getValue().getType().isLaserSource())
+                .filter(t -> t.getValue().getType() != Tile.Type.STONE_TARGET && !t.getValue().getType().isLaserSource())
                 .forEach(t -> Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
     }
 
@@ -303,6 +303,8 @@ public class App extends PApplet {
         return Arrays.stream(Medal.values()).filter(m -> m.ordinal() <= medals.get(currentLevel).ordinal())
                 .filter(m -> engine.getMoves() - engine.getOptimalMoves() <= m.maxMistakes)
                 .findFirst().orElse(medals.get(currentLevel));
+
+        //TODO change engine to work for all levels instead of making new instances
     }
 
     private void drawMedal() {
