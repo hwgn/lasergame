@@ -43,7 +43,7 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
             default -> throw new IllegalArgumentException("Unexpected tile type: " + tiles.get(pos).getType() + "!");
         };
 
-        List<PVector> points = new ArrayList<>();
+        List<PVector> points = new ArrayList<>(List.of(new PVector(pos.x(), pos.y())));
         boolean isComplete = pathFinder(pos, rotation, tiles, points);
 
         return new Laser(color, points, isComplete);
@@ -60,6 +60,7 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      */
     private static boolean pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
         boolean isComplete = false;
+        pos = getNextPosition(pos, rotation);
 
         while (true) {
             points.add(new PVector(pos.x(), pos.y()));

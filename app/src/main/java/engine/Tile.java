@@ -155,15 +155,15 @@ public class Tile {
         /**
          * Red laser emitter.
          */
-        LASER_RED(false, false),
+        LASER_RED(true, false),
         /**
          * Green laser emitter.
          */
-        LASER_GREEN(false, false),
+        LASER_GREEN(true, false),
         /**
          * Blue laser emitter.
          */
-        LASER_BLUE(false, false),
+        LASER_BLUE(true, false),
 
         /**
          * Basic floor tile.
