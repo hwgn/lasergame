@@ -25,13 +25,9 @@ public class App extends PApplet {
      */
     tilePadding = 48,
     /**
-     * The space between the upper edge of the screen and the tile board.
-     */
-    tileTopOffset = 60,
-    /**
      * The space between the tile board and the lower edge of the screen.
      */
-    tileBottomOffset = 100,
+    tileBottomOffset = 200,
     /**
      * The maximum tiles in each direction.
      */
@@ -62,7 +58,7 @@ public class App extends PApplet {
      * Sets canvas size.
      */
     public void settings() {
-        size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileTopOffset + tileBottomOffset + tilePadding * 2);
+        size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileBottomOffset + tilePadding * 2);
     }
 
     /**
@@ -93,40 +89,31 @@ public class App extends PApplet {
         background(18);
         drawBoard();
 
-        drawUpperBox();
-        drawLowerBox();
+        drawMenuBox();
 
         surface.setTitle("Laser Game | " + engine.getLevelDescription());
     }
 
     /**
-     * Draws upper box.
-     */
-    private void drawUpperBox() {
-        stroke(255);
-        fill(33);
-        rect(-10, -10, width + 20, tileTopOffset + 10);
-
-        fill(255);
-        textFont(font, 40);
-        text(engine.getLevelDescription(), width / 2f, tileTopOffset - 10);
-
-    }
-
-    /**
      * Draws lower box.
      */
-    private void drawLowerBox() {
+    private void drawMenuBox() {
         stroke(255);
         fill(33);
-        rect(-10, height + 10, width + 20, -tileBottomOffset - 10);
+
+        rect(-10, height - (tileBottomOffset - 50), width + 20, height);
+        rect(width - 160, height - (tileBottomOffset + 50), width, height);
+
+        drawMedal();
 
         fill(255);
         textFont(font, 60);
-        text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width / 4f, height - tileBottomOffset * 0.3f);
-        strokeWeight(2);
+        text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width - 80, height - 25);
+        textFont(font, 35);
+        text(engine.getLevelDescription(), (width / 2f) - 80, height - 30);
+        if (engine.isCompleted())
+            text("Level Cleared!", (width / 2f) - 80, height - 80);
 
-        drawMedal();
     }
 
     /**
@@ -236,7 +223,7 @@ public class App extends PApplet {
      * @return The PVector pointing to the center of the given Tile position.
      */
     private PVector vectorOfTile(int x, int y) {
-        return new PVector(x * tileSize + tilePadding, y * tileSize + tileTopOffset + tilePadding);
+        return new PVector(x * tileSize + tilePadding, y * tileSize + tilePadding);
     }
 
     /**
@@ -247,7 +234,7 @@ public class App extends PApplet {
      */
     private Pair<Integer, Integer> canvasToTile(PVector pos) {
         int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
-        int y = floor((pos.y - (tileTopOffset + tilePadding) + (tileSize / 2f)) / tileSize);
+        int y = floor((pos.y - tilePadding + (tileSize / 2f)) / tileSize);
 
         return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
                 Pair.of(x, y) : null;
@@ -257,7 +244,7 @@ public class App extends PApplet {
      * Fetches and draws the medal.
      */
     private void drawMedal() {
-        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 50, height - 50, 80, 80);
+        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 80, height - (tileBottomOffset - 30), 140, 140);
     }
 
 }

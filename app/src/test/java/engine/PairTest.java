@@ -11,6 +11,7 @@ class PairTest {
         assertEquals(intPair.x(), 10, "");
         assertEquals(intPair.y(), 20, "");
 
+
         assertEquals(Pair.of("Hello World", 'a'), new Pair<String, Character>("Hello World", 'a'), "");
     }
 }
