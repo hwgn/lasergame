@@ -29,7 +29,7 @@ public class App extends PApplet {
      */
     tileBottomOffset = 200,
     /**
-     * The maximum tiles in each direction.
+     * The maximum tile index in each direction (meaning that the field ist 17x17).
      */
     maxTiles = 16,
     /**
