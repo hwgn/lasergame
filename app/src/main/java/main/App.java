@@ -92,28 +92,39 @@ public class App extends PApplet {
 
         drawMenuBox();
 
-        surface.setTitle("Laser Game | " + engine.getLevelDescription());
+        surface.setTitle(" Laser Game - Level " + nf(engine.getLevelID() + 1, 2) + ": " + engine.getLevelDescription());
     }
 
     /**
-     * Draws lower box.
+     * Draws the info box containing medal, moves, level description and level id.
      */
     private void drawMenuBox() {
         stroke(255);
         fill(33);
 
+        // Background box
         rect(-10, height - (tileBottomOffset - 50), width + 20, height);
         rect(width - 160, height - (tileBottomOffset + 50), width, height);
 
-        drawMedal();
+        // Medal
+        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 80, height - (tileBottomOffset - 30), 140, 140);
 
         fill(255);
+
+        // Move counter
         textFont(font, 60);
         text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width - 80, height - 25);
+
+        // Level name
         textFont(font, 35);
         text(engine.getLevelDescription(), (width / 2f) - 80, height - 30);
+
+        // Level ID or Level Complete text
+        textFont(font, 30);
         if (engine.isCompleted())
-            text("Level Cleared!", (width / 2f) - 80, height - 80);
+            text("Level Cleared!\nUse arrow keys to switch levels", (width / 2f) - 80, height - 115);
+        else
+            text(nf(engine.getLevelID() + 1, 2), (width / 2f) - 80, height - 80);
 
     }
 
@@ -197,7 +208,8 @@ public class App extends PApplet {
         }
         try {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
-        } catch (IllegalStateException | IllegalArgumentException ignored) {}
+        } catch (IllegalStateException | IllegalArgumentException ignored) {
+        }
     }
 
     /**
@@ -238,13 +250,6 @@ public class App extends PApplet {
 
         return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
                 Pair.of(x, y) : null;
-    }
-
-    /**
-     * Fetches and draws the medal.
-     */
-    private void drawMedal() {
-        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 80, height - (tileBottomOffset - 30), 140, 140);
     }
 
 }

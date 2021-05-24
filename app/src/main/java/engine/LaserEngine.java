@@ -73,13 +73,16 @@ public class LaserEngine implements Engine {
     public void updateLasers() {
         tiles.values().stream().filter(t -> t.getType().isLaserSwitch()).forEach(Tile::resetState);
         lasers = Laser.getLasers(getCopyOfTiles());
+
         for (int i = 0; i < lasers.size(); i++) {
             lasers.stream().sorted(Comparator.comparing(l -> l.color().ordinal())).filter(Laser::isComplete)
                     .forEach(l -> tiles.values().stream()
                             .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
                             .forEach(t -> t.interact(0, tiles)));
+
             lasers = Laser.getLasers(getCopyOfTiles());
         }
+
         completed = lasers.stream().filter(Laser::isComplete).count() == lasers.size();
     }
 

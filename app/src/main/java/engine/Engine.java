@@ -58,6 +58,8 @@ public interface Engine {
 
     int getMedalID();
 
+    int getLevelID();
+
     boolean isCompleted();
 
     void requestLevel(int direction);

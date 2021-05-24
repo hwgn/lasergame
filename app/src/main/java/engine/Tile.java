@@ -91,6 +91,7 @@ public class Tile {
      */
     public void resetState() {
         state = initialState;
+        collision = initialCollision;
     }
 
     /**
