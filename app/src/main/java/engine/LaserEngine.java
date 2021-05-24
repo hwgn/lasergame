@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class LaserEngine implements Engine {
     private final JSONArray levelArray;
-    protected boolean completed = false;
+    private boolean completed = false;
     private int moves, levelID = 0;
     private Level level;
     private Map<Pair<Integer, Integer>, Tile> tiles;
