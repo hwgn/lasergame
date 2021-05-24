@@ -121,6 +121,9 @@ public class Tile {
                     });
 
             case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
+                if(button != 0)
+                    throw new IllegalArgumentException("This tile cannot be interacted with manually.");
+
                 state = (initialState + 1) % 2;
                 collision = !initialCollision;
             }

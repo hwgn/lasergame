@@ -48,7 +48,7 @@ public class LaserEngine implements Engine {
             throw new IllegalStateException("The game cannot register interactions when completed.");
 
         tiles.get(pos).interact(mouseButton, tiles);
-        moves++;
+        moves++; // only done up if interact didn't throw an exception
 
     }
 
