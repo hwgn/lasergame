@@ -31,15 +31,15 @@ enum Image {
     /**
      * Stone with red laser source.
      */
-    LASER_RED("stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png", "stone_laser_red.png"),
+    LASER_RED("stone_laser_red.png"),
     /**
      * Stone with green laser source.
      */
-    LASER_GREEN("stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png", "stone_laser_green.png"),
+    LASER_GREEN("stone_laser_green.png"),
     /**
      * Stone with blue laser source.
      */
-    LASER_BLUE("stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png", "stone_laser_blue.png"),
+    LASER_BLUE("stone_laser_blue.png"),
 
     // Floor blocks
     /**
@@ -106,36 +106,16 @@ enum Image {
     List<PImage> images = new ArrayList<>();
 
     /**
-     * When initialising an Image with four image paths, the Tile-State is considered the four directions.
+     * When initialising an image with four image paths, the tile-state is considered the four directions, or the medal image, these are instead considered as gold - silver - bronze - none.
      * <p>
-     * Note: For the medal image, these are instead considered as gold - silver - bronze - none.
+     * When initialised with two paths, they represent a boolean-like image.
+     * <p>
+     * When given only one path, this image is used for all states (or this image has no states).
      *
-     * @param north Image for Tile facing north / 0 degrees rotation.
-     * @param east  Image for Tile facing east / 90 degrees rotation.
-     * @param south Image for Tile facing south / 180 degrees rotation.
-     * @param west  Image for Tile facing west / 270 degrees rotation.
+     * @param paths the given file paths, one for each possible state (by default)
      */
-    Image(String north, String east, String south, String west) {
-        filenames = new String[]{north, east, south, west};
-    }
-
-    /**
-     * An Image initialised with two image image paths represents a boolean-like Image
-     *
-     * @param disabled Image representing the disabled state.
-     * @param enabled  Image representing the enabled state.
-     */
-    Image(String disabled, String enabled) {
-        filenames = new String[]{disabled, enabled};
-    }
-
-    /**
-     * An image initialised with only one image path is used for static tiles.
-     *
-     * @param all Image representing all possible states.
-     */
-    Image(String all) {
-        filenames = new String[]{all};
+    Image(String... paths) {
+        filenames = paths;
     }
 
     /**

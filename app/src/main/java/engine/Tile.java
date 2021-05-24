@@ -109,7 +109,7 @@ public class Tile {
      * @param tiles  the tiles. Needed to update potential side effects (such as when a switch is pressed)
      */
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
-        switch (type) {
+        switch (this.type) {
             case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
 
             case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA -> tiles.values().stream()
@@ -123,6 +123,7 @@ public class Tile {
                 state = (initialState + 1) % 2;
                 collision = !initialCollision;
             }
+            default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
     }
 
