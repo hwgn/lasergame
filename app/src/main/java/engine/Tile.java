@@ -123,6 +123,7 @@ public class Tile {
                 state = (initialState + 1) % 2;
                 collision = !initialCollision;
             }
+
             default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
     }

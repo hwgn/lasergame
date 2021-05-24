@@ -72,6 +72,7 @@ public class App extends PApplet {
 
         imageMode(CENTER);
         textAlign(CENTER);
+        strokeWeight(3);
 
         /*
             license: Public Domain
@@ -196,8 +197,7 @@ public class App extends PApplet {
         }
         try {
             engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
-        } catch (IllegalStateException ignored) {
-        }
+        } catch (IllegalStateException | IllegalArgumentException ignored) {}
     }
 
     /**

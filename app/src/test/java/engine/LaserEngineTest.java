@@ -1,6 +1,6 @@
 package engine;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import processing.core.PConstants;
 import processing.data.JSONArray;
@@ -15,18 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LaserEngineTest {
 
-    static JSONArray testLevels;
-    static List<Level> testLevelList;
+    /**
+     * Change this with caution - these strings are used to test levels / engines and their functionality to a great extent,
+     * one change could cause several tests to fail.
+     */
     static List<String> levelStrings = List.of(
-            "Level 1|1|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR", // basic functionality tests can be done here
-            "Level 2|2|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET" // basic laser tests can be done here
-            );
+            "Level 1|0|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR:5.5.1.SWITCH_CYAN", // basic functionality tests can be done here
+            "Level 2|0|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET", // basic laser tests can be done here (does not have any intractability)
+            "Level 3|1|10.5.0.LASER_RED:10.4.0.NULL:10.3.3.MIRROR:11.3.0.NULL:12.3.0.STONE_TARGET" // level with laser that does not complete immediately
+    );
+    JSONArray testLevels;
+    List<Level> testLevelList;
 
     /**
      * Sets up the test levels needed to test various features of the level behaviour.
+     * <p>
+     * This must be done before each method individually, as medals are stored in the JSON data and would cause unexpected behaviour.
      */
-    @BeforeAll
-    static void setupLevelArrays() {
+    @BeforeEach
+    void setupLevelArrays() {
         Collector<JSONObject, JSONArray, JSONArray> jsonObjCollector = Collector
                 .of(JSONArray::new, JSONArray::append, (arr1, arr2) -> {
                     for (int i = 0; i < arr1.size(); i++)
@@ -71,16 +78,29 @@ class LaserEngineTest {
         LaserEngine engine = new LaserEngine(testLevels);
         Map<Pair<Integer, Integer>, Tile> tiles = engine.getCopyOfTiles();
 
-        // Testing for data validity
+        // Testing for basic data field integrity
+        assertNotNull(engine.getLevelDescription());
+        assertEquals(0, engine.getOptimalMoves());
+
+        // ... with fields that actually carry a value
+        engine.requestLevel(2);
+        assertEquals(1, engine.getOptimalMoves());
+        engine.requestLevel(-2);
+
+        // Testing for data validity in basic fields
+        assertEquals(engine.getLevelDescription(), testLevelList.get(0).description());
+        assertEquals(engine.getOptimalMoves(), testLevelList.get(0).minMoves());
+
+        // Testing for data validity in tile map
         assertNotNull(tiles, "Tiles mustn't be null");
         assertNotEquals(0, tiles.size(), "Tiles mustn't be empty");
 
-        // Testing for type consistency
+        // Testing for type consistency within tiles
         assertEquals(tiles.get(Pair.of(1, 1)).getType(),
                 testLevelList.get(0).tiles().get(Pair.of(1, 1)).getType(),
                 "Tile at 1.1 was not identified to be the same in JSONArray as in initialised Tiles");
 
-        // Testing for state consistency
+        // Testing for state consistency within tiles
         assertEquals(tiles.get(Pair.of(1, 3)).getState(),
                 testLevelList.get(0).tiles().get(Pair.of(1, 3)).getState(),
                 "Tile state at 1.3 was not the same between JSONArray and initialised Tiles");
@@ -93,14 +113,39 @@ class LaserEngineTest {
 
     @Test
     void registerInteraction() {
+        // preparation
         LaserEngine engine = new LaserEngine(testLevels);
+
+        // initial tile map
         Map<Pair<Integer, Integer>, Tile> initial = engine.getCopyOfTiles();
+
+        // interactions
         engine.registerInteraction(Pair.of(1, 3), PConstants.LEFT);
+        engine.registerInteraction(Pair.of(5, 5), PConstants.RIGHT);
+
+        // modified tile map
         Map<Pair<Integer, Integer>, Tile> interacted = engine.getCopyOfTiles();
 
+        // checking if interactions worked
         assertNotEquals(initial.get(Pair.of(1, 3)).getState(),
                 interacted.get(Pair.of(1, 3)).getState(),
                 "Interaction did not cause tile state of mirror to change");
+
+        assertNotEquals(initial.get(Pair.of(5, 5)).getState(),
+                interacted.get(Pair.of(5, 5)).getState(),
+                "Interaction did not cause tile state of cyan switch to change");
+
+        // checking if bad inputs are reacted to by engine
+        assertThrows(IllegalArgumentException.class,
+                () -> engine.registerInteraction(Pair.of(Integer.MAX_VALUE, Integer.MAX_VALUE), Integer.MAX_VALUE),
+                "Bad interaction (bad position input) threw unexpected or no exception");
+
+        // updating the engine, which will make it realise that its completed (as there are no lasers present)
+        engine.update();
+
+        // checking if bad states are reacted to by engine
+        assertThrows(IllegalStateException.class, () -> engine.registerInteraction(Pair.of(1, 3), 0),
+                "Bad interaction (bad game state) threw unexpected or no exception");
     }
 
     @Test
@@ -117,6 +162,26 @@ class LaserEngineTest {
 
     @Test
     void getCopyOfTiles() {
+        LaserEngine engine = new LaserEngine(testLevels);
+
+        assertNotNull(engine.getCopyOfTiles());
+        assertNotEquals(engine.getCopyOfTiles(), engine.getCopyOfTiles());
+
+        Map<Pair<Integer, Integer>, Tile> firstCopyOfTiles = engine.getCopyOfTiles();
+        Map<Pair<Integer, Integer>, Tile> secondCopyOfTiles = engine.getCopyOfTiles();
+
+        assertNotEquals(0, firstCopyOfTiles.size(),
+                "Tiles returned empty map copy on non-empty level");
+
+        // clearing one tile copy
+        firstCopyOfTiles.clear();
+        assertEquals(0, firstCopyOfTiles.size(),
+                "Clearing map did not set size to 0");
+
+        // asserting this has had no effect on the other tileset
+        assertNotEquals(0, secondCopyOfTiles.size(),
+                "Clearing one copy of a map cleared an unrelated copy as well");
+
     }
 
     @Test
@@ -125,17 +190,90 @@ class LaserEngineTest {
 
     @Test
     void requestLevel() {
+        LaserEngine engine = new LaserEngine(testLevels);
+
+        assertEquals(0, engine.getLevelID(),
+                "Initial levelID should be 0");
+
+        engine.requestLevel(0);
+        assertEquals(0, engine.getLevelID(),
+                "Requesting direction 0 at ID 0 should yield ID 0");
+
+        engine.requestLevel(-1);
+        assertEquals(0, engine.getLevelID(),
+                "Requesting direction -1 at ID 0 should yield ID 0");
+
+        engine.requestLevel(1);
+        assertEquals(1, engine.getLevelID(),
+                "Requesting direction 1 at ID 0 should yield ID 1");
+
+        engine.requestLevel(0);
+        assertEquals(1, engine.getLevelID(),
+                "Requesting direction 0 at ID 1 should yield ID 1");
+
+        engine.requestLevel(-1);
+        assertEquals(0, engine.getLevelID(),
+                "Requesting direction -1 at ID 1 should yield ID 0");
+
+        engine.requestLevel(Integer.MAX_VALUE);
+        assertEquals(levelStrings.size() - 1, engine.getLevelID(),
+                "Sending MAX VALUE should yield the last level ID");
+
+        engine.requestLevel(Integer.MIN_VALUE);
+        assertEquals(0, engine.getLevelID(),
+                "Sending MIN VALUE should yield the first level ID");
     }
 
     @Test
     void getLasers() {
+        LaserEngine engine = new LaserEngine(testLevels);
+
+        // update to load new laser list
+        engine.update();
+
+        assertTrue(engine.getLasers().isEmpty(),
+                "Laser list of level with no lasers was found not to be empty");
+
+        // switching to level with laser
+        engine.requestLevel(1);
+        engine.update();
+
+        assertFalse(engine.getLasers().isEmpty(),
+                "Laser list of level with a laser was found to be empty");
     }
 
     @Test
     void isCompleted() {
+        LaserEngine engine = new LaserEngine(testLevels);
+
+        assertFalse(engine.isCompleted(),
+                "Engine considered itself complete before any update occurred on level with no lasers");
+
+        engine.update();
+
+        assertTrue(engine.isCompleted(), "Engine considered incomplete after update on level with no lasers");
+
+        engine.requestLevel(1);
+
+        assertFalse(engine.isCompleted(), "Engine considered itself complete before any update on level with lasers");
+
+        engine.update();
+
+        assertTrue(engine.isCompleted(), "Engine considered incomplete after update on level with a laser");
     }
 
     @Test
     void getMedalID() {
+        LaserEngine engine = new LaserEngine(testLevels);
+
+        // if this fails, ensure the testLevels object has been created newly before this test.
+        // Medal data is stored in the JSONArray and therefore could be set by now if the instance had been used previously.
+        assertEquals(3, engine.getMedalID(),
+                "Initial medal value should be 3 (NONE). " +
+                        "This may be related to the JSONArray already having been accessed prior this test");
+
+        engine.update();
+        assertEquals(0, engine.getMedalID(),
+                "Engine update did not update the medal ID after finishing level");
     }
 }

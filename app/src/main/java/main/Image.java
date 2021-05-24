@@ -138,9 +138,7 @@ enum Image {
      * @param state value of the state to draw.
      */
     public void draw(PVector p, int state) {
-        if (state >= images.size())
-            throw new IllegalArgumentException("Tried to fetch image for nonexistent state!");
-        app.image(images.get(state), p.x, p.y, tileSize, tileSize);
+        app.image(images.get(state % images.size()), p.x, p.y, tileSize, tileSize);
     }
 
     /**

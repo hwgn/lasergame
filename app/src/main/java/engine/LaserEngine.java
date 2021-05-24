@@ -16,11 +16,11 @@ import java.util.*;
  */
 public class LaserEngine implements Engine {
     private final JSONArray levelArray;
+    protected boolean completed = false;
+    private int moves, levelID = 0;
     private Level level;
     private Map<Pair<Integer, Integer>, Tile> tiles;
     private Set<Laser> lasers;
-    private int moves, levelID = 0;
-    private boolean completed = false;
 
     public LaserEngine(JSONArray array) {
         this.levelArray = array;
@@ -36,13 +36,16 @@ public class LaserEngine implements Engine {
 
     public void update() {
         updateLasers();
-        if(completed)
+        if (completed)
             updateMedal();
     }
 
-    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) {
-        if (tiles.get(pos) == null || !tiles.get(pos).getType().canInteract() || completed)
-            throw new IllegalStateException("This interaction is impossible at this time.");
+    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IllegalStateException{
+        if (tiles.get(pos) == null)
+            throw new IllegalArgumentException("This position does not contain a tile.");
+
+        if (completed)
+            throw new IllegalStateException("The game cannot register interactions when completed.");
 
         tiles.get(pos).interact(mouseButton, tiles);
         moves++;
@@ -80,10 +83,14 @@ public class LaserEngine implements Engine {
         completed = lasers.stream().filter(Laser::isComplete).count() == lasers.size();
     }
 
-    public void requestLevel(int direction) {
-        if (levelID + direction < 0 || levelID + direction >= levelArray.size())
-            direction = 0;
-        levelID += direction;
+    public void requestLevel(int shift) {
+        if (shift >= levelArray.size() || levelID + shift >= levelArray.size())
+            levelID = levelArray.size() - 1;
+        else if (levelID + shift <= 0)
+            levelID = 0;
+        else
+            levelID += shift;
+
         levelSetup();
     }
 
@@ -99,6 +106,9 @@ public class LaserEngine implements Engine {
         return levelArray.getJSONObject(levelID).getInt("medal", 3);
     }
 
+    public int getLevelID() {
+        return levelID;
+    }
 
     private void updateMedal() {
         levelArray.getJSONObject(levelID).setInt("medal", Arrays.stream(Medal.values())
