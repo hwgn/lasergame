@@ -3,8 +3,10 @@ package engine;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The interface through which the frontend may interact with the logic of the game.
+ */
 public interface Engine {
-
     /**
      * Registers the interaction with one specific tile.
      *
@@ -21,47 +23,55 @@ public interface Engine {
     void update();
 
     /**
-     * Returns the current amount of moves taken.
-     *
-     * @return the current amount of moves taken.
+     * @return the current amount of moves taken in this round.
      */
     int getMoves();
-    // Returns the amount of moves taken.
 
     /**
-     * Returns the optimal amount of moves for this level.
-     *
-     * @return the optimal amount of moves for this level.
+     * @return the optimal amount of moves for the current level.
      */
     int getOptimalMoves();
 
     /**
-     * Returns the description for this level.
-     *
-     * @return the description for this level.
+     * @return the description for the current level.
      */
     String getLevelDescription();
 
     /**
-     * Returns all tiles for this level in their current state.
-     *
-     * @return all tiles for this level.
+     * @return all tiles for this level and their current state.
      */
     Map<Pair<Integer, Integer>, Tile> getCopyOfTiles();
 
     /**
-     * Returns all lasers active in their current state.
-     *
-     * @return all active lasers.
+     * @return all active lasers including positional and color information.
      */
     Set<Laser> getLasers();
 
+    /**
+     * @return the ID representing the medal currently obtained on this level.
+     */
     int getMedalID();
 
+    /**
+     * @return the index / ID of the current level.
+     */
     int getLevelID();
 
+    /**
+     * @return true, if the current level is completed.
+     */
     boolean isCompleted();
 
+    /**
+     * Requests a level using a direction-based system.
+     * <p>
+     * Calling the method with "1" would make the engine load the next level (or reload the current one if no such level exists).
+     * Similarly, calling the method using "-1" would load the previous level if it exists.
+     * <p>
+     * This enables to also move in greater steps, especially for testing.
+     *
+     * @param direction the value which will be added to the current index (will not cause IndexOutOfBoundExceptions)
+     */
     void requestLevel(int direction);
 
 }

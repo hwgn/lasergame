@@ -16,4 +16,9 @@ class PairTest {
 
         assertEquals(Pair.of("Hello World", 'a'), new Pair<>("Hello World", 'a'), "");
     }
+
+    @Test
+    void equals() {
+
+    }
 }
