@@ -149,7 +149,7 @@ public class Tile {
          */
         STONE_BROKEN(true, false),
         /**
-         * Target. Place where lasers need to gl.
+         * Target. Place where lasers need to go.
          */
         STONE_TARGET(true, false),
 

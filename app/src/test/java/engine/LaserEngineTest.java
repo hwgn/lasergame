@@ -18,8 +18,9 @@ class LaserEngineTest {
     static JSONArray testLevels;
     static List<Level> testLevelList;
     static List<String> levelStrings = List.of(
-            "1|1|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR", // basic functionality tests can be done here
-            "");
+            "Level 1|1|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR", // basic functionality tests can be done here
+            "Level 2|2|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET" // basic laser tests can be done here
+            );
 
     /**
      * Sets up the test levels needed to test various features of the level behaviour.
