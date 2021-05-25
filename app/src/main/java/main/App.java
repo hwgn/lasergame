@@ -244,9 +244,9 @@ public class App extends PApplet {
         //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
         float m = getTileSize();
         //return new PVector((((x - (engine.getMaxTiles().x() * 0.5f)) * m) + width - m / 2f),
-                //(((y - (engine.getMaxTiles().y() * 0.5f)) * m) + height - m / 2f));
+        //(((y - (engine.getMaxTiles().y() * 0.5f)) * m) + height - m / 2f));
 
-        return new PVector(((x - engine.getMaxTiles().y() * 0.5f) * m), // - (width - m) / 4f),
+        return new PVector(((x - engine.getMaxTiles().x() * 0.5f) * m), // - (width - m) / 4f),
                 ((y - engine.getMaxTiles().y() * 0.5f) * m) + tileBottomOffset / 2f);
     }
 
