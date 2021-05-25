@@ -27,7 +27,7 @@ public class App extends PApplet {
     /**
      * The space between the tile board and the lower edge of the screen.
      */
-    BOTTOM_OFFSET = 200;
+    BOTTOM_OFFSET = 150;
     ///**
     // * The maximum tile index in each direction (meaning that the field ist 17x17).
     //*/
@@ -59,7 +59,6 @@ public class App extends PApplet {
      */
     public void settings() {
         size(600, 800);
-        //size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileBottomOffset + tilePadding * 2);
     }
 
     /**
@@ -73,8 +72,8 @@ public class App extends PApplet {
 
         imageMode(CENTER);
         textAlign(CENTER);
-        strokeWeight(3);
         surface.setResizable(true);
+        surface.setIcon(Image.MIRROR.getImages().get(3));
 
         /*
             license: Public Domain
@@ -94,44 +93,51 @@ public class App extends PApplet {
 
         drawBoard();
 
+        if(engine.isCompleted()) {
+            fill(0, 130);
+            rect(-width, -height, width * 2, height * 2);
+            fill(255, 200);
+            textFont(font, min(width / 18f, 70, height / 18f));
+            text("Level Completed!\nTo play again, use any mouse button.\nSwitch levels with the arrow keys!", 0, -width / 8f);
+        }
+
         drawMenuBox();
 
         surface.setTitle(" Laser Game - Level " + nf(engine.getLevelID() + 1, 2) + ": " + engine.getLevelDescription());
+
+        if(width < 500)
+            surface.setSize(500, height);
+        if(height < 600)
+            surface.setSize(width, 600);
     }
 
     /**
      * Draws the info box containing medal, moves, level description and level id.
      */
     private void drawMenuBox() {
+        strokeWeight(min(width / 200f, 4));
         stroke(255);
         fill(33);
 
         // Background box
         rect(-width, (height / 2f), width * 2, height);
 
-        rect(-10, height - (BOTTOM_OFFSET - 50), width + 20, height);
-        rect(width - 160, height - (BOTTOM_OFFSET + 50), width, height);
+        //rect(-10, height - (BOTTOM_OFFSET - 50), width + 20, height);
+        //rect(width - 160, height - (BOTTOM_OFFSET + 50), width, height);
 
         // Medal
-        image(Image.MEDAL.getImages().get(engine.getMedalID()), width / 2f - 100, (height / 2f) + (BOTTOM_OFFSET / 2f), 140, 140);
+        image(Image.MEDAL.getImages().get(engine.getMedalID()), width / 2f - 73, (height / 2f) + (BOTTOM_OFFSET / 2f), 140, 140);
 
         fill(255);
 
-        // Move counter
-        textFont(font, 60);
-        text(nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2), width - 80, height - 25);
+        // Move counter & LevelID
+        textFont(font, min(width / 10f, 70));
+        text("L" + nf(engine.getLevelID() + 1, 2) + " | " + nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2),
+                -70, (height / 2f) + (BOTTOM_OFFSET * 0.85f));
 
         // Level name
-        textFont(font, 35);
-        text(engine.getLevelDescription(), (width / 2f) - 80, height - 30);
-
-        // Level ID or Level Complete text
-        textFont(font, 30);
-        if (engine.isCompleted())
-            text("Level Cleared!\nUse arrow keys to switch levels", (width / 2f) - 80, height - 115);
-        else
-            text(nf(engine.getLevelID() + 1, 2), (width / 2f) - 80, height - 80);
-
+        textFont(font, min(width / 15f, 50));
+        text(engine.getLevelDescription(), -70, (height / 2f) + (BOTTOM_OFFSET * 0.4f));
     }
 
     /**
@@ -244,7 +250,7 @@ public class App extends PApplet {
     private PVector vectorOfTile(int x, int y) {
         float m = getTileSize();
 
-        return new PVector(((x - engine.getMaxTiles().x() * 0.5f) * m), // - (width - m) / 4f),
+        return new PVector(((x - engine.getMaxTiles().x() * 0.5f) * m),
                 ((y - engine.getMaxTiles().y() * 0.5f) * m) + BOTTOM_OFFSET / 2f);
     }
 
@@ -264,8 +270,8 @@ public class App extends PApplet {
     }
 
     protected float getTileSize() {
-        return width / engine.getMaxTiles().x() <= (height - BOTTOM_OFFSET) / engine.getMaxTiles().y() ?
+        return (width + tilePadding * 2) / engine.getMaxTiles().x() <= (height - BOTTOM_OFFSET) / engine.getMaxTiles().y() ?
                 (width - tilePadding * 2f) / engine.getMaxTiles().x() :
-                (height - (tilePadding * 2f) - BOTTOM_OFFSET) / engine.getMaxTiles().y();
+                ((height - tilePadding * 2f) - BOTTOM_OFFSET) / engine.getMaxTiles().y();
     }
 }

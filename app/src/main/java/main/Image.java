@@ -90,7 +90,7 @@ enum Image {
     /**
      * The App. Is stored to later enable usage of draw().
      */
-    static App app = null;
+    static private App app = null;
     ///**
     // * Tile size. Must be updated when the image is initialized.
     // */
@@ -99,11 +99,11 @@ enum Image {
     /**
      * Stores the filenames of any given Image instance.
      */
-    String[] filenames;
+    private final String[] filenames;
     /**
      * Storage of all images relating to that instance, once they have been initialized.
      */
-    List<PImage> images = new ArrayList<>();
+    private final List<PImage> images = new ArrayList<>();
 
     /**
      * When initialising an image with four image paths, the tile-state is considered the four directions, or the medal image, these are instead considered as gold - silver - bronze - none.
