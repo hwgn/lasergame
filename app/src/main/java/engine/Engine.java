@@ -74,4 +74,6 @@ public interface Engine {
      */
     void requestLevel(int direction);
 
+    Pair<Integer, Integer> getMaxTiles();
+
 }

@@ -90,11 +90,11 @@ enum Image {
     /**
      * The App. Is stored to later enable usage of draw().
      */
-    static PApplet app = null;
-    /**
-     * Tile size. Must be updated when the image is initialized.
-     */
-    static int tileSize = 0;
+    static App app = null;
+    ///**
+    // * Tile size. Must be updated when the image is initialized.
+    // */
+    //static int tileSize = 0;
 
     /**
      * Stores the filenames of any given Image instance.
@@ -124,9 +124,8 @@ enum Image {
      * @param a    instance of the app, needed to load images.
      * @param size size at which images should be drawn at.
      */
-    public static <T extends PApplet> void initialise(T a, int size) {
+    public static <T extends PApplet> void initialise(App a) {
         app = a;
-        tileSize = size;
         Arrays.stream(Image.values())
                 .forEach(i -> Arrays.stream(i.filenames).forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
     }
@@ -138,7 +137,7 @@ enum Image {
      * @param state value of the state to draw.
      */
     public void draw(PVector p, int state) {
-        app.image(images.get(state % images.size()), p.x, p.y, tileSize, tileSize);
+        app.image(images.get(state % images.size()), p.x, p.y, app.getTileSize(), app.getTileSize());
     }
 
     /**

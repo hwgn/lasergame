@@ -40,7 +40,7 @@ public class LaserEngine implements Engine {
             updateMedal();
     }
 
-    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IllegalStateException{
+    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IllegalStateException {
         if (tiles.get(pos) == null)
             throw new IllegalArgumentException("This position does not contain a tile.");
 
@@ -119,6 +119,11 @@ public class LaserEngine implements Engine {
                 .mapToInt(Enum::ordinal)
                 .filter(m -> m <= levelArray.getJSONObject(levelID).getInt("medal", 3))
                 .findFirst().orElse(levelArray.getJSONObject(levelID).getInt("medal", 3)));
+    }
+
+    public Pair<Integer, Integer> getMaxTiles() {
+        return Pair.of(tiles.keySet().stream().mapToInt(Pair::x).max().orElse(0),
+                tiles.keySet().stream().mapToInt(Pair::y).max().orElse(0));
     }
 
     private enum Medal {

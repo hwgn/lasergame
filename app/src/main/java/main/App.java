@@ -16,26 +16,26 @@ import java.util.Comparator;
  * Handles drawing of and interaction with the game. Initialises and maintains the game engine.
  */
 public class App extends PApplet {
-    /**
-     * The size of tiles, both in width and height.
-     */
-    private static final int tileSize = 32,
+    ///**
+    // * The size of tiles, both in width and height.
+    // */
+    //tileSize = 32,
     /**
      * The space within the tile board to its edges, where no tiles are drawn yet.
      */
-    tilePadding = 48,
+    private static final int tilePadding = 48,
     /**
      * The space between the tile board and the lower edge of the screen.
      */
-    tileBottomOffset = 200,
-    /**
-     * The maximum tile index in each direction (meaning that the field ist 17x17).
-     */
-    maxTiles = 16,
-    /**
-     * The visual border surrounding all tiles.
-     */
-    fieldBorder = 10;
+    tileBottomOffset = 200;
+    ///**
+    // * The maximum tile index in each direction (meaning that the field ist 17x17).
+    //*/
+    //maxTiles = 16,
+    ///**
+    // * The visual border surrounding all tiles.
+    // */
+    //fieldBorder = 10;
     /**
      * The Engine relating to the current level and play-through.
      */
@@ -58,7 +58,8 @@ public class App extends PApplet {
      * Sets canvas size.
      */
     public void settings() {
-        size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileBottomOffset + tilePadding * 2);
+        size(600, 800);
+        //size(tileSize * maxTiles + tilePadding * 2, tileSize * maxTiles + tileBottomOffset + tilePadding * 2);
     }
 
     /**
@@ -68,11 +69,12 @@ public class App extends PApplet {
         engine = new LaserEngine(loadJSONArray("src/levels.json"));
         font = createFont("img/EdgeOfTheGalaxy.otf", 40);
 
-        Image.initialise(this, tileSize);
+        Image.initialise(this);
 
         imageMode(CENTER);
         textAlign(CENTER);
         strokeWeight(3);
+        surface.setResizable(true);
 
         /*
             license: Public Domain
@@ -87,7 +89,9 @@ public class App extends PApplet {
         engine.update();
         setMousePointer();
 
+        translate(width / 2f, (height / 2f) - tileBottomOffset);
         background(18);
+
         drawBoard();
 
         drawMenuBox();
@@ -103,6 +107,8 @@ public class App extends PApplet {
         fill(33);
 
         // Background box
+        rect(-width, (height / 2f), width * 2, height);
+
         rect(-10, height - (tileBottomOffset - 50), width + 20, height);
         rect(width - 160, height - (tileBottomOffset + 50), width, height);
 
@@ -142,7 +148,7 @@ public class App extends PApplet {
         // Draws outline around all tiles
         engine.getCopyOfTiles().keySet().forEach(key -> {
             PVector pos = vectorOfTile(key.x(), key.y());
-            square(pos.x - ((tileSize / 2f) + fieldBorder), pos.y - ((tileSize / 2f) + fieldBorder), tileSize + fieldBorder * 2);
+            square(pos.x - getTileSize(), pos.y - getTileSize(), getTileSize() * 2);
         });
 
         // Draws a floor image for every tile present
@@ -190,9 +196,9 @@ public class App extends PApplet {
      * If the mouse is above an intractable tile, the cursor changes to HAND.
      */
     private void setMousePointer() {
-        Pair<Integer, Integer> mousePos = canvasToTile(new PVector(mouseX, mouseY));
+        Pair<Integer, Integer> mousePos = tileOfVector(new PVector(mouseX, mouseY));
 
-        if (mousePos != null && engine.getCopyOfTiles().get(mousePos) != null
+        if (engine.getCopyOfTiles().get(mousePos) != null
                 && engine.getCopyOfTiles().get(mousePos).getType().canInteract()) cursor(HAND);
         else cursor(ARROW);
 
@@ -207,7 +213,7 @@ public class App extends PApplet {
             return;
         }
         try {
-            engine.registerInteraction(canvasToTile(new PVector(mouseX, mouseY)), mouseButton);
+            engine.registerInteraction(tileOfVector(new PVector(mouseX, mouseY)), mouseButton);
         } catch (IllegalStateException | IllegalArgumentException ignored) {
         }
     }
@@ -235,8 +241,18 @@ public class App extends PApplet {
      * @return The PVector pointing to the center of the given Tile position.
      */
     private PVector vectorOfTile(int x, int y) {
-        return new PVector(x * tileSize + tilePadding, y * tileSize + tilePadding);
+        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
+        float m = getTileSize();
+        //return new PVector((((x - (engine.getMaxTiles().x() * 0.5f)) * m) + width - m / 2f),
+                //(((y - (engine.getMaxTiles().y() * 0.5f)) * m) + height - m / 2f));
+
+        return new PVector(((x - engine.getMaxTiles().y() * 0.5f) * m), // - (width - m) / 4f),
+                ((y - engine.getMaxTiles().y() * 0.5f) * m) + tileBottomOffset / 2f);
     }
+
+    //private PVector vectorOfTile(int x, int y) {
+    //    return new PVector(x * tileSize + tilePadding, y * tileSize + tilePadding);
+    //}
 
     /**
      * Converts a position on the canvas into the Tile position (index) which it is pointing to.
@@ -244,12 +260,35 @@ public class App extends PApplet {
      * @param pos Position from which to get the Tile index.
      * @return The Pair representing the position which the PVector points to. Null if the given Vector points outside of the Tile field.
      */
-    private Pair<Integer, Integer> canvasToTile(PVector pos) {
-        int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
-        int y = floor((pos.y - tilePadding + (tileSize / 2f)) / tileSize);
+    private Pair<Integer, Integer> tileOfVector(PVector pos) {
+        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
+        float m = getTileSize();
 
-        return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
-                Pair.of(x, y) : null;
+        return Pair.of(floor(
+                ((pos.x - (width - m) / 2f) / m) + (engine.getMaxTiles().x() * 0.5f)),
+                floor(((pos.y + tileBottomOffset / 2f - (height - m) / 2f) / m) + (engine.getMaxTiles().y() * 0.5f)));
+
+        //return Pair.of(floor(((pos.x + width / 2f) - tilePadding * 0.5f) / m), floor(((pos.y + height / 2f) - tilePadding * 0.5f) / m));
     }
+
+    protected float getTileSize() {
+        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
+        return width / engine.getMaxTiles().x() <= (height - tileBottomOffset) / engine.getMaxTiles().y() ?
+                (width - tilePadding * 2f) / engine.getMaxTiles().x() :
+                (height - (tilePadding * 2f) - tileBottomOffset) / engine.getMaxTiles().y();
+    }
+
+    //protected float getTileSize() {
+    //    float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
+    //    return width <= (height - tileBottomOffset) ? (width - tilePadding * 2f) / maxTiles : (height - (tilePadding * 2f) - tileBottomOffset) / maxTiles;
+    //}
+
+    //private Pair<Integer, Integer> canvasToTile(PVector pos) {
+    //    int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
+    //    int y = floor((pos.y - tilePadding + (tileSize / 2f)) / tileSize);
+//
+    //    return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
+    //            Pair.of(x, y) : null;
+    //}
 
 }
