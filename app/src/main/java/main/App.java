@@ -27,7 +27,7 @@ public class App extends PApplet {
     /**
      * The space between the tile board and the lower edge of the screen.
      */
-    tileBottomOffset = 200;
+    BOTTOM_OFFSET = 200;
     ///**
     // * The maximum tile index in each direction (meaning that the field ist 17x17).
     //*/
@@ -89,7 +89,7 @@ public class App extends PApplet {
         engine.update();
         setMousePointer();
 
-        translate(width / 2f, (height / 2f) - tileBottomOffset);
+        translate(width / 2f, (height / 2f) - BOTTOM_OFFSET);
         background(18);
 
         drawBoard();
@@ -109,11 +109,11 @@ public class App extends PApplet {
         // Background box
         rect(-width, (height / 2f), width * 2, height);
 
-        rect(-10, height - (tileBottomOffset - 50), width + 20, height);
-        rect(width - 160, height - (tileBottomOffset + 50), width, height);
+        rect(-10, height - (BOTTOM_OFFSET - 50), width + 20, height);
+        rect(width - 160, height - (BOTTOM_OFFSET + 50), width, height);
 
         // Medal
-        image(Image.MEDAL.getImages().get(engine.getMedalID()), width - 80, height - (tileBottomOffset - 30), 140, 140);
+        image(Image.MEDAL.getImages().get(engine.getMedalID()), width / 2f - 100, (height / 2f) + (BOTTOM_OFFSET / 2f), 140, 140);
 
         fill(255);
 
@@ -145,6 +145,7 @@ public class App extends PApplet {
     private void drawBoard() {
         fill(66);
         noStroke();
+
         // Draws outline around all tiles
         engine.getCopyOfTiles().keySet().forEach(key -> {
             PVector pos = vectorOfTile(key.x(), key.y());
@@ -152,12 +153,12 @@ public class App extends PApplet {
         });
 
         // Draws a floor image for every tile present
-        engine.getCopyOfTiles().keySet()
-                .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
+        engine.getCopyOfTiles().keySet().forEach(key ->
+                Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
-        engine.getCopyOfTiles()
-                .forEach((key, value) -> Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
+        engine.getCopyOfTiles().forEach((key, value) ->
+                Image.valueOf(value.getType().toString()).draw(vectorOfTile(key.x(), key.y()), value.getState()));
 
         //Sorts lasers by color to avoid flickering when lasers go across each other
         engine.getLasers().stream().sorted(Comparator.comparing(Laser::color)).forEach(this::drawLaser);
@@ -185,9 +186,9 @@ public class App extends PApplet {
         https://stackoverflow.com/questions/67643914/how-can-i-iterate-over-two-items-of-a-stream-at-once?noredirect=1#comment119564123_67643914
          */
         PVector[] a = l.points().stream().map(v -> vectorOfTile((int) v.x, (int) v.y)).toArray(PVector[]::new);
-        for (int i = 0; i < a.length - 1; i++) {
+        for (int i = 0; i < a.length - 1; i++)
             line(a[i].x, a[i].y, a[i + 1].x, a[i + 1].y);
-        }
+
     }
 
     /**
@@ -241,18 +242,11 @@ public class App extends PApplet {
      * @return The PVector pointing to the center of the given Tile position.
      */
     private PVector vectorOfTile(int x, int y) {
-        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
         float m = getTileSize();
-        //return new PVector((((x - (engine.getMaxTiles().x() * 0.5f)) * m) + width - m / 2f),
-        //(((y - (engine.getMaxTiles().y() * 0.5f)) * m) + height - m / 2f));
 
         return new PVector(((x - engine.getMaxTiles().x() * 0.5f) * m), // - (width - m) / 4f),
-                ((y - engine.getMaxTiles().y() * 0.5f) * m) + tileBottomOffset / 2f);
+                ((y - engine.getMaxTiles().y() * 0.5f) * m) + BOTTOM_OFFSET / 2f);
     }
-
-    //private PVector vectorOfTile(int x, int y) {
-    //    return new PVector(x * tileSize + tilePadding, y * tileSize + tilePadding);
-    //}
 
     /**
      * Converts a position on the canvas into the Tile position (index) which it is pointing to.
@@ -261,34 +255,17 @@ public class App extends PApplet {
      * @return The Pair representing the position which the PVector points to. Null if the given Vector points outside of the Tile field.
      */
     private Pair<Integer, Integer> tileOfVector(PVector pos) {
-        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
         float m = getTileSize();
 
         return Pair.of(floor(
                 ((pos.x - (width - m) / 2f) / m) + (engine.getMaxTiles().x() * 0.5f)),
-                floor(((pos.y + tileBottomOffset / 2f - (height - m) / 2f) / m) + (engine.getMaxTiles().y() * 0.5f)));
+                floor(((pos.y + BOTTOM_OFFSET / 2f - (height - m) / 2f) / m) + (engine.getMaxTiles().y() * 0.5f)));
 
-        //return Pair.of(floor(((pos.x + width / 2f) - tilePadding * 0.5f) / m), floor(((pos.y + height / 2f) - tilePadding * 0.5f) / m));
     }
 
     protected float getTileSize() {
-        //float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
-        return width / engine.getMaxTiles().x() <= (height - tileBottomOffset) / engine.getMaxTiles().y() ?
+        return width / engine.getMaxTiles().x() <= (height - BOTTOM_OFFSET) / engine.getMaxTiles().y() ?
                 (width - tilePadding * 2f) / engine.getMaxTiles().x() :
-                (height - (tilePadding * 2f) - tileBottomOffset) / engine.getMaxTiles().y();
+                (height - (tilePadding * 2f) - BOTTOM_OFFSET) / engine.getMaxTiles().y();
     }
-
-    //protected float getTileSize() {
-    //    float maxTiles = max(engine.getMaxTiles().x(), engine.getMaxTiles().y());
-    //    return width <= (height - tileBottomOffset) ? (width - tilePadding * 2f) / maxTiles : (height - (tilePadding * 2f) - tileBottomOffset) / maxTiles;
-    //}
-
-    //private Pair<Integer, Integer> canvasToTile(PVector pos) {
-    //    int x = floor((pos.x - tilePadding + (tileSize / 2f)) / tileSize);
-    //    int y = floor((pos.y - tilePadding + (tileSize / 2f)) / tileSize);
-//
-    //    return x >= 0 && y >= 0 && x <= maxTiles && y <= maxTiles ?
-    //            Pair.of(x, y) : null;
-    //}
-
 }

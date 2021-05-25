@@ -2,16 +2,22 @@
   {
     "tiles": [
       {
-        "x": 8,
-        "y": 8,
+        "x": 0,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
         "x": 4,
         "y": 4,
-        "state": 1,
-        "type": "LASER_RED"
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
       },
       {
         "x": 4,
@@ -20,56 +26,56 @@
         "type": "NULL"
       },
       {
+        "x": 0,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
         "x": 4,
         "y": 6,
         "state": 0,
-        "type": "STONE_TARGET"
-      },
-      {
-        "x": 4,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 4,
-        "y": 8,
-        "state": 0,
         "type": "STONE"
       },
       {
-        "x": 13,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 13,
+        "x": 0,
         "y": 3,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 0,
         "y": 4,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 0,
         "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 9,
         "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 13,
-        "y": 6,
         "state": 0,
         "type": "NULL"
       },
@@ -80,20 +86,14 @@
         "type": "NULL"
       },
       {
-        "x": 13,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
         "x": 9,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
-        "y": 8,
+        "x": 5,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
@@ -104,32 +104,32 @@
         "type": "NULL"
       },
       {
-        "x": 9,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
         "x": 5,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 9,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 5,
-        "y": 3,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 9,
-        "y": 8,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
@@ -140,362 +140,362 @@
         "type": "NULL"
       },
       {
-        "x": 5,
-        "y": 5,
+        "x": 1,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 5,
-        "y": 6,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 5,
-        "y": 7,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
-        "y": 3,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
+        "x": 1,
         "y": 4,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 14,
+        "x": 1,
         "y": 5,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 10,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
+        "x": 1,
         "y": 6,
         "state": 0,
         "type": "STONE"
       },
       {
         "x": 10,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 14,
-        "y": 7,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
         "x": 10,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 14,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 10,
-        "y": 5,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 10,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
         "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 10,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 10,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 2,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 2,
-        "y": 3,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 2,
-        "y": 4,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 2,
-        "y": 5,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 2,
-        "y": 6,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 2,
-        "y": 7,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 2,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 11,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 11,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 11,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 7,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 7,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 3,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 3,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 12,
-        "y": 4,
         "state": 0,
         "type": "MIRROR"
       },
       {
-        "x": 12,
-        "y": 5,
+        "x": 10,
+        "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
-        "y": 6,
+        "x": 10,
+        "y": 4,
         "state": 3,
         "type": "MIRROR"
       },
       {
-        "x": 8,
+        "x": 6,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "state": 1,
+        "type": "LASER_RED"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
         "y": 2,
         "state": 0,
         "type": "STONE"
       },
       {
         "x": 12,
-        "y": 7,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 2,
         "state": 0,
         "type": "NULL"
       },
@@ -506,14 +506,20 @@
         "type": "NULL"
       },
       {
-        "x": 12,
-        "y": 8,
+        "x": 4,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
         "x": 8,
         "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
@@ -527,23 +533,17 @@
         "x": 4,
         "y": 2,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 8,
         "y": 6,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
         "x": 4,
         "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 7,
         "state": 0,
         "type": "NULL"
       }
@@ -554,92 +554,140 @@
   {
     "tiles": [
       {
-        "x": 8,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 9,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 12,
+        "x": 0,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 9,
+        "x": 8,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 0,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 9,
-        "y": 2,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 4,
-        "state": 1,
-        "type": "MIRROR"
-      },
-      {
-        "x": 9,
+        "x": 4,
         "y": 5,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 9,
+        "x": 0,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 9,
+        "x": 0,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 9,
+        "x": 0,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
         "y": 8,
         "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 7,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 0,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "state": 0,
         "type": "NULL"
       },
       {
         "x": 1,
         "y": 1,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 9,
-        "y": 9,
+        "x": 5,
+        "y": 5,
         "state": 0,
         "type": "NULL"
       },
@@ -647,29 +695,29 @@
         "x": 1,
         "y": 2,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 9,
-        "y": 10,
+        "x": 5,
+        "y": 6,
         "state": 0,
         "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "state": 2,
+        "type": "MIRROR"
       },
       {
         "x": 1,
         "y": 3,
         "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 9,
-        "y": 11,
-        "state": 0,
         "type": "NULL"
       },
       {
-        "x": 9,
-        "y": 12,
+        "x": 5,
+        "y": 8,
         "state": 0,
         "type": "STONE"
       },
@@ -677,173 +725,173 @@
         "x": 1,
         "y": 4,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 1,
         "y": 5,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 1,
         "y": 6,
         "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 10,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 10,
-        "y": 2,
-        "state": 0,
         "type": "NULL"
       },
       {
-        "x": 10,
-        "y": 3,
-        "state": 1,
-        "type": "MIRROR"
-      },
-      {
-        "x": 10,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 10,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 10,
-        "y": 6,
-        "state": 1,
-        "type": "MIRROR"
-      },
-      {
-        "x": 10,
+        "x": 1,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 10,
+        "x": 1,
         "y": 8,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
-        "x": 2,
-        "y": 1,
+        "x": 6,
+        "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
-        "y": 9,
+        "x": 6,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 2,
+        "x": 6,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 10,
-        "y": 10,
-        "state": 0,
-        "type": "MIRROR"
-      },
-      {
-        "x": 2,
+        "x": 6,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 10,
-        "y": 11,
-        "state": 1,
+        "x": 2,
+        "y": 0,
+        "state": 2,
+        "type": "LASER_RED"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "state": 3,
         "type": "MIRROR"
       },
       {
-        "x": 10,
-        "y": 12,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
         "x": 2,
-        "y": 4,
+        "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 2,
+        "x": 6,
         "y": 5,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 2,
-        "y": 6,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 11,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 11,
         "y": 2,
-        "state": 1,
+        "state": 3,
         "type": "MIRROR"
       },
       {
-        "x": 11,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 5,
-        "state": 1,
-        "type": "MIRROR"
-      },
-      {
-        "x": 11,
+        "x": 6,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 6,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 2,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
         "y": 8,
+        "state": 0,
+        "type": "LASER_BLUE"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 7,
+        "state": 3,
+        "type": "MIRROR"
+      },
+      {
+        "x": 2,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 0,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 4,
         "state": 0,
         "type": "NULL"
       },
@@ -851,11 +899,17 @@
         "x": 3,
         "y": 1,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 11,
-        "y": 9,
+        "x": 7,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 6,
         "state": 0,
         "type": "NULL"
       },
@@ -866,134 +920,404 @@
         "type": "NULL"
       },
       {
-        "x": 11,
-        "y": 10,
+        "x": 7,
+        "y": 7,
+        "state": 3,
+        "type": "MIRROR"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
         "x": 3,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
         "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      }
+    ],
+    "description": "Baby Steps",
+    "min_moves": 6
+  },
+  {
+    "tiles": [
+      {
+        "x": 0,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 5,
         "state": 1,
         "type": "LASER_RED"
       },
       {
-        "x": 11,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 11,
-        "y": 12,
+        "x": 0,
+        "y": 6,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 3,
-        "y": 4,
+        "x": 0,
+        "y": 7,
         "state": 0,
-        "type": "STONE_TARGET"
+        "type": "STONE"
       },
       {
-        "x": 3,
-        "y": 5,
+        "x": 0,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 11,
         "state": 1,
-        "type": "MIRROR"
+        "type": "LASER_BLUE"
+      },
+      {
+        "x": 0,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 17,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 17,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 17,
+        "y": 8,
+        "state": 3,
+        "type": "LASER_GREEN"
+      },
+      {
+        "x": 17,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 17,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
       },
       {
         "x": 3,
         "y": 6,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
-        "x": 12,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 2,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 3,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 4,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 5,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
-        "y": 6,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 12,
+        "x": 3,
         "y": 7,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 12,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 4,
-        "y": 1,
+        "x": 3,
+        "y": 9,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 12,
-        "y": 9,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 4,
-        "y": 2,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 12,
+        "x": 3,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 12,
+        "x": 3,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 3,
         "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 3,
         "state": 0,
         "type": "STONE"
       },
@@ -1013,17 +1337,11 @@
         "x": 4,
         "y": 6,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 4,
         "y": 7,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 4,
-        "y": 8,
         "state": 0,
         "type": "STONE"
       },
@@ -1037,71 +1355,29 @@
         "x": 4,
         "y": 10,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 4,
         "y": 11,
         "state": 0,
-        "type": "STONE"
+        "type": "NULL"
       },
       {
         "x": 4,
         "y": 12,
         "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 13,
-        "y": 7,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 13,
-        "y": 8,
-        "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
-        "y": 1,
+        "x": 4,
+        "y": 13,
         "state": 0,
         "type": "STONE"
-      },
-      {
-        "x": 13,
-        "y": 9,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 5,
-        "y": 2,
-        "state": 0,
-        "type": "MIRROR"
-      },
-      {
-        "x": 13,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
       },
       {
         "x": 5,
         "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 13,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 13,
-        "y": 12,
         "state": 0,
         "type": "STONE"
       },
@@ -1120,26 +1396,20 @@
       {
         "x": 5,
         "y": 6,
-        "state": 2,
-        "type": "MIRROR"
+        "state": 0,
+        "type": "NULL"
       },
       {
         "x": 5,
         "y": 7,
         "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 5,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
         "x": 5,
         "y": 9,
-        "state": 3,
-        "type": "MIRROR"
+        "state": 0,
+        "type": "STONE"
       },
       {
         "x": 5,
@@ -1157,19 +1427,19 @@
         "x": 5,
         "y": 12,
         "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
-        "y": 7,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
-        "y": 8,
-        "state": 0,
         "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
       },
       {
         "x": 6,
@@ -1178,92 +1448,1652 @@
         "type": "STONE"
       },
       {
-        "x": 14,
-        "y": 9,
+        "x": 6,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 8,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
+        "x": 6,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 14,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 15,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 2,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 5,
+        "state": 3,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 8,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 14,
+        "state": 3,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 2,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 11,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 5,
+        "state": 2,
+        "type": "MIRROR"
+      },
+      {
+        "x": 11,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 8,
+        "state": 2,
+        "type": "MIRROR"
+      },
+      {
+        "x": 11,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 11,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 14,
+        "state": 2,
+        "type": "MIRROR"
+      },
+      {
+        "x": 11,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 5,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 13,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 11,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 13,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 14,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 15,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
         "x": 14,
         "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 15,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 15,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 16,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 16,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 16,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      }
+    ],
+    "description": "Spaceship Surprise",
+    "min_moves": 9
+  },
+  {
+    "tiles": [
+      {
+        "x": 0,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 0,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 2,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 9,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 5,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 9,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 1,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 10,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 4,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 10,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "state": 1,
+        "type": "LASER_RED"
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 12,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "state": 2,
+        "type": "MIRROR"
+      },
+      {
+        "x": 4,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 8,
+        "state": 3,
+        "type": "MIRROR"
+      },
+      {
+        "x": 4,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 8,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 13,
+        "y": 9,
         "state": 3,
         "type": "LASER_BLUE"
       },
       {
-        "x": 6,
-        "y": 2,
+        "x": 5,
+        "y": 1,
         "state": 1,
         "type": "MIRROR"
       },
       {
-        "x": 6,
-        "y": 3,
+        "x": 5,
+        "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 14,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 14,
-        "y": 12,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 9,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
+        "x": 13,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 6,
+        "x": 13,
         "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 10,
         "state": 2,
         "type": "MIRROR"
       },
       {
+        "x": 5,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
         "x": 6,
-        "y": 12,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 15,
+        "y": 6,
         "state": 0,
         "type": "STONE"
       },
@@ -1274,14 +3104,14 @@
         "type": "STONE"
       },
       {
-        "x": 15,
-        "y": 8,
+        "x": 7,
+        "y": 0,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
-        "x": 7,
-        "y": 1,
+        "x": 15,
+        "y": 8,
         "state": 0,
         "type": "STONE"
       },
@@ -1289,13 +3119,19 @@
         "x": 15,
         "y": 9,
         "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 0,
         "type": "NULL"
       },
       {
         "x": 15,
         "y": 10,
         "state": 0,
-        "type": "NULL"
+        "type": "STONE"
       },
       {
         "x": 7,
@@ -1304,22 +3140,16 @@
         "type": "NULL"
       },
       {
+        "x": 15,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
         "x": 7,
         "y": 3,
         "state": 0,
         "type": "NULL"
-      },
-      {
-        "x": 15,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 15,
-        "y": 12,
-        "state": 0,
-        "type": "STONE"
       },
       {
         "x": 7,
@@ -1336,126 +3166,1446 @@
       {
         "x": 7,
         "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 9,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 7,
-        "y": 12,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 16,
-        "y": 7,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 16,
-        "y": 8,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 8,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 16,
-        "y": 9,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 16,
-        "y": 10,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 8,
-        "y": 2,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 16,
-        "y": 11,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 8,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 16,
-        "y": 12,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 8,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 5,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 7,
         "state": 1,
         "type": "MIRROR"
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 3,
+        "state": 1,
+        "type": "MIRROR"
+      },
+      {
+        "x": 8,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
       }
     ],
     "description": "I Shall Mirror Your Confusion",
     "min_moves": 9
+  },
+  {
+    "tiles": [
+      {
+        "x": 0,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 6,
+        "state": 1,
+        "type": "LASER_GREEN"
+      },
+      {
+        "x": 0,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 0,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 1,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 1,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 2,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 10,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 2,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 2,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 3,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 3,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "state": 1,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 4,
+        "y": 6,
+        "state": 1,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 4,
+        "y": 7,
+        "state": 1,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 4,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 4,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 14,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 15,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 4,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "state": 0,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 8,
+        "state": 0,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 12,
+        "state": 1,
+        "type": "SWITCH_GREEN"
+      },
+      {
+        "x": 5,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "state": 0,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 6,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 8,
+        "state": 0,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 6,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 12,
+        "state": 1,
+        "type": "SWITCH_GREEN"
+      },
+      {
+        "x": 6,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 16,
+        "state": 0,
+        "type": "LASER_BLUE"
+      },
+      {
+        "x": 7,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 4,
+        "state": 0,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 7,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 8,
+        "state": 0,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 7,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 12,
+        "state": 1,
+        "type": "SWITCH_GREEN"
+      },
+      {
+        "x": 7,
+        "y": 13,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 14,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 15,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 8,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 9,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 8,
+        "y": 10,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 8,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 14,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 15,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 8,
+        "y": 16,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 9,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 9,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 10,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 2,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 10,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 10,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 11,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 11,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 1,
+        "state": 1,
+        "type": "SWITCH_BLUE"
+      },
+      {
+        "x": 12,
+        "y": 2,
+        "state": 1,
+        "type": "SWITCH_BLUE"
+      },
+      {
+        "x": 12,
+        "y": 3,
+        "state": 1,
+        "type": "SWITCH_BLUE"
+      },
+      {
+        "x": 12,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 12,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 12,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 13,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 14,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 2,
+        "state": 0,
+        "type": "STONE_TARGET"
+      },
+      {
+        "x": 14,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 10,
+        "state": 0,
+        "type": "MIRROR"
+      },
+      {
+        "x": 14,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 14,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 15,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 15,
+        "y": 1,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 5,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 9,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 15,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 0,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 2,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 3,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 4,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 6,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 7,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 8,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 10,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 11,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 16,
+        "y": 12,
+        "state": 0,
+        "type": "STONE"
+      }
+    ],
+    "description": "Introduction to Switches",
+    "min_moves": 8
   },
   {
     "tiles": [
@@ -1478,830 +4628,854 @@
         "type": "NULL"
       },
       {
-        "x": 8,
-        "y": 11,
-        "state": 3,
-        "type": "MIRROR"
-      },
-      {
-        "x": 8,
-        "y": 12,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 8,
-        "y": 13,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 9,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 9,
-        "y": 2,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 3,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 4,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 5,
-        "state": 1,
-        "type": "SWITCH_BLUE"
-      },
-      {
-        "x": 9,
-        "y": 6,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 7,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 8,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 9,
-        "y": 9,
-        "state": 1,
-        "type": "SWITCH_MAGENTA"
-      },
-      {
-        "x": 9,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 1,
+        "x": 0,
         "y": 2,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 9,
+        "x": 8,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 1,
+        "x": 0,
         "y": 3,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
-        "x": 9,
+        "x": 8,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 1,
+        "x": 0,
         "y": 4,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 9,
+        "x": 8,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 2,
         "state": 1,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 3,
         "state": 1,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 4,
         "state": 1,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 6,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 7,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 8,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 9,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 10,
         "state": 0,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 11,
         "state": 0,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 3,
         "state": 0,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 12,
         "state": 0,
         "type": "SWITCH_YELLOW"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 10,
+        "x": 9,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 6,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 7,
         "state": 1,
         "type": "LASER_RED"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 8,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 9,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 10,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 11,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 12,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 2,
+        "x": 1,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 9,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 5,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 13,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 11,
+        "x": 10,
         "y": 14,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 9,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 3,
+        "x": 2,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 7,
         "state": 3,
         "type": "MIRROR"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 0,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 9,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 1,
         "state": 0,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 3,
         "state": 2,
         "type": "MIRROR"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 5,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 13,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 12,
+        "x": 11,
         "y": 14,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 9,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 11,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 4,
+        "x": 3,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 0,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 9,
         "state": 1,
         "type": "SWITCH_MAGENTA"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 1,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 2,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 5,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 13,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 6,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 13,
+        "x": 12,
         "y": 14,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 7,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 8,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 9,
         "state": 1,
         "type": "SWITCH_CYAN"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 10,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 11,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 12,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 5,
+        "x": 4,
         "y": 13,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 1,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 2,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 3,
         "state": 3,
         "type": "LASER_BLUE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 4,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 5,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 6,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 7,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 8,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 14,
+        "x": 13,
         "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "state": 1,
+        "type": "SWITCH_RED"
+      },
+      {
+        "x": 13,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "state": 1,
+        "type": "SWITCH_RED"
+      },
+      {
+        "x": 13,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "state": 1,
+        "type": "SWITCH_RED"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 13,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 6,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 5,
+        "y": 8,
+        "state": 1,
+        "type": "SWITCH_YELLOW"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 5,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 5,
+        "y": 13,
         "state": 0,
         "type": "STONE"
       },
@@ -2312,142 +5486,118 @@
         "type": "STONE"
       },
       {
-        "x": 14,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
         "x": 6,
         "y": 2,
-        "state": 1,
-        "type": "SWITCH_RED"
+        "state": 0,
+        "type": "NULL"
       },
       {
         "x": 14,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 3,
-        "state": 1,
-        "type": "SWITCH_RED"
-      },
-      {
-        "x": 14,
-        "y": 12,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 4,
-        "state": 1,
-        "type": "SWITCH_RED"
-      },
-      {
-        "x": 6,
-        "y": 5,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 14,
-        "y": 13,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 6,
-        "state": 1,
-        "type": "SWITCH_YELLOW"
-      },
-      {
-        "x": 6,
-        "y": 7,
-        "state": 1,
-        "type": "SWITCH_YELLOW"
-      },
-      {
-        "x": 6,
-        "y": 8,
-        "state": 1,
-        "type": "SWITCH_YELLOW"
-      },
-      {
-        "x": 6,
-        "y": 9,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 6,
-        "y": 10,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 11,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 12,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 6,
-        "y": 13,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 7,
-        "y": 1,
-        "state": 0,
-        "type": "STONE"
-      },
-      {
-        "x": 7,
-        "y": 2,
-        "state": 0,
-        "type": "NULL"
-      },
-      {
-        "x": 15,
         "y": 10,
         "state": 0,
         "type": "STONE"
       },
       {
-        "x": 7,
+        "x": 6,
         "y": 3,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 15,
+        "x": 14,
         "y": 11,
         "state": 0,
         "type": "STONE_TARGET"
       },
       {
-        "x": 7,
+        "x": 6,
         "y": 4,
         "state": 0,
         "type": "NULL"
       },
       {
-        "x": 15,
+        "x": 14,
         "y": 12,
         "state": 0,
         "type": "STONE"
+      },
+      {
+        "x": 6,
+        "y": 5,
+        "state": 1,
+        "type": "SWITCH_BLUE"
+      },
+      {
+        "x": 6,
+        "y": 6,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 8,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 9,
+        "state": 1,
+        "type": "SWITCH_MAGENTA"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 12,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 6,
+        "y": 13,
+        "state": 0,
+        "type": "STONE"
+      },
+      {
+        "x": 7,
+        "y": 1,
+        "state": 2,
+        "type": "LASER_GREEN"
+      },
+      {
+        "x": 7,
+        "y": 2,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 3,
+        "state": 0,
+        "type": "NULL"
+      },
+      {
+        "x": 7,
+        "y": 4,
+        "state": 0,
+        "type": "NULL"
       },
       {
         "x": 7,
@@ -2488,8 +5638,8 @@
       {
         "x": 7,
         "y": 11,
-        "state": 0,
-        "type": "NULL"
+        "state": 3,
+        "type": "MIRROR"
       },
       {
         "x": 7,
@@ -2506,8 +5656,8 @@
       {
         "x": 8,
         "y": 1,
-        "state": 2,
-        "type": "LASER_GREEN"
+        "state": 0,
+        "type": "STONE"
       },
       {
         "x": 8,
@@ -2546,7 +5696,7 @@
         "type": "NULL"
       }
     ],
-    "description": "Introduction to Switches",
+    "description": "Airlocks",
     "min_moves": 8
   },
   {
@@ -5510,7 +8660,7 @@
         "type": "LASER_BLUE"
       }
     ],
-    "description": "Arena of Terror",
+    "description": "A Minor Inconvenience",
     "min_moves": 18
   },
   {

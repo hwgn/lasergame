@@ -122,8 +122,7 @@ public class LaserEngine implements Engine {
     }
 
     public Pair<Integer, Integer> getMaxTiles() {
-        return Pair.of(tiles.keySet().stream().mapToInt(Pair::x).max().orElse(0),
-                tiles.keySet().stream().mapToInt(Pair::y).max().orElse(0));
+        return tiles.keySet().stream().reduce(Pair.of(0, 0), (m, p) -> m = Pair.of(Integer.max(m.x(), p.x()), Integer.max(m.y(), p.y())));
     }
 
     private enum Medal {
