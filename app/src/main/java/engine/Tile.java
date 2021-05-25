@@ -18,6 +18,10 @@ public class Tile {
      */
     private final int initialState;
     /**
+     * The initial collision as set by the constructor.
+     */
+    private final boolean initialCollision;
+    /**
      * The current state.
      */
     private int state;
@@ -25,11 +29,6 @@ public class Tile {
      * Declares if lasers (currently) collide with this tile.
      */
     private boolean collision;
-
-    /**
-     * The initial collision as set by the constructor.
-     */
-    private final boolean initialCollision;
 
     /**
      * Instantiates a new tile using a given type and state.
@@ -121,7 +120,7 @@ public class Tile {
                     });
 
             case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
-                if(button != 0)
+                if (button != 0)
                     throw new IllegalArgumentException("This tile cannot be interacted with manually.");
 
                 state = (initialState + 1) % 2;

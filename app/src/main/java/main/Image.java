@@ -1,6 +1,5 @@
 package main;
 
-import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -91,11 +90,6 @@ enum Image {
      * The App. Is stored to later enable usage of draw().
      */
     static private App app = null;
-    ///**
-    // * Tile size. Must be updated when the image is initialized.
-    // */
-    //static int tileSize = 0;
-
     /**
      * Stores the filenames of any given Image instance.
      */
@@ -121,10 +115,9 @@ enum Image {
     /**
      * Initialises all images and stores the PImages in the images ArrayList.
      *
-     * @param a    instance of the app, needed to load images.
-     * @param size size at which images should be drawn at.
+     * @param a instance of the app, needed to load images.
      */
-    public static <T extends PApplet> void initialise(App a) {
+    public static void initialise(App a) {
         app = a;
         Arrays.stream(Image.values())
                 .forEach(i -> Arrays.stream(i.filenames).forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
