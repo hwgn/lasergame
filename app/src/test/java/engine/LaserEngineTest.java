@@ -19,7 +19,7 @@ class LaserEngineTest {
      * Change this with caution - these strings are used to test levels / engines and their functionality to a great extent,
      * one change could cause several tests to fail.
      */
-    static List<String> levelStrings = List.of(
+    static final List<String> levelStrings = List.of(
             "Level 1|0|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR:5.5.1.SWITCH_CYAN", // basic functionality tests can be done here
             "Level 2|0|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET", // basic laser tests can be done here (does not have any intractability)
             "Level 3|1|10.5.0.LASER_RED:10.4.0.NULL:10.3.3.MIRROR:11.3.0.NULL:12.3.0.STONE_TARGET" // level with laser that does not complete immediately
@@ -178,7 +178,7 @@ class LaserEngineTest {
         assertEquals(0, firstCopyOfTiles.size(),
                 "Clearing map did not set size to 0");
 
-        // asserting this has had no effect on the other tileset
+        // asserting this has had no effect on the other tile map
         assertNotEquals(0, secondCopyOfTiles.size(),
                 "Clearing one copy of a map cleared an unrelated copy as well");
 

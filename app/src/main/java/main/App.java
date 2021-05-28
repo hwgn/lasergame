@@ -23,7 +23,7 @@ public class App extends PApplet {
     /**
      * The space within the tile board to its edges, where no tiles are drawn yet.
      */
-    private static final int tilePadding = 48,
+    private static final int tilePadding = 80,
     /**
      * The space between the tile board and the lower edge of the screen.
      */
@@ -104,11 +104,6 @@ public class App extends PApplet {
         drawMenuBox();
 
         surface.setTitle(" Laser Game - Level " + nf(engine.getLevelID() + 1, 2) + ": " + engine.getLevelDescription());
-
-        if(width < 500)
-            surface.setSize(500, height);
-        if(height < 600)
-            surface.setSize(width, 600);
     }
 
     /**
