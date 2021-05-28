@@ -129,6 +129,7 @@ public class Tile {
 
             default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
+        //TODO make this maybe in tiles
     }
 
     /**

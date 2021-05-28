@@ -84,6 +84,7 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
 
         }
         return isComplete;
+        //TODO put this in tiles maybe
     }
 
     /**
