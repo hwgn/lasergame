@@ -85,7 +85,7 @@ public class App extends PApplet {
         if (engine.isCompleted())
             drawGameOver();
 
-        // drawMenuBox();
+        drawMenuBox();
 
         surface.setTitle(" Laser Game - Level " + nf(engine.getLevelID() + 1, 2) + ": " + engine.getLevelDescription());
     }
@@ -99,20 +99,19 @@ public class App extends PApplet {
         fill(33);
 
         // Background box
-        rect(-width, (height / 2f), width * 2, height);
-
-        //rect(-10, height - (BOTTOM_OFFSET - 50), width + 20, height);
-        //rect(width - 160, height - (BOTTOM_OFFSET + 50), width, height);
+        rect(-10, height - BOTTOM_OFFSET, width + 20, height);
 
         // Medal
-        image(Image.MEDAL.getImages().get(engine.getMedalID()), width / 2f - 73, (height / 2f) + (BOTTOM_OFFSET / 2f), 140, 140);
+        image(Image.MEDAL.getImages().get(engine.getMedalID()),
+                width - BOTTOM_OFFSET / 2f, height - BOTTOM_OFFSET / 2f,
+                BOTTOM_OFFSET - 20, BOTTOM_OFFSET - 20);
 
         fill(255);
 
         // Move counter & LevelID
         textFont(font, min(width / 10f, 70));
         text("L" + nf(engine.getLevelID() + 1, 2) + " | " + nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2),
-                -70, (height / 2f) + (BOTTOM_OFFSET * 0.85f));
+                width - (BOTTOM_OFFSET + 50), height - 30);
 
         // Level name
         textFont(font, min(width / 15f, 50));
