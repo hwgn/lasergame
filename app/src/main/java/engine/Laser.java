@@ -4,6 +4,8 @@ import processing.core.PVector;
 
 import java.util.*;
 
+import static engine.Tile.Type.*;
+
 /**
  * The Laser record. Stores information about lasers (such as their position and colour).
  */
@@ -33,15 +35,10 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      * @return instance of Laser generated using the given parameters.
      */
     private static Laser determinePath(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles) {
-        if (tiles.get(pos) == null)
+        if (tiles.get(pos) == null || !tiles.get(pos).getType().isLaserSource())
             throw new IllegalArgumentException("Laser source does not exist!");
 
-        Color color = switch (tiles.get(pos).getType()) {
-            case LASER_RED -> Color.RED;
-            case LASER_BLUE -> Color.BLUE;
-            case LASER_GREEN -> Color.GREEN;
-            default -> throw new IllegalArgumentException("Unexpected tile type: " + tiles.get(pos).getType() + "!");
-        };
+        Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN).get(tiles.get(pos).getType());
 
         List<PVector> points = new ArrayList<>(List.of(new PVector(pos.x(), pos.y())));
         boolean isComplete = pathFinder(pos, rotation, tiles, points);
@@ -96,13 +93,8 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      */
     private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
 
-        return switch (rotation) {
-            case 0 -> Pair.of(pos.x(), pos.y() - 1);
-            case 1 -> Pair.of(pos.x() + 1, pos.y());
-            case 2 -> Pair.of(pos.x(), pos.y() + 1);
-            case 3 -> Pair.of(pos.x() - 1, pos.y());
-            default -> throw new IllegalStateException("Unexpected value: " + rotation);
-        };
+        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
+        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
 
     }
 

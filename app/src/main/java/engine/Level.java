@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * The Level record. Stores information about Levels which it can retrieve using the initialize()-Method.
- *
+ * <p>
  * Read more about Records: https://openjdk.java.net/jeps/359
  */
 record Level(Map<Pair<Integer, Integer>, Tile> tiles,

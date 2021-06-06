@@ -2,7 +2,10 @@ package engine;
 
 import processing.data.JSONArray;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * The main Engine running the game.
@@ -32,6 +35,7 @@ public class LaserEngine implements Engine {
         tiles = level.tiles();
         completed = false;
         moves = 0;
+        update();
     }
 
     public void update() {
@@ -49,6 +53,7 @@ public class LaserEngine implements Engine {
 
         tiles.get(pos).interact(mouseButton, tiles);
         moves++; // only done up if interact didn't throw an exception
+        update();
 
     }
 
@@ -75,7 +80,9 @@ public class LaserEngine implements Engine {
         lasers = Laser.getLasers(getCopyOfTiles());
 
         for (int i = 0; i < lasers.size(); i++) {
-            lasers.stream().sorted(Comparator.comparing(l -> l.color().ordinal())).filter(Laser::isComplete)
+            lasers.stream()
+                    //.sorted(Comparator.comparing(l -> l.color().ordinal()))
+                    .filter(Laser::isComplete)
                     .forEach(l -> tiles.values().stream()
                             .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
                             .forEach(t -> t.interact(0, tiles)));
@@ -119,10 +126,6 @@ public class LaserEngine implements Engine {
                 .mapToInt(Enum::ordinal)
                 .filter(m -> m <= levelArray.getJSONObject(levelID).getInt("medal", 3))
                 .findFirst().orElse(levelArray.getJSONObject(levelID).getInt("medal", 3)));
-    }
-
-    public Pair<Integer, Integer> getMaxTiles() {
-        return tiles.keySet().stream().reduce(Pair.of(0, 0), (m, p) -> m = Pair.of(Integer.max(m.x(), p.x()), Integer.max(m.y(), p.y())));
     }
 
     private enum Medal {

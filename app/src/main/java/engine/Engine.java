@@ -18,11 +18,6 @@ public interface Engine {
     void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IndexOutOfBoundsException;
 
     /**
-     * Updates (reloads) lasers, including their position, path and state.
-     */
-    void update();
-
-    /**
      * @return the current amount of moves taken in this round.
      */
     int getMoves();
@@ -73,7 +68,5 @@ public interface Engine {
      * @param direction the value which will be added to the current index (will not cause IndexOutOfBoundExceptions)
      */
     void requestLevel(int direction);
-
-    Pair<Integer, Integer> getMaxTiles();
 
 }

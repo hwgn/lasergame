@@ -30,15 +30,15 @@ enum Image {
     /**
      * Stone with red laser source.
      */
-    LASER_RED("stone_laser_red.png"),
+    LASER_RED("laser_red_0.png", "laser_red_90.png", "laser_red_180.png", "laser_red_270.png"),
     /**
      * Stone with green laser source.
      */
-    LASER_GREEN("stone_laser_green.png"),
+    LASER_GREEN("laser_green_0.png", "laser_green_90.png", "laser_green_180.png", "laser_green_270.png"),
     /**
      * Stone with blue laser source.
      */
-    LASER_BLUE("stone_laser_blue.png"),
+    LASER_BLUE("laser_blue_0.png", "laser_blue_90.png", "laser_blue_180.png", "laser_blue_270.png"),
 
     // Floor blocks
     /**
@@ -80,7 +80,9 @@ enum Image {
      */
     SWITCH_MAGENTA("floor_magenta.png", "stone_magenta.png"),
 
-    MEDAL("gold.png", "silver.png", "bronze.png", "none.png");
+    MEDAL("gold.png", "silver.png", "bronze.png", "none.png"),
+
+    RUBBLE("rubble_0.png", "rubble_90.png", "rubble_180.png", "rubble_270.png"),;
 
     /**
      * The Image path. Allows easily changing the folder location of all images.

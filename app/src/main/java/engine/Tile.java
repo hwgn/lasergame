@@ -212,7 +212,9 @@ public class Tile {
         /**
          * Magenta switch. Can be interacted with to switch state between solid and non-solid.
          */
-        SWITCH_MAGENTA(null, true);
+        SWITCH_MAGENTA(null, true),
+
+        RUBBLE(false, false);
 
         /**
          * Predetermined collision. Can be null if the collision is determined by the state.
