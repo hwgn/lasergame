@@ -67,10 +67,9 @@ public class App extends PApplet {
         imageMode(CENTER);
         textAlign(CENTER);
         frameRate(30);
+
         surface.setResizable(true);
         surface.setIcon(Image.MIRROR.getImages().get(3));
-
-
     }
 
     /**
@@ -121,7 +120,7 @@ public class App extends PApplet {
         // Level name
         textFont(font, min(max((width - BOTTOM_OFFSET * 2.1f), 1) / 12f, 53));
         text(engine.getLevelDescription(), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.15f);
-        text(engine.getLevelID() + 1, (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
+        text("Level " + (engine.getLevelID() + 1), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
     }
 
     void drawGameOver() {
@@ -146,7 +145,8 @@ public class App extends PApplet {
         Pair<Integer, Integer> mousePos = boardManager.tileOfVector(new PVector(mouseX, mouseY));
 
         if (engine.getCopyOfTiles().get(mousePos) != null
-                && engine.getCopyOfTiles().get(mousePos).getType().canInteract())
+                && engine.getCopyOfTiles().get(mousePos).getType().canInteract()
+                && !engine.isCompleted())
             cursor(HAND);
         else
             cursor(ARROW);
@@ -156,7 +156,7 @@ public class App extends PApplet {
      * Upon mouse release, there is an attempt at interacting with the tile board.
      */
     public void mouseReleased() {
-        if (engine.isCompleted()) {
+        if (engine.isCompleted() && boardManager.mirrorsFinished()) {
             requestLevel(0);
             return;
         }
