@@ -66,6 +66,7 @@ public class App extends PApplet {
 
         imageMode(CENTER);
         textAlign(CENTER);
+        frameRate(30);
         surface.setResizable(true);
         surface.setIcon(Image.MIRROR.getImages().get(3));
 
@@ -73,7 +74,7 @@ public class App extends PApplet {
     }
 
     /**
-     * Main draw loop. Updates the engine as well as the frontend.
+     * Main draw loop. Calls BoardManager instance to draw the board, as well as the menu box and optionally the game over screen.
      */
     public void draw() {
         setMousePointer();
@@ -82,7 +83,7 @@ public class App extends PApplet {
 
         boardManager.execute(TILE_PADDING, TILE_PADDING, width - TILE_PADDING, height - (BOTTOM_OFFSET + TILE_PADDING));
 
-        if (engine.isCompleted())
+        if (engine.isCompleted() && boardManager.mirrorsFinished())
             drawGameOver();
 
         drawMenuBox();
@@ -120,13 +121,13 @@ public class App extends PApplet {
 
     void drawGameOver() {
         pushMatrix();
-        translate(width / 2f, (height / 2f) - BOTTOM_OFFSET);
+        translate(width / 2f, (height - BOTTOM_OFFSET) / 2f);
 
         fill(0, 130);
         rect(-width, -height, width * 2, height * 2);
         fill(255, 200);
         textFont(font, min(width / 18f, 70, height / 18f));
-        text("Level Completed!\nTo play again, use any mouse button.\nSwitch levels with the arrow keys!", 0, -width / 8f);
+        text("Level Completed!\nTo play again, use any mouse button.\nSwitch levels with the arrow keys!", 0, -(height) / 7f);
 
         popMatrix();
     }

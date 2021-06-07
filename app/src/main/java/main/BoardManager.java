@@ -129,10 +129,16 @@ public class BoardManager {
                     float delta = (360f + ((tileMap.get(set.getKey()).getState() * 90f) - set.getValue())) % 360f;
 
                     if (delta > 180)
-                        set.setValue(abs(delta) < 18f ? tileMap.get(set.getKey()).getState() * 90f : set.getValue() - 18f);
+                        set.setValue(abs(delta) < 18f ? tileMap.get(set.getKey()).getState() * 90f : set.getValue() - 22.5f);
                     else
-                        set.setValue(abs(delta) < 18f ? tileMap.get(set.getKey()).getState() * 90f : set.getValue() + 18f);
+                        set.setValue(abs(delta) < 18f ? tileMap.get(set.getKey()).getState() * 90f : set.getValue() + 22.5f);
                 });
+    }
+
+    protected boolean mirrorsFinished() {
+        return mirrorRotations.entrySet().stream()
+                .filter(set -> set.getValue() != tileMap.get(set.getKey()).getState() * 90f)
+                .findAny().isEmpty();
     }
 
     /**
