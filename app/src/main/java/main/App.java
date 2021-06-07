@@ -99,24 +99,29 @@ public class App extends PApplet {
         stroke(255);
         fill(33);
 
-        // Background box
+        // Layout boxes & Lines
         rect(-10, height - BOTTOM_OFFSET, width + 20, height);
+        rect(width - (BOTTOM_OFFSET * 1.8f), height - BOTTOM_OFFSET * 0.9f, BOTTOM_OFFSET * 0.8f, BOTTOM_OFFSET * 0.8f);
+        line(width - (BOTTOM_OFFSET * 1.8f), height - BOTTOM_OFFSET * 0.5f, width - (BOTTOM_OFFSET), height - BOTTOM_OFFSET * 0.5f);
+        rect((BOTTOM_OFFSET * 0.1f), height - BOTTOM_OFFSET * 0.5f, width - BOTTOM_OFFSET * 2f, BOTTOM_OFFSET * 0.4f);
 
         // Medal
         image(Image.MEDAL.getImages().get(engine.getMedalID()),
                 width - BOTTOM_OFFSET / 2f, height - BOTTOM_OFFSET / 2f,
-                BOTTOM_OFFSET - 20, BOTTOM_OFFSET - 20);
+                BOTTOM_OFFSET * 0.8f, BOTTOM_OFFSET * 0.8f);
 
+        // Move counter
         fill(255);
-
-        // Move counter & LevelID
-        textFont(font, min(width / 10f, 70));
-        text("L" + nf(engine.getLevelID() + 1, 2) + " | " + nf(engine.getMoves(), 2) + "/" + nf(engine.getOptimalMoves(), 2),
-                width - (BOTTOM_OFFSET + 50), height - 30);
+        textFont(font, 50);
+        text(nf(engine.getMoves(), 1),
+                width - (BOTTOM_OFFSET * 1.4f), height - BOTTOM_OFFSET * 0.55f);
+        text(nf(engine.getOptimalMoves(), 1),
+                width - (BOTTOM_OFFSET * 1.4f), height - BOTTOM_OFFSET * 0.15f);
 
         // Level name
-        textFont(font, min(width / 15f, 50));
-        text(engine.getLevelDescription(), -70, (height / 2f) + (BOTTOM_OFFSET * 0.4f));
+        textFont(font, min(max((width - BOTTOM_OFFSET * 2.1f), 1) / 12f, 53));
+        text(engine.getLevelDescription(), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.15f);
+        text(engine.getLevelID() + 1, (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
     }
 
     void drawGameOver() {
