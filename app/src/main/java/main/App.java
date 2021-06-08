@@ -14,21 +14,32 @@ import java.util.Set;
  * Handles drawing of and interaction with the game. Initialises and maintains the game engine.
  */
 public class App extends PApplet {
+
     /**
      * The space within the tile board to its edges, where no tiles are drawn yet.
      */
     private static final int TILE_PADDING = 96,
+
     /**
      * The space between the tile board and the lower edge of the screen.
      */
     BOTTOM_OFFSET = 150;
+
     /**
      * The Engine relating to the current level and play-through.
      */
     private Engine engine;
 
+    /**
+     * The font used in this game.
+     * <p>
+     * Font source: https://www.fontspace.com/edge-of-the-galaxy-font-f45748, licensed in Public Domain.
+     */
     private PFont font;
 
+    /**
+     * The board manager instance. Used to draw and animate the board.
+     */
     private BoardManager boardManager;
 
     /**
@@ -50,14 +61,10 @@ public class App extends PApplet {
     }
 
     /**
-     * Sets up engine and images. Configures drawing settings.
+     * Sets up and initialises the {@link LaserEngine} instance, {@link BoardManager} instance, the {@link Image} enum and other visual functionality needed by processing.
      */
     public void setup() {
         engine = new LaserEngine(loadJSONArray("src/levels.json"));
-        /*
-            license: Public Domain
-            link: https://www.fontspace.com/edge-of-the-galaxy-font-f45748
-         */
         font = createFont("img/EdgeOfTheGalaxy.otf", 40);
         boardManager = new BoardManager(this);
 
@@ -73,7 +80,8 @@ public class App extends PApplet {
     }
 
     /**
-     * Main draw loop. Calls BoardManager instance to draw the board, as well as the menu box and optionally the game over screen.
+     * Main draw loop. Calls {@link BoardManager} instance to draw and visually update the board, and draws the menu box and optionally the game over screen.
+     * Also updates the mouse pointer and the window title.
      */
     public void draw() {
         setMousePointer();
@@ -123,7 +131,7 @@ public class App extends PApplet {
         text("Level " + (engine.getLevelID() + 1), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
     }
 
-    void drawGameOver() {
+    private void drawGameOver() {
         pushMatrix();
         translate(width / 2f, (height - BOTTOM_OFFSET) / 2f);
 
@@ -185,15 +193,15 @@ public class App extends PApplet {
         boardManager.reset();
     }
 
-    protected Map<Pair<Integer, Integer>, Tile> fetchTiles() {
+    Map<Pair<Integer, Integer>, Tile> fetchTiles() {
         return engine.getCopyOfTiles();
     }
 
-    protected Set<Laser> fetchLasers() {
+    Set<Laser> fetchLasers() {
         return engine.getLasers();
     }
 
-    protected float getTileSize() {
+    float getTileSize() {
         return boardManager.getTileSize();
     }
 }
