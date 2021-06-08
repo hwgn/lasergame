@@ -14,16 +14,18 @@ public class BoardManager {
     private HashMap<Pair<Integer, Integer>, Float> mirrorRotations;
     private Queue<Set<Laser>> laserStorage;
     private Map<Pair<Integer, Integer>, Tile> tileMap;
+    private Pair<Integer, Integer> maxTiles;
     private int x1, y1, x2, y2;
 
     BoardManager(App g) {
         this.g = g;
-        resetDynamicGraphics();
+        reset();
     }
 
     protected void reset() {
         resetDynamicGraphics();
         tileMap = g.fetchTiles();
+        maxTiles = getMaxTiles();
     }
 
     protected void execute(int x1, int y1, int x2, int y2) {
@@ -34,6 +36,7 @@ public class BoardManager {
 
         storeLasers(g.fetchLasers());
         tileMap = g.fetchTiles();
+        maxTiles = getMaxTiles();
         updateMirrors();
 
         drawBoard();
@@ -49,7 +52,7 @@ public class BoardManager {
      */
     private void drawBoard() {
         g.pushMatrix();
-        g.translate(x1 + ((x2 - x1) / 2f), y1 + ((y2 - y1) / 2f));
+        g.translate(x1 + ((x2 - x1) / 2f), y1 + ((y2 - y1) / 2f)); // Center of drawing area
 
         g.fill(66);
         g.noStroke();
@@ -60,9 +63,11 @@ public class BoardManager {
             g.square(pos.x - getTileSize(), pos.y - getTileSize(), getTileSize() * 2);
         });
 
-        // Draws a floor image for every tile present
-        tileMap.keySet().forEach(key ->
-                Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
+        // Draws a floor image for all transparent tiles
+        tileMap.entrySet().stream().filter(e -> Image.valueOf(e.getValue().getType().toString()).isTransparent())
+                .map(Map.Entry::getKey)
+                .forEach(key ->
+                        Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
         tileMap.entrySet().stream()
@@ -177,7 +182,7 @@ public class BoardManager {
     private PVector vectorOfTile(int x, int y) {
         float m = getTileSize();
 
-        return new PVector(((x - getMaxTiles().x() * 0.5f) * m), ((y - getMaxTiles().y() * 0.5f) * m));
+        return new PVector(((x - maxTiles.x() * 0.5f) * m), ((y - maxTiles.y() * 0.5f) * m));
     }
 
     /**
@@ -207,9 +212,7 @@ public class BoardManager {
     }
 
     protected float getTileSize() {
-        Pair<Integer, Integer> maxTiles = getMaxTiles();
-
-        return min((x2 - x1) / maxTiles.x(), (y2 - y1) / maxTiles.y());
+        return min((x2 - x1) / maxTiles.x(), (y2 - y1) / maxTiles.y(), 50);
     }
 
     private Pair<Integer, Integer> getMaxTiles() {

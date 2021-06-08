@@ -112,9 +112,9 @@ public class App extends PApplet {
         // Move counter
         fill(255);
         textFont(font, 50);
-        text(nf(engine.getMoves(), 1),
+        text(engine.getMoves(),
                 width - (BOTTOM_OFFSET * 1.4f), height - BOTTOM_OFFSET * 0.55f);
-        text(nf(engine.getOptimalMoves(), 1),
+        text(engine.getOptimalMoves(),
                 width - (BOTTOM_OFFSET * 1.4f), height - BOTTOM_OFFSET * 0.15f);
 
         // Level name

@@ -158,6 +158,8 @@ public class Tile {
          */
         STONE_TARGET(true, false),
 
+        STONE_CHIPPED(true, false),
+
         /**
          * Red laser emitter.
          */
