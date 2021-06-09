@@ -6,7 +6,6 @@ import engine.Tile;
 import processing.core.PVector;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import static processing.core.PApplet.*;
 
@@ -167,7 +166,7 @@ class BoardManager {
      */
     private void resetDynamicGraphics() {
         mirrorRotations = new HashMap<>();
-        laserStorage = new LinkedBlockingQueue<>(4);
+        laserStorage = new LinkedList<>();
 
         for (int i = 0; i < 4; i++)
             laserStorage.add(Set.of());
