@@ -32,6 +32,8 @@ class BoardManager {
      * The stored laser paths. This is purely visual and allows lasers to appear as if they fade in and out when their path has changed.
      * <p>
      * This being a queue, it stores the four most recent paths all lasers have taken.
+     * <p>
+     * Initialisation occurs in {@link #resetDynamicGraphics()} / {@link #reset()}.
      *
      * @see #storeLasers(Set)
      */
@@ -68,15 +70,6 @@ class BoardManager {
     BoardManager(App g) {
         this.g = g;
         reset();
-    }
-
-    /**
-     * Resets the animation features and recalculates max tiles, as well as loading the tileMap once more.
-     */
-    protected void reset() {
-        resetDynamicGraphics();
-        tileMap = g.fetchTiles();
-        maxTiles = getMaxTiles();
     }
 
     /**
@@ -159,6 +152,15 @@ class BoardManager {
     private void storeLasers(Set<Laser> laserSet) {
         laserStorage.remove();
         laserStorage.add(laserSet);
+    }
+
+    /**
+     * Resets the animation features and recalculates max tiles, as well as loading the tileMap once more.
+     */
+    protected void reset() {
+        resetDynamicGraphics();
+        tileMap = g.fetchTiles();
+        maxTiles = getMaxTiles();
     }
 
     /**
