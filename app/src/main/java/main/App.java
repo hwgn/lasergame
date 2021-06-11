@@ -193,15 +193,15 @@ public class App extends PApplet {
         boardManager.reset();
     }
 
-    Map<Pair<Integer, Integer>, Tile> fetchTiles() {
+    protected Map<Pair<Integer, Integer>, Tile> fetchTiles() {
         return engine.getCopyOfTiles();
     }
 
-    Set<Laser> fetchLasers() {
+    protected Set<Laser> fetchLasers() {
         return engine.getLasers();
     }
 
-    float getTileSize() {
+    protected float getTileSize() {
         return boardManager.getTileSize();
     }
 }

@@ -67,7 +67,7 @@ class BoardManager {
      *
      * @param g the instance of App which extends PApplet. Used for drawing and minimal data retrieval.
      */
-    BoardManager(App g) {
+    protected BoardManager(App g) {
         this.g = g;
         reset();
     }
