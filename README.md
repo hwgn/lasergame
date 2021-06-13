@@ -20,7 +20,8 @@ asdf
 
 ## Quellen
 
-https://stackoverflow.com/questions/215497/what-is-the-difference-between-public-protected-package-private-and-private-in
+* [*Pixilart*: Tool für alle Grafiken](https://www.pixilart.com/)
+* [StackOverflow: Public / Protected / Private](https://stackoverflow.com/questions/215497/what-is-the-difference-between-public-protected-package-private-and-private-in)
 
 # Eigenständigkeitserklärung
 

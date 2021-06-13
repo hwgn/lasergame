@@ -23,15 +23,14 @@ enum Image {
      */
     STONE_BROKEN(false, "stone_broken1_0.png", "stone_broken1_90.png", "stone_broken1_180.png", "stone_broken1_270.png"),
     /**
-     * Stone target. The place lasers go.
-     */
-    STONE_TARGET(false, "stone_target.png"),
-
-    /**
      * A chipped stone with a corner missing.
      */
     STONE_CHIPPED(true, "stone_chipped_0.png", "stone_chipped_90.png", "stone_chipped_180.png", "stone_chipped_270.png"),
 
+    /**
+     * Stone target. The place lasers go.
+     */
+    STONE_TARGET(false, "stone_target.png"),
     /**
      * Stone with red laser source.
      */
@@ -45,7 +44,6 @@ enum Image {
      */
     LASER_BLUE(false, "laser_blue_0.png", "laser_blue_90.png", "laser_blue_180.png", "laser_blue_270.png"),
 
-    // Floor blocks
     /**
      * Floor tile.
      */
@@ -59,6 +57,14 @@ enum Image {
      * Transparent images representing the mirror.
      */
     MIRROR(true, "mirror_0.png", "mirror_90.png", "mirror_180.png", "mirror_270.png"),
+    /**
+     * Tunnels with the top tunnel ending on the left side.
+     */
+    TUNNELS_LEFT(true, "double_mirror_left_grounded.png", "double_mirror_left.png"),
+    /**
+     * Tunnels with the top tunnel ending on the right side.
+     */
+    TUNNELS_RIGHT(true, "double_mirror_right_grounded.png", "double_mirror_right.png"),
 
     /**
      * Red (laser) switch.
@@ -85,31 +91,49 @@ enum Image {
      */
     SWITCH_MAGENTA(false, "floor_magenta.png", "stone_magenta.png"),
 
+    /**
+     * The images used for medals.
+     * <p>
+     * None is shown when no medal has yet been obtained or the requirements for a bronze medal hadn't been met in the last round.
+     */
     MEDAL(false, "gold.png", "silver.png", "bronze.png", "none.png"),
 
+    /**
+     * Small stones, used for decoration.
+     * <p>
+     * A true display of my artistic incompetence.
+     */
     RUBBLE(true, "rubble_0.png", "rubble_90.png", "rubble_180.png", "rubble_270.png");
 
     /**
      * The Image path. Allows easily changing the folder location of all images.
      */
     static private final String IMAGE_PATH = "img/";
+
     /**
      * The App. Is stored to later enable usage of draw().
      */
-    static private App app = null;
+    static private App app;
 
+    /**
+     * True, if the image is transparent in some form.
+     * <p>
+     * If true, {@link BoardManager} will draw a floor tile underneath this tile.
+     */
     private final boolean isTransparent;
+
     /**
      * Stores the filenames of any given Image instance.
      */
     private final String[] filenames;
+
     /**
      * Storage of all images relating to that instance, once they have been initialized.
      */
     private final List<PImage> images = new ArrayList<>();
 
     /**
-     * When initialising an image with four image paths, the tile-state is considered the four directions, or the medal image, these are instead considered as gold - silver - bronze - none.
+     * When initialising an image with four image paths, the tile-state is considered the four directions, or in case of the medal image, these are instead considered as gold - silver - bronze - none.
      * <p>
      * When initialised with two paths, they represent a boolean-like image.
      * <p>
@@ -152,6 +176,11 @@ enum Image {
         return images;
     }
 
+    /**
+     * Getter for the isTransparent variable.
+     *
+     * @return true, if the image is transparent.
+     */
     public boolean isTransparent() {
         return isTransparent;
     }

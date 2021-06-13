@@ -131,6 +131,11 @@ public class App extends PApplet {
         text("Level " + (engine.getLevelID() + 1), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
     }
 
+    /**
+     * Draws the game over overlay.
+     * <p>
+     * Uses a rect instead of background() as for some reason transparency does not work as intended when drawing a background.
+     */
     private void drawGameOver() {
         pushMatrix();
         translate(width / 2f, (height - BOTTOM_OFFSET) / 2f);

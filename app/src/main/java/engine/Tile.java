@@ -15,7 +15,7 @@ public class Tile {
      */
     private final Type type;
     /**
-     * The initial state.
+     * The initial state (often rotation).
      */
     private final int initialState;
     /**
@@ -35,7 +35,7 @@ public class Tile {
      * Instantiates a new tile using a given type and state.
      *
      * @param type  the tile type.
-     * @param state the tile state (usually rotation, refer to the Tile.Type enum for more information)
+     * @param state the tile state (usually rotation, refer to the {@link Tile.Type} enum for more information)
      */
     private Tile(Tile.Type type, int state) {
         this.type = type;
@@ -61,10 +61,10 @@ public class Tile {
      * of-Method, the only way to create new instances of Tile.
      *
      * @param type  the tile type.
-     * @param state the initial state (usually rotation, refer to the Tile.Type enum for more information)
+     * @param state the initial state (usually rotation, refer to the {@link Tile.Type} enum for more information)
      * @return the resulting tile.
      */
-    public static Tile of(Tile.Type type, int state) {
+    protected static Tile of(Tile.Type type, int state) {
         return new Tile(type, state);
     }
 
@@ -82,7 +82,7 @@ public class Tile {
     }
 
     /**
-     * Gets tile type.
+     * Gets tile {@link #type}.
      *
      * @return the type.
      */
@@ -91,7 +91,7 @@ public class Tile {
     }
 
     /**
-     * Gets tile state.
+     * Gets tile {@link #state}.
      *
      * @return the state.
      */
@@ -108,7 +108,7 @@ public class Tile {
     }
 
     /**
-     * Gets the collision.
+     * Gets the {@link #collision}.
      *
      * @return true, if the tile has collision.
      */
@@ -117,7 +117,7 @@ public class Tile {
     }
 
     /**
-     * Interacts with the tile.
+     * Interacts with the tile. May result in different changes based on the {@link #type}.
      *
      * @param button the encoded mouse button.
      * @param tiles  the tiles. Needed to update potential side effects (such as when a switch is pressed)
@@ -141,6 +141,11 @@ public class Tile {
                 collision = !initialCollision;
             }
 
+            case TUNNELS_LEFT, TUNNELS_RIGHT -> {
+                this.state = (this.state + 1) % 2;
+                this.collision = !this.collision;
+            }
+
             default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
     }
@@ -154,13 +159,23 @@ public class Tile {
      */
     protected Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
 
-        if (this.type.equals(Tile.Type.MIRROR)) {
-            if (this.state == rotation) rotation = (rotation + 1) % 4;
-            else if (this.state == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
-            else return null;
+        if (this.collision) {
+            if (this.type.equals(Type.MIRROR)) {
+                if (this.state == rotation) rotation = (rotation + 1) % 4;
+                else if (this.state == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
+                else return null;
 
-        } else if (this.collision && !(getType().isLaserSource() && rotation == this.state))
-            return null;
+            } else if (this.type.equals(Type.TUNNELS_LEFT)) {
+                if (0 == rotation % 2) rotation = (rotation + 1) % 4;
+                else rotation = (3 + rotation) % 4;
+
+            } else if (this.type.equals(Type.TUNNELS_RIGHT)) {
+                if (1 == rotation % 2) rotation = (rotation + 1) % 4;
+                else rotation = (3 + rotation) % 4;
+
+            } else if (!(getType().isLaserSource() && rotation == this.state))
+                return null;
+        }
 
         return getNextPosition(pos, rotation);
     }
@@ -228,6 +243,10 @@ public class Tile {
          * Mirror. Can be interacted with (see interact() method).
          */
         MIRROR(true, true),
+
+        TUNNELS_LEFT(null, true),
+
+        TUNNELS_RIGHT(null, true),
 
         /**
          * Red switch. Activated when a red laser hits its target.
