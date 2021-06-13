@@ -132,21 +132,28 @@ public class Tile {
         }
     }
 
-    public Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
+    /**
+     * Calculates the next position a laser would be at after leaving the tile from a specific direction.
+     *
+     * @param pos the position of the tile itself, used to calculate the new position.
+     * @param rotation the rotation the laser has entered the tile with.
+     * @return the new position the laser will be at. Null, if the laser would not leave the tile.
+     */
+    protected Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
 
-        if (getType().equals(Tile.Type.MIRROR)) {
-            if (getState() == rotation) rotation = (rotation + 1) % 4;
-            else if (getState() == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
+        if (this.type.equals(Tile.Type.MIRROR)) {
+            if (this.state == rotation) rotation = (rotation + 1) % 4;
+            else if (this.state == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
             else return null;
 
-        } else if (collision && !getType().isLaserSource())
+        } else if (this.collision && !(getType().isLaserSource() && rotation == this.state))
             return null;
 
         return getNextPosition(pos, rotation);
     }
 
     /**
-     * Returns the position one step ahead of the current position, in the direction of the given rotation.
+     * Returns the position one step ahead of the given position, in the direction of the given rotation.
      *
      * @param pos      current position.
      * @param rotation current rotation.

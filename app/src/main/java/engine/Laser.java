@@ -55,10 +55,9 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      * @param rotation the initial direction the laser is facing.
      * @param tiles    the tile map.
      * @param points   the points list. This list will be appended to during the method execution.
-     * @return true, if the Laser is complete (ends on a target).
+     * @return the position the laser stopped at.
      */
     private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
-
         while (tiles.get(pos).getLaserStep(pos, rotation) != null) {
 
             Pair<Integer, Integer> newPos = tiles.get(pos).getLaserStep(pos, rotation);
@@ -67,7 +66,6 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
                 rotation = getRotation(pos, newPos);
                 points.add(new PVector(pos.x(), pos.y()));
             }
-
             pos = newPos;
         }
 
