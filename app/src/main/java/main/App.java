@@ -33,7 +33,7 @@ public class App extends PApplet {
     /**
      * The font used in this game.
      * <p>
-     * Font source: https://www.fontspace.com/edge-of-the-galaxy-font-f45748, licensed in Public Domain.
+     * The font is licensed in Public Domain, see sources in README.
      */
     private PFont font;
 
@@ -61,10 +61,10 @@ public class App extends PApplet {
     }
 
     /**
-     * Sets up and initialises the {@link LaserEngine} instance, {@link BoardManager} instance, the {@link Image} enum and other visual functionality needed by processing.
+     * Sets up and initialises the {@link GameEngine} instance, {@link BoardManager} instance, the {@link Image} enum and other visual functionality needed by processing.
      */
     public void setup() {
-        engine = new LaserEngine(loadJSONArray("src/levels.json"));
+        engine = new GameEngine(loadJSONArray("src/levels.json"));
         font = createFont("img/EdgeOfTheGalaxy.otf", 40);
         boardManager = new BoardManager(this);
 
@@ -152,7 +152,7 @@ public class App extends PApplet {
     /**
      * Updates mouse pointer.
      * <p>
-     * If the mouse is above an intractable tile, the cursor changes to HAND.
+     * If the mouse is above an intractable tile, the cursor changes to {@link #HAND}.
      */
     private void setMousePointer() {
         Pair<Integer, Integer> mousePos = boardManager.tileOfVector(new PVector(mouseX, mouseY));
@@ -193,19 +193,41 @@ public class App extends PApplet {
         });
     }
 
-    private void requestLevel(int direction) {
-        engine.requestLevel(direction);
+    /**
+     * Puts through a level request to the engine and then calls the {@link BoardManager#reset()} Method to reset the graphics.
+     *
+     * @param shift the request shift.
+     *                  <p>
+     *                  1 would be the next, -1 the previous, and 0 the same level reloaded.
+     */
+    private void requestLevel(int shift) {
+        engine.requestLevel(shift);
         boardManager.reset();
     }
 
+    /**
+     * Gets and passes on the tile map.
+     *
+     * @return a fresh copy of the tile map.
+     */
     protected Map<Pair<Integer, Integer>, Tile> fetchTiles() {
         return engine.getCopyOfTiles();
     }
 
+    /**
+     * Gets and passes on the laser set.
+     *
+     * @return the laser set.
+     */
     protected Set<Laser> fetchLasers() {
         return engine.getLasers();
     }
 
+    /**
+     * Gets and passes on the tile size.
+     *
+     * @return the current tile size.
+     */
     protected float getTileSize() {
         return boardManager.getTileSize();
     }

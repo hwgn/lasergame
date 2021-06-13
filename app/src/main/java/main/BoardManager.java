@@ -12,7 +12,7 @@ import static processing.core.PApplet.*;
 /**
  * The BoardManager class takes care of rendering the actual playing field.
  * <p>
- * The most important method is the execute() method, which takes the coordinates of where the map should be drawn and draws it.
+ * The most important method is {@link #execute(int, int, int, int)}, which takes the coordinates of where the map should be drawn and draws it.
  */
 class BoardManager {
 
@@ -106,7 +106,7 @@ class BoardManager {
         g.fill(66);
         g.noStroke();
 
-        // Draws grey ish outline around all tiles
+        // Draws grey-ish outline around all tiles
         tileMap.keySet().forEach(key -> {
             PVector pos = vectorOfTile(key.x(), key.y());
             g.square(pos.x - getTileSize(), pos.y - getTileSize(), getTileSize() * 2);
@@ -177,7 +177,7 @@ class BoardManager {
     /**
      * Draws a mirror with its animated rotation.
      * <p>
-     * Because the rotation storage of the mirrors is separate to that of tiles in general (the tileMap),
+     * Because the rotation storage of the mirrors is separate to that of tiles in general (the {@link #tileMap}),
      * there are some assertions to ensure expected behavior.
      *
      * @param pos the position of the mirror to draw.
@@ -191,10 +191,13 @@ class BoardManager {
             throw new IllegalArgumentException("Tried to draw mirror at a position which is not a mirror");
 
         PVector p = vectorOfTile(pos.x(), pos.y());
+
         g.pushMatrix();
         g.translate(p.x, p.y);
         g.rotate(radians(mirrorRotations.get(pos)));
+
         Image.MIRROR.draw(new PVector(0, 0), 0);
+
         g.popMatrix();
     }
 
@@ -202,8 +205,6 @@ class BoardManager {
      * Rotationally moves mirrors as appropriate.
      * <p>
      * Mirrors that are not yet facing the direction that their state declares are moved by 22.5 degrees each turn in the direction closest to their target.
-     * <p>
-     * Source of the rotational calculation: https://math.stackexchange.com/questions/1366869/calculating-rotation-direction-between-two-angles
      */
     private void updateMirrors() {
         tileMap.entrySet().stream()
@@ -222,6 +223,11 @@ class BoardManager {
                 });
     }
 
+    /**
+     * Determines if all mirrors have finished visually rotating to their target position.
+     *
+     * @return true, if all mirrors have finished their animations.
+     */
     protected boolean mirrorsFinished() {
         return mirrorRotations.entrySet().stream()
                 .filter(set -> set.getValue() != tileMap.get(set.getKey()).getState() * 90f)
@@ -231,7 +237,7 @@ class BoardManager {
     /**
      * Draws a specific laser along the points, with the specified color.
      *
-     * @param l the Laser.
+     * @param l the {@link Laser}.
      */
     private void drawLaser(Laser l) {
         switch (l.color()) {
@@ -248,7 +254,6 @@ class BoardManager {
             g.line(a[i].x, a[i].y, a[i + 1].x, a[i + 1].y);
     }
 
-
     /**
      * Converts a tile position on the tile map into its relative position on the board canvas.
      * Does not require the position to contain a tile.
@@ -256,9 +261,9 @@ class BoardManager {
      * This method will return the vector needed to draw on the smaller board canvas, not the entire canvas!
      * It also assumes the center to be 0, 0. In short, don't use this anywhere else.
      *
-     * @param x x-Position of the Tile (index).
-     * @param y y-Position of the Tile (index).
-     * @return The PVector pointing to the center of the given Tile position.
+     * @param x x-position of the tile (index).
+     * @param y y-position of the tile (index).
+     * @return The {@link PVector} pointing to the center of the given tile position.
      */
     private PVector vectorOfTile(int x, int y) {
         float m = getTileSize();
@@ -272,8 +277,8 @@ class BoardManager {
      * This method assumes the vector given is one from the larger canvas - not just the board canvas.
      * It is mostly used to calculate mouse interaction.
      *
-     * @param pos Relative position from which to get the tile index.
-     * @return The pair representing the position which the PVector points to.
+     * @param pos relative position from which to get the tile index.
+     * @return the pair representing the position which the given {@link PVector} points to.
      * @see App#mouseReleased()
      */
     protected Pair<Integer, Integer> tileOfVector(PVector pos) {

@@ -13,7 +13,7 @@ import java.util.stream.Collector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LaserEngineTest {
+class GameEngineTest {
 
     /**
      * Change this with caution - these strings are used to test levels / engines and their functionality to a great extent,
@@ -75,7 +75,7 @@ class LaserEngineTest {
      */
     @Test
     void basicFunctionality() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
         Map<Pair<Integer, Integer>, Tile> tiles = engine.getCopyOfTiles();
 
         // Testing for basic data field integrity
@@ -114,7 +114,7 @@ class LaserEngineTest {
     @Test
     void registerInteraction() {
         // preparation
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         // initial tile map
         Map<Pair<Integer, Integer>, Tile> initial = engine.getCopyOfTiles();
@@ -162,7 +162,7 @@ class LaserEngineTest {
 
     @Test
     void getCopyOfTiles() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         assertNotNull(engine.getCopyOfTiles());
         assertNotEquals(engine.getCopyOfTiles(), engine.getCopyOfTiles());
@@ -190,7 +190,7 @@ class LaserEngineTest {
 
     @Test
     void requestLevel() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         assertEquals(0, engine.getLevelID(),
                 "Initial levelID should be 0");
@@ -226,7 +226,7 @@ class LaserEngineTest {
 
     @Test
     void getLasers() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         // update to load new laser list
         engine.update();
@@ -244,7 +244,7 @@ class LaserEngineTest {
 
     @Test
     void isCompleted() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         assertFalse(engine.isCompleted(),
                 "Engine considered itself complete before any update occurred on level with no lasers");
@@ -264,7 +264,7 @@ class LaserEngineTest {
 
     @Test
     void getMedalID() {
-        LaserEngine engine = new LaserEngine(testLevels);
+        GameEngine engine = new GameEngine(testLevels);
 
         // if this fails, ensure the testLevels object has been created newly before this test.
         // Medal data is stored in the JSONArray and therefore could be set by now if the instance had been used previously.

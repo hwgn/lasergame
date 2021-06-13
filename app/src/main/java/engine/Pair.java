@@ -2,9 +2,9 @@ package engine;
 
 /**
  * Simple tuple type for use in the 2D Maps.
- * https://stackoverflow.com/questions/2670982/using-pairs-or-2-tuples-in-java
  * <p>
  * Note that records are final and therefore don't need a clone() method.
+ * Note also that The {@link #equals(Object)} method is already implemented for records.
  *
  * @param <T1> Type of first value.
  * @param <T2> Type of second value.

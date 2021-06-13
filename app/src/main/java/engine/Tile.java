@@ -124,29 +124,33 @@ public class Tile {
      */
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
         switch (this.type) {
-            case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
+            case MIRROR:
+                state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
+                return;
 
-            case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA -> tiles.values().stream()
-                    .filter(t -> t.type.equals(this.type))
-                    .forEach(t -> {
-                        t.state = (t.state + 1) % 2;
-                        t.collision = !t.collision;
-                    });
+            case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA:
+                tiles.values().stream()
+                        .filter(t -> t.type.equals(this.type))
+                        .forEach(t -> {
+                            t.state = (t.state + 1) % 2;
+                            t.collision = !t.collision;
+                        });
 
-            case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
+            case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE:
                 if (button != 0)
                     throw new IllegalArgumentException("This tile cannot be interacted with manually.");
 
                 state = (initialState + 1) % 2;
                 collision = !initialCollision;
-            }
+                return;
 
-            case TUNNELS_LEFT, TUNNELS_RIGHT -> {
+            case TUNNELS_LEFT, TUNNELS_RIGHT:
                 this.state = (this.state + 1) % 2;
                 this.collision = !this.collision;
-            }
+                return;
 
-            default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
+            default:
+                throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
     }
 
@@ -155,7 +159,9 @@ public class Tile {
      *
      * @param pos      the position of the tile itself, used to calculate the new position.
      * @param rotation the rotation the laser has entered the tile with.
-     * @return the new position the laser will be at. Null, if the laser would not leave the tile.
+     * @return the new position the laser will be at.
+     * <p>
+     * Null, if the laser would not leave the tile (and instead collides with it).
      */
     protected Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
 
@@ -190,7 +196,7 @@ public class Tile {
     }
 
     /**
-     * The Tile Type enum. Describes the possible kinds of tile.
+     * The Tile Type enum. Describes the possible types of tile.
      */
     public enum Type {
         /**
@@ -202,15 +208,14 @@ public class Tile {
          */
         STONE_BROKEN(true, false),
         /**
-         * Target. Place where lasers need to go.
-         */
-        STONE_TARGET(true, false),
-
-        /**
          * A chipped stone with a corner missing.
          */
         STONE_CHIPPED(true, false),
 
+        /**
+         * Target. Place where lasers need to go.
+         */
+        STONE_TARGET(true, false),
         /**
          * Red laser emitter.
          */
@@ -234,18 +239,22 @@ public class Tile {
          */
         FLOOR(false, false),
         /**
-         * Null type. Will draw an empty (fully transparent) image in frontend and otherwise act just like a floor tile.
+         * Null type. Only relevant for frontend behavior - with more time I would have removed this entirely.
          * <p>
          * Allows generations of floor pattern.
          */
         NULL(false, false),
         /**
-         * Mirror. Can be interacted with (see interact() method).
+         * Mirror. Can be interacted with (see {@link #interact(int, Map)} method).
          */
         MIRROR(true, true),
-
+        /**
+         * Tunnel with connections left-top and bottom-right. Can be interacted with to sink into the floor.
+         */
         TUNNELS_LEFT(null, true),
-
+        /**
+         * Tunnel with connections right-top and bottom-left. Can be interacted with to sink into the floor.
+         */
         TUNNELS_RIGHT(null, true),
 
         /**
@@ -279,27 +288,31 @@ public class Tile {
         RUBBLE(false, false);
 
         /**
-         * Predetermined collision. Can be null if the collision is determined by the state.
+         * Predetermined collision.
+         * <p>
+         * Can be null, if the collision is determined by the state.
          */
-        private final Boolean collision,
+        private final Boolean collision;
         /**
          * Predetermined intractability.
+         * <p>
+         * Mustn't be null.
          */
-        canInteract;
+        private final boolean canInteract;
 
         /**
-         * Instantiates a new Type.
+         * Instantiates a new type.
          *
          * @param collision   if tiles of this type have collision. May be null for undetermined (interchangable) collision.
          * @param canInteract if tiles of this type can be interacted with.
          */
-        Type(Boolean collision, Boolean canInteract) {
+        Type(Boolean collision, boolean canInteract) {
             this.collision = collision;
             this.canInteract = canInteract;
         }
 
         /**
-         * Gets switch by laser color.
+         * Gets switch type by laser color.
          *
          * @param c the laser color.
          * @return the appropriate switch for the given laser color.
@@ -315,7 +328,7 @@ public class Tile {
         /**
          * Determines if the instance is of type laser switch.
          *
-         * @return true, if a switch which a laser can interact with.
+         * @return true, if instance is a switch, which a laser can interact with.
          */
         public boolean isLaserSwitch() {
             return this == SWITCH_RED || this == SWITCH_GREEN || this == SWITCH_BLUE;
@@ -324,7 +337,7 @@ public class Tile {
         /**
          * Determines if the instance is of type laser source.
          *
-         * @return true, if a laser source.
+         * @return true, if a laser source. Needed to find all sources when loading lasers.
          */
         public boolean isLaserSource() {
             return this == LASER_RED || this == LASER_GREEN || this == LASER_BLUE;
@@ -333,16 +346,16 @@ public class Tile {
         /**
          * Getter for canInteract variable.
          *
-         * @return true, if canInteract.
+         * @return true, if this type can be interacted with.
          */
-        public Boolean canInteract() {
+        public boolean canInteract() {
             return canInteract;
         }
 
         /**
          * Getter for collision variable, only used for instantiation of tiles.
          *
-         * @return true, if collision. May be null.
+         * @return true, if type has collision by default. May be null if this cannot be determined.
          */
         private Boolean getCollision() {
             return collision;

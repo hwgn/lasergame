@@ -18,41 +18,57 @@ public interface Engine {
     void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IndexOutOfBoundsException;
 
     /**
+     * Getter for the current move amount.
+     *
      * @return the current amount of moves taken in this round.
      */
     int getMoves();
 
     /**
+     * Getter for the optimal move amount for this level.
+     *
      * @return the optimal amount of moves for the current level.
      */
     int getOptimalMoves();
 
     /**
+     * Getter for the level description.
+     *
      * @return the description for the current level.
      */
     String getLevelDescription();
 
     /**
+     * Getter for a copy of the current level tile map.
+     *
      * @return all tiles for this level and their current state.
      */
     Map<Pair<Integer, Integer>, Tile> getCopyOfTiles();
 
     /**
+     * Getter for the current laser set.
+     *
      * @return all active lasers including positional and color information.
      */
     Set<Laser> getLasers();
 
     /**
+     * Getter for the best achieved medal of this level.
+     *
      * @return the ID representing the medal currently obtained on this level.
      */
     int getMedalID();
 
     /**
+     * Getter for the level ID of the current level.
+     *
      * @return the index / ID of the current level.
      */
     int getLevelID();
 
     /**
+     * Getter for the completion state of the current round.
+     *
      * @return true, if the current level is completed.
      */
     boolean isCompleted();
@@ -65,8 +81,7 @@ public interface Engine {
      * <p>
      * This enables to also move in greater steps, especially for testing.
      *
-     * @param direction the value which will be added to the current index (will not cause IndexOutOfBoundExceptions)
+     * @param direction the value which will be added to the current index (will not cause {@link IndexOutOfBoundsException})
      */
     void requestLevel(int direction);
-
 }

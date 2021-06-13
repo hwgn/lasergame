@@ -7,7 +7,7 @@ class LaserTest {
 
     @BeforeAll
     static void setUp() {
-        //LaserEngineTest.setupTestLevels();
+        //GameEngineTest.setupTestLevels();
     }
 
     @Test

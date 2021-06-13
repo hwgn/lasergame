@@ -8,19 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * The Level record. Stores information about Levels which it can retrieve using the initialize()-Method.
- * <p>
- * Read more about Records: https://openjdk.java.net/jeps/359
+ * The Level record. Stores information about Levels which it can retrieve using the {@link #initialize(JSONArray)}-Method.
  */
 record Level(Map<Pair<Integer, Integer>, Tile> tiles,
              String description, int minMoves) {
 
     /**
-     * Reads all levels from the given json array and returns them in an array.
+     * Reads all levels from the given {@link JSONArray} and returns them in an array.
      *
-     * @param levelArray JSONArray storing the levels file.
+     * @param levelArray {@link JSONArray} storing the levels file.
      * @return Array of all levels in their initial state.
      */
     public static Level[] initialize(JSONArray levelArray) {
@@ -35,10 +32,11 @@ record Level(Map<Pair<Integer, Integer>, Tile> tiles,
 
                 tiles.put(Pair.of(tile.getInt("x"), tile.getInt("y")),
                         Tile.of(Tile.Type.valueOf(tile.getString("type")), tile.getInt("state")));
-
             }
+
             levels.add(new Level(tiles, levelArray.getJSONObject(i).getString("description"), levelArray.getJSONObject(i).getInt("min_moves")));
         }
+
         return levels.toArray(new Level[0]);
     }
 }

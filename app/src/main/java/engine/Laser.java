@@ -73,6 +73,15 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
         return pos;
     }
 
+    /**
+     * Gets the rotation of a laser going from start to stop.
+     * <p>
+     * Start and stop must be neighbors.
+     *
+     * @param start the start position
+     * @param stop  the stop position
+     * @return the value encoding the calculated direction
+     */
     private static int getRotation(Pair<Integer, Integer> start, Pair<Integer, Integer> stop) {
         Pair<Integer, Integer> step = Pair.of(stop.x() - start.x(), stop.y() - start.y());
 

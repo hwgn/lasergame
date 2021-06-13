@@ -20,8 +20,13 @@ asdf
 
 ## Quellen
 
-* [*Pixilart*: Tool für alle Grafiken](https://www.pixilart.com/)
+* [*Pixilart* - Tool used to create all graphics](https://www.pixilart.com/)
+* [FontSpace: Edge Of The Galaxy Font (public domain)](https://www.fontspace.com/edge-of-the-galaxy-font-f45748)
+* [OpenJDK: About Records, an OpenJDK 16 feature (used for classes Laser, Pair and Level)](https://openjdk.java.net/jeps/395)
 * [StackOverflow: Public / Protected / Private](https://stackoverflow.com/questions/215497/what-is-the-difference-between-public-protected-package-private-and-private-in)
+* [StackOverflow: Shortest direction to rotation target (used for mirror animations)](https://math.stackexchange.com/questions/1366869/calculating-rotation-direction-between-two-angles)
+* [StackOverflow: Using tuples in Java (this inspired the Pair class)](https://stackoverflow.com/questions/2670982/using-pairs-or-2-tuples-in-java)
+
 
 # Eigenständigkeitserklärung
 
