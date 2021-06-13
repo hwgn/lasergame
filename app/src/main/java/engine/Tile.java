@@ -69,6 +69,19 @@ public class Tile {
     }
 
     /**
+     * Returns the position one step ahead of the given position, in the direction of the given rotation.
+     *
+     * @param pos      current position.
+     * @param rotation current rotation.
+     * @return new position one step into the given direction, from the given position.
+     */
+    private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
+        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
+
+        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
+    }
+
+    /**
      * Gets tile type.
      *
      * @return the type.
@@ -135,7 +148,7 @@ public class Tile {
     /**
      * Calculates the next position a laser would be at after leaving the tile from a specific direction.
      *
-     * @param pos the position of the tile itself, used to calculate the new position.
+     * @param pos      the position of the tile itself, used to calculate the new position.
      * @param rotation the rotation the laser has entered the tile with.
      * @return the new position the laser will be at. Null, if the laser would not leave the tile.
      */
@@ -150,19 +163,6 @@ public class Tile {
             return null;
 
         return getNextPosition(pos, rotation);
-    }
-
-    /**
-     * Returns the position one step ahead of the given position, in the direction of the given rotation.
-     *
-     * @param pos      current position.
-     * @param rotation current rotation.
-     * @return new position one step into the given direction, from the given position.
-     */
-    private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
-        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
-
-        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
     }
 
     /**
@@ -191,6 +191,9 @@ public class Tile {
          */
         STONE_TARGET(true, false),
 
+        /**
+         * A chipped stone with a corner missing.
+         */
         STONE_CHIPPED(true, false),
 
         /**
@@ -212,11 +215,13 @@ public class Tile {
          * Generally speaking, using this tile is bad practice as it will override the rotation effects
          * generated when drawing floor tiles under all tiles in a specific map.
          * <p>
-         * Use Type NULL instead for encoding levels.
+         * Use Type NULL instead for encoding levels, unless specific floor rotation is needed.
          */
         FLOOR(false, false),
         /**
          * Null type. Will draw an empty (fully transparent) image in frontend and otherwise act just like a floor tile.
+         * <p>
+         * Allows generations of floor pattern.
          */
         NULL(false, false),
         /**
@@ -249,6 +254,9 @@ public class Tile {
          */
         SWITCH_MAGENTA(null, true),
 
+        /**
+         * Some stones, purely for decoration.
+         */
         RUBBLE(false, false);
 
         /**
@@ -313,11 +321,11 @@ public class Tile {
         }
 
         /**
-         * Getter for collision variable.
+         * Getter for collision variable, only used for instantiation of tiles.
          *
          * @return true, if collision. May be null.
          */
-        public Boolean getCollision() {
+        private Boolean getCollision() {
             return collision;
         }
     }

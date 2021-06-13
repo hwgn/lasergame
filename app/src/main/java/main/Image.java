@@ -19,15 +19,18 @@ enum Image {
      */
     STONE(false, "stone_clean.png"),
     /**
-     * Broken stone wall.
+     * Broken stone wall, with a streak to one side.
      */
     STONE_BROKEN(false, "stone_broken1_0.png", "stone_broken1_90.png", "stone_broken1_180.png", "stone_broken1_270.png"),
     /**
-     * Stone target.
+     * Stone target. The place lasers go.
      */
     STONE_TARGET(false, "stone_target.png"),
 
-    STONE_CHIPPED(false, "stone_clean.png"),
+    /**
+     * A chipped stone with a corner missing.
+     */
+    STONE_CHIPPED(true, "stone_chipped_0.png", "stone_chipped_90.png", "stone_chipped_180.png", "stone_chipped_270.png"),
 
     /**
      * Stone with red laser source.
