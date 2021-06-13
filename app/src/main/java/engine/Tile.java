@@ -2,6 +2,7 @@ package engine;
 
 import processing.core.PConstants;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -129,7 +130,32 @@ public class Tile {
 
             default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
-        //TODO make this maybe in tiles
+    }
+
+    public Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
+
+        if (getType().equals(Tile.Type.MIRROR)) {
+            if (getState() == rotation) rotation = (rotation + 1) % 4;
+            else if (getState() == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
+            else return null;
+
+        } else if (collision && !getType().isLaserSource())
+            return null;
+
+        return getNextPosition(pos, rotation);
+    }
+
+    /**
+     * Returns the position one step ahead of the current position, in the direction of the given rotation.
+     *
+     * @param pos      current position.
+     * @param rotation current rotation.
+     * @return new position one step into the given direction, from the given position.
+     */
+    private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
+        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
+
+        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
     }
 
     /**

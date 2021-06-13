@@ -41,7 +41,9 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
         Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN).get(tiles.get(pos).getType());
 
         List<PVector> points = new ArrayList<>(List.of(new PVector(pos.x(), pos.y())));
-        boolean isComplete = pathFinder(pos, rotation, tiles, points);
+        //boolean isComplete =
+        pos = pathFinder(pos, rotation, tiles, points);
+        boolean isComplete = tiles.get(pos).getType().equals(STONE_TARGET);
 
         return new Laser(color, points, isComplete);
     }
@@ -55,47 +57,28 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      * @param points   the points list. This list will be appended to during the method execution.
      * @return true, if the Laser is complete (ends on a target).
      */
-    private static boolean pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
-        boolean isComplete = false;
-        pos = getNextPosition(pos, rotation);
+    private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
 
-        while (true) {
-            points.add(new PVector(pos.x(), pos.y()));
+        while (tiles.get(pos).getLaserStep(pos, rotation) != null) {
 
-            if (tiles.get(pos) == null)
-                break;
+            Pair<Integer, Integer> newPos = tiles.get(pos).getLaserStep(pos, rotation);
 
-            if (tiles.get(pos).getType().equals(Tile.Type.MIRROR)) {
-                if (tiles.get(pos).getState() == rotation) rotation = (rotation + 1) % 4;
-                else if (tiles.get(pos).getState() == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
-                else break;
-
-            } else if (tiles.get(pos).hasCollision()) {
-                isComplete = tiles.get(pos).getType().equals(Tile.Type.STONE_TARGET);
-                break;
+            if (getRotation(pos, newPos) != rotation) {
+                rotation = getRotation(pos, newPos);
+                points.add(new PVector(pos.x(), pos.y()));
             }
 
-            do {
-                pos = getNextPosition(pos, rotation);
-            } while (tiles.get(pos) != null && !tiles.get(pos).hasCollision());
-
+            pos = newPos;
         }
-        return isComplete;
-        //TODO put this in tiles maybe
+
+        points.add(new PVector(pos.x(), pos.y()));
+        return pos;
     }
 
-    /**
-     * Returns the position one step ahead of the current position, in the direction of the given rotation.
-     *
-     * @param pos      current position.
-     * @param rotation current rotation.
-     * @return new position one step into the given direction, from the given position.
-     */
-    private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
+    private static int getRotation(Pair<Integer, Integer> start, Pair<Integer, Integer> stop) {
+        Pair<Integer, Integer> step = Pair.of(stop.x() - start.x(), stop.y() - start.y());
 
-        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
-        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
-
+        return List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).indexOf(step);
     }
 
     /**
