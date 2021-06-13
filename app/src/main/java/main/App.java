@@ -197,8 +197,8 @@ public class App extends PApplet {
      * Puts through a level request to the engine and then calls the {@link BoardManager#reset()} Method to reset the graphics.
      *
      * @param shift the request shift.
-     *                  <p>
-     *                  1 would be the next, -1 the previous, and 0 the same level reloaded.
+     *              <p>
+     *              1 would be the next, -1 the previous, and 0 the same level reloaded.
      */
     private void requestLevel(int shift) {
         engine.requestLevel(shift);

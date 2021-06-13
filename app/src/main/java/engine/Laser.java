@@ -92,6 +92,17 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      * Enum for the various colors a laser can have.
      */
     public enum Color {
-        RED, BLUE, GREEN
+        /**
+         * The color red!
+         */
+        RED,
+        /**
+         * The color blue!
+         */
+        BLUE,
+        /**
+         * You guessed it, the color green!
+         */
+        GREEN
     }
 }
