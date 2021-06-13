@@ -235,7 +235,7 @@ public class Tile {
          * Generally speaking, using this tile is bad practice as it will override the rotation effects
          * generated when drawing floor tiles under all tiles in a specific map.
          * <p>
-         * Use Type NULL instead for encoding levels, unless specific floor rotation is needed.
+         * Use Type {@link #NULL} instead for encoding levels, unless specific floor rotation is needed.
          */
         FLOOR(false, false),
         /**
