@@ -70,14 +70,14 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
                 else if (tiles.get(pos).getState() == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
                 else break;
 
-            } else if (tiles.get(pos).getCollision()) {
+            } else if (tiles.get(pos).hasCollision()) {
                 isComplete = tiles.get(pos).getType().equals(Tile.Type.STONE_TARGET);
                 break;
             }
 
             do {
                 pos = getNextPosition(pos, rotation);
-            } while (tiles.get(pos) != null && !tiles.get(pos).getCollision());
+            } while (tiles.get(pos) != null && !tiles.get(pos).hasCollision());
 
         }
         return isComplete;

@@ -98,7 +98,7 @@ public class Tile {
      *
      * @return true, if the tile has collision.
      */
-    public boolean getCollision() {
+    public boolean hasCollision() {
         return collision;
     }
 

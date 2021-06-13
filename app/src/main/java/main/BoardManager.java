@@ -136,7 +136,7 @@ class BoardManager {
 
         // Draws all tiles which have collision to cover the laser
         tileMap.entrySet().stream()
-                .filter(t -> t.getValue().getCollision() && !t.getValue().getType().isLaserSource())
+                .filter(t -> t.getValue().hasCollision() && !t.getValue().getType().isLaserSource())
                 .filter(t -> !t.getValue().getType().equals(Tile.Type.STONE_TARGET) && !t.getValue().getType().equals(Tile.Type.MIRROR))
                 .forEach(t -> Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
 
