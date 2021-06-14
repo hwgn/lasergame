@@ -125,22 +125,26 @@ public class Tile {
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
         switch (this.type) {
             case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
+
             case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA -> tiles.values().stream()
                     .filter(t -> t.type.equals(this.type))
                     .forEach(t -> {
                         t.state = (t.state + 1) % 2;
                         t.collision = !t.collision;
                     });
+
             case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
                 if (button != 0)
                     throw new IllegalArgumentException("This tile cannot be interacted with manually.");
                 state = (initialState + 1) % 2;
                 collision = !initialCollision;
             }
+
             case TUNNELS_LEFT, TUNNELS_RIGHT -> {
                 this.state = (this.state + 1) % 2;
                 this.collision = !this.collision;
             }
+
             default -> throw new IllegalArgumentException("This tile cannot be interacted with.");
         }
     }
