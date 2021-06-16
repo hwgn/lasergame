@@ -245,35 +245,20 @@ class GameEngineTest {
     @Test
     void isCompleted() {
         GameEngine engine = new GameEngine(testLevels);
-
-        assertFalse(engine.isCompleted(),
-                "Engine considered itself complete before any update occurred on level with no lasers");
-
         engine.update();
 
         assertTrue(engine.isCompleted(), "Engine considered incomplete after update on level with no lasers");
 
         engine.requestLevel(1);
-
-        assertFalse(engine.isCompleted(), "Engine considered itself complete before any update on level with lasers");
-
         engine.update();
 
-        assertTrue(engine.isCompleted(), "Engine considered incomplete after update on level with a laser");
+        assertTrue(engine.isCompleted(), "Engine considered incomplete after update on level with one laser facing the target");
     }
 
     @Test
     void getMedalID() {
         GameEngine engine = new GameEngine(testLevels);
-
-        // if this fails, ensure the testLevels object has been created newly before this test.
-        // Medal data is stored in the JSONArray and therefore could be set by now if the instance had been used previously.
-        assertEquals(3, engine.getMedalID(),
-                "Initial medal value should be 3 (NONE). " +
-                        "This may be related to the JSONArray already having been accessed prior this test");
-
-        engine.update();
         assertEquals(0, engine.getMedalID(),
-                "Engine update did not update the medal ID after finishing level");
+                "Engine did not immediately assign gold medal to self completing level");
     }
 }

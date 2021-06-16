@@ -41,7 +41,6 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
         Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN).get(tiles.get(pos).getType());
 
         List<PVector> points = new ArrayList<>(List.of(new PVector(pos.x(), pos.y())));
-        //boolean isComplete =
         pos = pathFinder(pos, rotation, tiles, points);
         boolean isComplete = tiles.get(pos).getType().equals(STONE_TARGET);
 
