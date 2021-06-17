@@ -66,6 +66,8 @@ enum Image {
      */
     TUNNELS_RIGHT(true, "double_mirror_right_grounded.png", "double_mirror_right.png"),
 
+    REDIRECT(true, "redirect_right.png", "redirect_left.png"),
+
     /**
      * Red (laser) switch.
      */

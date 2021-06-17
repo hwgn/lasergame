@@ -24,8 +24,8 @@ class GameEngineTest {
             "Level 2|0|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET", // basic laser tests can be done here (does not have any intractability)
             "Level 3|1|10.5.0.LASER_RED:10.4.0.NULL:10.3.3.MIRROR:11.3.0.NULL:12.3.0.STONE_TARGET" // level with laser that does not complete immediately
     );
-    JSONArray testLevels;
-    List<Level> testLevelList;
+    static JSONArray testLevels;
+    static List<Level> testLevelList;
 
     /**
      * Sets up the test levels needed to test various features of the level behaviour.
@@ -70,40 +70,28 @@ class GameEngineTest {
     }
 
     /**
+     * Used to get these test levels in other tests
+     * @return freshly generated test levels.
+     */
+    static List<Level> getTestLevelList() {
+        GameEngineTest t = new GameEngineTest();
+        t.setupLevelArrays();
+        return testLevelList;
+    }
+
+    /**
      * Asserts that calling the constructor with an array of levels will return a functional map of tiles
      * with the expected data fields.
      */
     @Test
-    void basicFunctionality() {
+    void instantiation() {
         GameEngine engine = new GameEngine(testLevels);
         Map<Pair<Integer, Integer>, Tile> tiles = engine.getCopyOfTiles();
 
-        // Testing for basic data field integrity
-        assertNotNull(engine.getLevelDescription());
-        assertEquals(0, engine.getOptimalMoves());
-
-        // ... with fields that actually carry a value
-        engine.requestLevel(2);
-        assertEquals(1, engine.getOptimalMoves());
-        engine.requestLevel(-2);
-
-        // Testing for data validity in basic fields
-        assertEquals(engine.getLevelDescription(), testLevelList.get(0).description());
-        assertEquals(engine.getOptimalMoves(), testLevelList.get(0).minMoves());
-
-        // Testing for data validity in tile map
-        assertNotNull(tiles, "Tiles mustn't be null");
-        assertNotEquals(0, tiles.size(), "Tiles mustn't be empty");
-
-        // Testing for type consistency within tiles
-        assertEquals(tiles.get(Pair.of(1, 1)).getType(),
-                testLevelList.get(0).tiles().get(Pair.of(1, 1)).getType(),
-                "Tile at 1.1 was not identified to be the same in JSONArray as in initialised Tiles");
-
-        // Testing for state consistency within tiles
-        assertEquals(tiles.get(Pair.of(1, 3)).getState(),
-                testLevelList.get(0).tiles().get(Pair.of(1, 3)).getState(),
-                "Tile state at 1.3 was not the same between JSONArray and initialised Tiles");
+        assertNotNull(engine.getLevelDescription(), "Level description was null");
+        assertEquals(0, engine.getOptimalMoves(), "Optimal moves were false");
+        assertNotNull(tiles, "Copy of tiles was null");
+        assertTrue(engine.isCompleted(), "Engine didn't realise instant completion");
     }
 
     @Test
@@ -146,6 +134,12 @@ class GameEngineTest {
         // checking if bad states are reacted to by engine
         assertThrows(IllegalStateException.class, () -> engine.registerInteraction(Pair.of(1, 3), 0),
                 "Bad interaction (bad game state) threw unexpected or no exception");
+    }
+
+    @Test
+    void interactingWhenComplete() {
+        GameEngine engine = new GameEngine(testLevels);
+        assertThrows(IllegalArgumentException.class, () -> engine.registerInteraction(Pair.of(0, 0), 10));
     }
 
     @Test
@@ -227,9 +221,6 @@ class GameEngineTest {
     @Test
     void getLasers() {
         GameEngine engine = new GameEngine(testLevels);
-
-        // update to load new laser list
-        engine.update();
 
         assertTrue(engine.getLasers().isEmpty(),
                 "Laser list of level with no lasers was found not to be empty");

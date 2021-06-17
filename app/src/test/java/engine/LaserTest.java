@@ -3,11 +3,15 @@ package engine;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class LaserTest {
+
+    static List<Level> levelList;
 
     @BeforeAll
     static void setUp() {
-        //GameEngineTest.setupTestLevels();
+        levelList = GameEngineTest.getTestLevelList();
     }
 
     @Test

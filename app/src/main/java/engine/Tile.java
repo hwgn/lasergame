@@ -161,21 +161,29 @@ public class Tile {
     protected Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
 
         if (this.collision) {
-            if (this.type.equals(Type.MIRROR)) {
-                if (this.state == rotation) rotation = (rotation + 1) % 4;
-                else if (this.state == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
-                else return null;
 
-            } else if (this.type.equals(Type.TUNNELS_LEFT)) {
-                if (0 == rotation % 2) rotation = (rotation + 1) % 4;
-                else rotation = (3 + rotation) % 4;
+            switch (this.type) {
+                case MIRROR -> {
+                    if (this.state == rotation) rotation = (rotation + 1) % 4;
+                    else if (this.state == (rotation + 1) % 4) rotation = (3 + rotation) % 4;
+                    else return null;
+                }
 
-            } else if (this.type.equals(Type.TUNNELS_RIGHT)) {
-                if (1 == rotation % 2) rotation = (rotation + 1) % 4;
-                else rotation = (3 + rotation) % 4;
+                case TUNNELS_LEFT -> rotation = 0 == rotation % 2 ? (rotation + 1) % 4 : (3 + rotation) % 4;
 
-            } else if (!(getType().isLaserSource() && rotation == this.state))
-                return null;
+                case TUNNELS_RIGHT -> rotation = 1 == rotation % 2 ? (rotation + 1) % 4 : (3 + rotation) % 4;
+
+                case REDIRECT -> rotation = this.state == 0 ? (rotation + 1) % 4 : (rotation + 3) % 4;
+
+                case LASER_RED, LASER_BLUE, LASER_GREEN -> {
+                    return rotation == this.state ? getNextPosition(pos, rotation) : null;
+                }
+
+                default -> {
+                    return null;
+                }
+            }
+
         }
 
         return getNextPosition(pos, rotation);
@@ -251,6 +259,8 @@ public class Tile {
          * Tunnel with connections right-top and bottom-left. Can be interacted with to sink into the floor.
          */
         TUNNELS_RIGHT(null, true),
+
+        REDIRECT(true, false),
 
         /**
          * Red switch. Activated when a red laser hits its target.
