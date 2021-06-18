@@ -28,6 +28,17 @@ class GameEngineTest {
     static List<Level> testLevelList;
 
     /**
+     * Used to get these test levels in other tests
+     *
+     * @return freshly generated test levels.
+     */
+    static List<Level> getTestLevelList() {
+        GameEngineTest t = new GameEngineTest();
+        t.setupLevelArrays();
+        return testLevelList;
+    }
+
+    /**
      * Sets up the test levels needed to test various features of the level behaviour.
      * <p>
      * This must be done before each method individually, as medals are stored in the JSON data and would cause unexpected behaviour.
@@ -67,16 +78,6 @@ class GameEngineTest {
                 }).collect(jsonObjCollector);
 
         testLevelList = Arrays.stream(Level.initialize(testLevels)).toList();
-    }
-
-    /**
-     * Used to get these test levels in other tests
-     * @return freshly generated test levels.
-     */
-    static List<Level> getTestLevelList() {
-        GameEngineTest t = new GameEngineTest();
-        t.setupLevelArrays();
-        return testLevelList;
     }
 
     /**

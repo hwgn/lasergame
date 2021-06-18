@@ -20,6 +20,9 @@ asdf
 
 ## Quellen
 
+* [Processing Reference](https://processing.org/reference/)
+* [Processing Javadocs (for advanced features like resizable windows)](https://processing.github.io/processing-javadocs/core/)
+* [OpenProcessing (strictly used for inspiration before deciding on a project, no single idea was taken from there)](https://openprocessing.org/)
 * [*Pixilart* - Tool used to create all graphics](https://www.pixilart.com/)
 * [FontSpace: Edge Of The Galaxy Font (public domain)](https://www.fontspace.com/edge-of-the-galaxy-font-f45748)
 * [OpenJDK: About Records, an OpenJDK 16 feature (used for classes Laser, Pair and Level)](https://openjdk.java.net/jeps/395)
@@ -28,6 +31,7 @@ asdf
 * [StackOverflow: Using tuples in Java (this inspired the Pair class)](https://stackoverflow.com/questions/2670982/using-pairs-or-2-tuples-in-java)
 * [StackOverflow: Iterating over two items of a Stream at once (I asked this question - so don't worry if you see very similar code in the drawLaser method)](https://stackoverflow.com/questions/67643914/how-can-i-iterate-over-two-items-of-a-stream-at-once)
 
+... zudem wurden die Inhalte der Vorlesungen PiS und OOP verwendet, besonders für Streams.
 
 # Eigenständigkeitserklärung
 
