@@ -9,7 +9,7 @@ import static engine.Tile.Type.*;
 /**
  * The Laser record. Stores information about lasers (such as their position and colour).
  */
-public record Laser(engine.Laser.Color color, List<PVector> points, boolean isComplete) {
+public record Laser(Color color, List<PVector> points, boolean isComplete) {
 
     /**
      * Determines and creates all lasers of a given tile map.
@@ -57,9 +57,9 @@ public record Laser(engine.Laser.Color color, List<PVector> points, boolean isCo
      * @return the position the laser stopped at.
      */
     private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
-        while (tiles.get(pos).getLaserStep(pos, rotation) != null) {
+        Pair<Integer, Integer> newPos;
 
-            Pair<Integer, Integer> newPos = tiles.get(pos).getLaserStep(pos, rotation);
+        while ((newPos = tiles.get(pos).getLaserStep(pos, rotation)) != null) {
 
             if (getRotation(pos, newPos) != rotation) {
                 rotation = getRotation(pos, newPos);

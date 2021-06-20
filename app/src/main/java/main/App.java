@@ -110,7 +110,7 @@ public class App extends PApplet {
         rect(-10, height - BOTTOM_OFFSET, width + 20, height);
         rect(width - (BOTTOM_OFFSET * 1.8f), height - BOTTOM_OFFSET * 0.9f, BOTTOM_OFFSET * 0.8f, BOTTOM_OFFSET * 0.8f);
         line(width - (BOTTOM_OFFSET * 1.8f), height - BOTTOM_OFFSET * 0.5f, width - (BOTTOM_OFFSET), height - BOTTOM_OFFSET * 0.5f);
-        rect((BOTTOM_OFFSET * 0.1f), height - BOTTOM_OFFSET * 0.5f, width - BOTTOM_OFFSET * 2f, BOTTOM_OFFSET * 0.4f);
+        rect(BOTTOM_OFFSET * 0.1f, height - BOTTOM_OFFSET * 0.5f, width - BOTTOM_OFFSET * 2f, BOTTOM_OFFSET * 0.4f);
 
         // Medal
         image(Image.MEDAL.getImages().get(engine.getMedalID()),
@@ -126,7 +126,7 @@ public class App extends PApplet {
                 width - (BOTTOM_OFFSET * 1.4f), height - BOTTOM_OFFSET * 0.15f);
 
         // Level name
-        textFont(font, min(max((width - BOTTOM_OFFSET * 2.1f), 1) / 12f, 53));
+        textFont(font, min(max(width - BOTTOM_OFFSET * 2.1f, 1) / 12f, 53));
         text(engine.getLevelDescription(), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.15f);
         text("Level " + (engine.getLevelID() + 1), (width - BOTTOM_OFFSET * 1.8f) / 2f, height - BOTTOM_OFFSET * 0.55f);
     }

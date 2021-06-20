@@ -15,7 +15,7 @@ public interface Engine {
      * @throws IllegalArgumentException  if the tile at this position cannot be interacted with.
      * @throws IndexOutOfBoundsException if there is no tile at this position.
      */
-    void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IndexOutOfBoundsException;
+    void registerInteraction(Pair<Integer, Integer> pos, int mouseButton);
 
     /**
      * Getter for the current move amount.

@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * The tile class. Stores information regarding a specific tile, such as its type and state.
  */
-public class Tile {
+public final class Tile {
     /**
      * The tile type.
      */
@@ -123,6 +123,7 @@ public class Tile {
      * @param tiles  the tiles. Needed to update potential side effects (such as when a switch is pressed)
      */
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
+
         switch (this.type) {
             case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
 

@@ -15,7 +15,7 @@ import java.util.Set;
  * <p>
  * Also handles storage of game data such as the current moves taken and achieved medals. Medals are stored for the entirety of a session.
  */
-public class GameEngine implements Engine {
+public final class GameEngine implements Engine {
     /**
      * The Level array. Used for loading all levels and later storing medal data.
      */
@@ -23,7 +23,7 @@ public class GameEngine implements Engine {
     /**
      * True, if the current game has been completed. Used to display game over popups in frontend.
      */
-    private boolean completed = false;
+    private boolean completed;
     /**
      * The amount of moves taken in this round.
      */
@@ -89,7 +89,7 @@ public class GameEngine implements Engine {
      * @throws IllegalArgumentException if the given position does not contain a tile
      * @throws IllegalStateException    if the game is complete
      */
-    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) throws IllegalArgumentException, IllegalStateException {
+    public void registerInteraction(Pair<Integer, Integer> pos, int mouseButton) {
         if (tiles.get(pos) == null)
             throw new IllegalArgumentException("This position does not contain a tile.");
 

@@ -14,7 +14,7 @@ import static processing.core.PApplet.*;
  * <p>
  * The most important method is {@link #execute(int, int, int, int)}, which takes the coordinates of where the map should be drawn and draws it.
  */
-class BoardManager {
+final class BoardManager {
 
     /**
      * The App instance. Used to be an instance of PGraphics but due to compatibility issues and the need of fetching the tile map this has been changed.
@@ -26,7 +26,7 @@ class BoardManager {
      *
      * @see #updateMirrors()
      */
-    private HashMap<Pair<Integer, Integer>, Float> mirrorRotations;
+    private Map<Pair<Integer, Integer>, Float> mirrorRotations;
 
     /**
      * The stored laser paths. This is purely visual and allows lasers to appear as if they fade in and out when their path has changed.
@@ -121,9 +121,9 @@ class BoardManager {
         // Draws all tiles once
         tileMap.entrySet().stream()
                 .filter(set -> !set.getValue().getType().equals(Tile.Type.MIRROR))
-                .forEach((set ->
+                .forEach(set ->
                         Image.valueOf(set.getValue().getType().toString())
-                                .draw(vectorOfTile(set.getKey().x(), set.getKey().y()), set.getValue().getState())));
+                                .draw(vectorOfTile(set.getKey().x(), set.getKey().y()), set.getValue().getState()));
 
         // Extracts lasers from the queue, then draws them.
         laserStorage.stream()
@@ -214,7 +214,7 @@ class BoardManager {
         mirrorRotations.entrySet().stream()
                 .filter(set -> set.getValue() != tileMap.get(set.getKey()).getState() * 90f)
                 .forEach(set -> {
-                    float delta = (360f + ((tileMap.get(set.getKey()).getState() * 90f) - set.getValue())) % 360f;
+                    float delta = (360f + (tileMap.get(set.getKey()).getState() * 90f - set.getValue())) % 360f;
 
                     if (delta > 180)
                         set.setValue(abs(delta) < 22.5f ? tileMap.get(set.getKey()).getState() * 90f : set.getValue() - 22.5f);
@@ -268,7 +268,7 @@ class BoardManager {
     private PVector vectorOfTile(int x, int y) {
         float m = getTileSize();
 
-        return new PVector(((x - maxTiles.x() * 0.5f) * m), ((y - maxTiles.y() * 0.5f) * m));
+        return new PVector((x - maxTiles.x() * 0.5f) * m, (y - maxTiles.y() * 0.5f) * m);
     }
 
     /**
@@ -282,10 +282,10 @@ class BoardManager {
      * @see App#mouseReleased()
      */
     protected Pair<Integer, Integer> tileOfVector(PVector pos) {
-        float m = getTileSize();
-
-        if (pos.x < x1 || pos.x > x2 || pos.y < y1 || pos.y > y2)
+        if (pos == null || pos.x < x1 || pos.x > x2 || pos.y < y1 || pos.y > y2)
             return null;
+
+        float m = getTileSize();
 
         PVector zero = vectorOfTile(0, 0);
 
