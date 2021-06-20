@@ -43,6 +43,6 @@ class PairTest {
         assertNotEquals(Pair.of(Laser.Color.RED, 2), Pair.of(Laser.Color.BLUE, 2), "equals identified different enum instances to be the same");
 
         assertEquals(Pair.of(Pair.of(Pair.of(1, 2), 3), 4), Pair.of(Pair.of(Pair.of(1, 2), 3), 4), "equals method couldn't handle layered pairs");
-        assertEquals(Pair.of(null, null), Pair.of(null, null), "pairs with null values not identified to be equals");
+        assertEquals(Pair.of(null, null), Pair.of(null, null), "pairs with null values not identified to be equal");
     }
 }

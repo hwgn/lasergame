@@ -1,7 +1,5 @@
 package engine;
 
-import processing.core.PVector;
-
 import java.util.*;
 
 import static engine.Tile.Type.*;
@@ -9,7 +7,7 @@ import static engine.Tile.Type.*;
 /**
  * The Laser record. Stores information about lasers (such as their position and colour).
  */
-public record Laser(Color color, List<PVector> points, boolean isComplete) {
+public record Laser(Color color, List<Pair<Integer, Integer>> points, boolean isComplete) {
 
     /**
      * Determines and creates all lasers of a given tile map.
@@ -40,9 +38,12 @@ public record Laser(Color color, List<PVector> points, boolean isComplete) {
 
         Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN).get(tiles.get(pos).getType());
 
-        List<PVector> points = new ArrayList<>(List.of(new PVector(pos.x(), pos.y())));
-        pos = pathFinder(pos, rotation, tiles, points);
-        boolean isComplete = tiles.get(pos).getType().equals(STONE_TARGET);
+        List<Pair<Integer, Integer>> points = new ArrayList<>(List.of(pos));
+
+        if (tiles.get(pos).getLaserStep(pos, rotation) != null)
+            pos = pathFinder(pos, rotation, tiles, points);
+
+        boolean isComplete = tiles.get(pos) != null && tiles.get(pos).getType().equals(STONE_TARGET);
 
         return new Laser(color, points, isComplete);
     }
@@ -56,19 +57,19 @@ public record Laser(Color color, List<PVector> points, boolean isComplete) {
      * @param points   the points list. This list will be appended to during the method execution.
      * @return the position the laser stopped at.
      */
-    private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<PVector> points) {
+    private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<Pair<Integer, Integer>> points) {
         Pair<Integer, Integer> newPos;
 
-        while ((newPos = tiles.get(pos).getLaserStep(pos, rotation)) != null) {
+        while (tiles.get(pos) != null && (newPos = tiles.get(pos).getLaserStep(pos, rotation)) != null) {
 
             if (getRotation(pos, newPos) != rotation) {
                 rotation = getRotation(pos, newPos);
-                points.add(new PVector(pos.x(), pos.y()));
+                points.add(pos);
             }
             pos = newPos;
         }
 
-        points.add(new PVector(pos.x(), pos.y()));
+        points.add(pos);
         return pos;
     }
 

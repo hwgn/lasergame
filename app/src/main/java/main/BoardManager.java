@@ -247,7 +247,7 @@ final class BoardManager {
         }
 
         PVector[] a = l.points().stream()
-                .map(v -> vectorOfTile((int) v.x, (int) v.y))
+                .map(v -> vectorOfTile(v.x(), v.y()))
                 .toArray(PVector[]::new);
 
         for (int i = 0; i < a.length - 1; i++)
