@@ -5,6 +5,7 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -183,8 +184,7 @@ public class App extends PApplet {
      * Upon key release, if the key was an arrow key, the level is reset or changed.
      */
     public void keyReleased() {
-        if (key != CODED)
-            return;
+        if (key != CODED) return;
 
         requestLevel(switch (keyCode) {
             case LEFT -> -1;

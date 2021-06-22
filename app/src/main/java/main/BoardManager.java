@@ -113,14 +113,13 @@ final class BoardManager {
         });
 
         // Draws a floor image for all transparent tiles
-        tileMap.entrySet().stream().filter(e -> Image.valueOf(e.getValue().getType().toString()).isTransparent())
+        tileMap.entrySet().stream().filter(e -> e.getValue().getType().equals(Tile.Type.FLOOR) || Image.valueOf(e.getValue().getType().toString()).isTransparent())
                 .map(Map.Entry::getKey)
-                .forEach(key ->
-                        Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
+                .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
         tileMap.entrySet().stream()
-                .filter(set -> !set.getValue().getType().equals(Tile.Type.MIRROR))
+                .filter(set -> !(set.getValue().getType().equals(Tile.Type.MIRROR) || set.getValue().getType().equals(Tile.Type.FLOOR)))
                 .forEach(set ->
                         Image.valueOf(set.getValue().getType().toString())
                                 .draw(vectorOfTile(set.getKey().x(), set.getKey().y()), set.getValue().getState()));

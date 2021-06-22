@@ -48,10 +48,6 @@ enum Image {
      * Floor tile.
      */
     FLOOR(false, "floor_0.png", "floor_90.png", "floor_180.png", "floor_270.png"),
-    /**
-     * Null image - contains no pixels and is used for the standard floor to enable automatic floor pattern generation.
-     */
-    NULL(true, "null.png"),
 
     /**
      * Transparent images representing the mirror.
@@ -98,14 +94,7 @@ enum Image {
      * <p>
      * None is shown when no medal has yet been obtained or the requirements for a bronze medal hadn't been met in the last round.
      */
-    MEDAL(false, "gold.png", "silver.png", "bronze.png", "none.png"),
-
-    /**
-     * Small stones, used for decoration.
-     * <p>
-     * A true display of my artistic incompetence.
-     */
-    RUBBLE(true, "rubble_0.png", "rubble_90.png", "rubble_180.png", "rubble_270.png");
+    MEDAL(false, "gold.png", "silver.png", "bronze.png", "none.png");
 
     /**
      * The Image path. Allows easily changing the folder location of all images.

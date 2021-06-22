@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * The tile class. Stores information regarding a specific tile, such as its type and state.
  */
-public final class Tile {
+public class Tile {
     /**
      * The tile type.
      */
@@ -37,7 +37,7 @@ public final class Tile {
      * @param type  the tile type.
      * @param state the tile state (usually rotation, refer to the {@link Tile.Type} enum for more information)
      */
-    private Tile(Tile.Type type, int state) {
+    Tile(Tile.Type type, int state) {
         this.type = type;
         this.state = this.initialState = state;
         this.collision = this.initialCollision = Objects.requireNonNullElseGet(type.getCollision(), () -> state == 1);
@@ -64,7 +64,7 @@ public final class Tile {
      * @param state the initial state (usually rotation, refer to the {@link Tile.Type} enum for more information)
      * @return the resulting tile.
      */
-    protected static Tile of(Tile.Type type, int state) {
+    static Tile of(Tile.Type type, int state) {
         return new Tile(type, state);
     }
 
@@ -102,7 +102,7 @@ public final class Tile {
     /**
      * Resets tile state to its initial state.
      */
-    public void resetState() {
+    void resetState() {
         state = initialState;
         collision = initialCollision;
     }
@@ -114,6 +114,22 @@ public final class Tile {
      */
     public boolean hasCollision() {
         return collision;
+    }
+
+    /**
+     * Compares this instance to a given object.
+     *
+     * @param o object to compare instance to
+     * @return true, if the object is equal to the instance
+     */
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tile tile = (Tile) o;
+
+        return !(initialState != tile.initialState || initialCollision != tile.initialCollision || state != tile.state ||
+                collision != tile.collision || type != tile.type);
     }
 
     /**
@@ -159,7 +175,7 @@ public final class Tile {
      * <p>
      * Null, if the laser would not leave the tile (and instead collides with it).
      */
-    protected Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
+    Pair<Integer, Integer> getLaserStep(Pair<Integer, Integer> pos, int rotation) {
 
         if (this.collision) {
 
@@ -235,19 +251,8 @@ public final class Tile {
 
         /**
          * Basic floor tile.
-         * <p>
-         * Generally speaking, using this tile is bad practice as it will override the rotation effects
-         * generated when drawing floor tiles under all tiles in a specific map.
-         * <p>
-         * Use Type {@link #NULL} instead for encoding levels, unless specific floor rotation is needed.
          */
         FLOOR(false, false),
-        /**
-         * Null type. Only relevant for frontend behavior - with more time I would have removed this entirely.
-         * <p>
-         * Allows generations of floor pattern.
-         */
-        NULL(false, false),
         /**
          * Mirror. Can be interacted with (see {@link #interact(int, Map)} method).
          */
@@ -286,12 +291,7 @@ public final class Tile {
         /**
          * Magenta switch. Can be interacted with to switch state between solid and non-solid.
          */
-        SWITCH_MAGENTA(null, true),
-
-        /**
-         * Some stones, purely for decoration.
-         */
-        RUBBLE(false, false);
+        SWITCH_MAGENTA(null, true);
 
         /**
          * Predetermined collision.

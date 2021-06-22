@@ -20,10 +20,10 @@ class GameEngineTest {
      * one change could cause several tests to fail.
      */
     static final List<String> levelStrings = List.of(
-            "Level 1|0|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR:5.5.1.SWITCH_CYAN", // basic functionality tests can be done here
-            "Level 2|0|5.5.0.LASER_RED:5.4.0.NULL:5.3.0.STONE_TARGET", // basic laser tests can be done here (does not have any intractability)
-            "Level 3|1|10.5.0.LASER_RED:10.4.0.NULL:10.3.3.MIRROR:11.3.0.NULL:12.3.0.STONE_TARGET", // level with laser that does not complete immediately
-            "Level 1+|999|1.1.0.STONE:1.2.0.NULL:1.3.2.MIRROR:5.5.1.SWITCH_CYAN:2.1.0.LASER_BLUE" // Impossible to complete version of level 1
+            "Level 1|0|1.1.0.STONE:1.2.0.FLOOR:1.3.2.MIRROR:5.5.1.SWITCH_CYAN", // basic functionality tests can be done here
+            "Level 2|0|5.5.0.LASER_RED:5.4.0.FLOOR:5.3.0.STONE_TARGET", // basic laser tests can be done here (does not have any intractability)
+            "Level 3|1|10.5.0.LASER_RED:10.4.0.FLOOR:10.3.3.MIRROR:11.3.0.FLOOR:12.3.0.STONE_TARGET", // level with laser that does not complete immediately
+            "Level 1+|999|1.1.0.STONE:1.2.0.FLOOR:1.3.2.MIRROR:5.5.1.SWITCH_CYAN:2.1.0.LASER_BLUE" // Impossible to complete version of level 1
     );
     static JSONArray testLevels;
     static List<Level> testLevelList;
@@ -193,10 +193,11 @@ class GameEngineTest {
         GameEngine engine = new GameEngine(testLevels);
 
         assertNotNull(engine.getCopyOfTiles());
-        assertNotEquals(engine.getCopyOfTiles(), engine.getCopyOfTiles());
 
         Map<Pair<Integer, Integer>, Tile> firstCopyOfTiles = engine.getCopyOfTiles();
         Map<Pair<Integer, Integer>, Tile> secondCopyOfTiles = engine.getCopyOfTiles();
+
+        assertEquals(firstCopyOfTiles, secondCopyOfTiles, "Tile map copies did not have equal contents");
 
         assertNotEquals(0, firstCopyOfTiles.size(),
                 "Tiles returned empty map copy on non-empty level");

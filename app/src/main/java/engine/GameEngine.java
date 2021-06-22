@@ -20,6 +20,7 @@ public final class GameEngine implements Engine {
      * The Level array. Used for loading all levels and later storing medal data.
      */
     private final JSONArray levelArray;
+    private final Map<Integer, Integer> medals;
     /**
      * True, if the current game has been completed. Used to display game over popups in frontend.
      */
@@ -58,6 +59,7 @@ public final class GameEngine implements Engine {
      */
     public GameEngine(JSONArray array) {
         this.levelArray = array;
+        medals = new HashMap<>();
         levelSetup();
     }
 
@@ -77,8 +79,8 @@ public final class GameEngine implements Engine {
      */
     public void update() {
         updateLasers();
-        if (completed)
-            updateMedal();
+
+        if (completed) updateMedal();
     }
 
     /**
@@ -150,8 +152,7 @@ public final class GameEngine implements Engine {
         lasers = Laser.getLasers(getCopyOfTiles());
 
         for (int i = 0; i < lasers.size(); i++) {
-            lasers.stream()
-                    .filter(Laser::isComplete)
+            lasers.stream().filter(Laser::isComplete)
                     .forEach(l -> tiles.values().stream()
                             .filter(t -> t.getType().equals(Tile.Type.getSwitchByColor(l.color())))
                             .forEach(t -> t.interact(0, tiles)));
@@ -170,12 +171,9 @@ public final class GameEngine implements Engine {
      *              1 would be the next, -1 the previous, and 0 the same level reloaded.
      */
     public void requestLevel(int shift) {
-        if (shift >= levelArray.size() || levelID + shift >= levelArray.size())
-            levelID = levelArray.size() - 1;
-        else if (levelID + shift <= 0)
-            levelID = 0;
-        else
-            levelID += shift;
+        if (shift >= levelArray.size() || levelID + shift >= levelArray.size()) levelID = levelArray.size() - 1;
+        else if (levelID + shift <= 0) levelID = 0;
+        else levelID += shift;
 
         levelSetup();
     }
@@ -206,7 +204,7 @@ public final class GameEngine implements Engine {
      * @return the medal ID.
      */
     public int getMedalID() {
-        return levelArray.getJSONObject(levelID).getInt("medal", 3);
+        return medals.getOrDefault(levelID, 3);
     }
 
     /**
@@ -222,11 +220,11 @@ public final class GameEngine implements Engine {
      * Updates the current medal and stores it.
      */
     private void updateMedal() {
-        levelArray.getJSONObject(levelID).setInt("medal", Arrays.stream(Medal.values())
+        medals.put(levelID, Arrays.stream(Medal.values())
                 .filter(m -> moves - getOptimalMoves() <= m.maxMistakes)
                 .mapToInt(Enum::ordinal)
-                .filter(m -> m <= levelArray.getJSONObject(levelID).getInt("medal", 3))
-                .findFirst().orElse(levelArray.getJSONObject(levelID).getInt("medal", 3)));
+                .filter(m -> m <= medals.getOrDefault(levelID, 3))
+                .findFirst().orElse(medals.getOrDefault(levelID, 3)));
     }
 
     /**
