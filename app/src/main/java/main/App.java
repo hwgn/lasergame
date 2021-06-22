@@ -64,8 +64,8 @@ public class App extends PApplet {
      * Sets up and initialises the {@link GameEngine} instance, {@link BoardManager} instance, the {@link Image} enum and other visual functionality needed by processing.
      */
     public void setup() {
-        engine = new GameEngine(loadJSONArray("src/levels.json"));
-        font = createFont("img/EdgeOfTheGalaxy.otf", 40);
+        engine = new GameEngine(loadJSONArray("src/main/resources/levels.json"));
+        font = createFont("src/main/resources/EdgeOfTheGalaxy.otf", 40);
         boardManager = new BoardManager(this);
 
         Image.initialise(this);

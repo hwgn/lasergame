@@ -110,7 +110,7 @@ enum Image {
     /**
      * The Image path. Allows easily changing the folder location of all images.
      */
-    static private final String IMAGE_PATH = "img/";
+    static private final String IMAGE_PATH = "src/main/resources/img/";
 
     /**
      * The App. Is stored to later enable usage of draw().
