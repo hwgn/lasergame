@@ -3,13 +3,11 @@ package engine;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import processing.core.PConstants;
-import processing.core.PVector;
 import processing.data.JSONArray;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
-import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class LaserTest {
 

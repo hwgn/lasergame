@@ -23,7 +23,7 @@ class LevelTest {
 
         assertTrue(levels.get(0).tiles().containsKey(Pair.of(1, 1)), "Level didn't contain given tile");
 
-        assertEquals(levels.get(0).tiles().get(Pair.of(1,1)).getType(), Tile.Type.STONE, "Level tile type was unexpected");
+        assertEquals(levels.get(0).tiles().get(Pair.of(1, 1)).getType(), Tile.Type.STONE, "Level tile type was unexpected");
     }
 
     @Test

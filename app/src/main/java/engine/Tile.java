@@ -38,6 +38,8 @@ public class Tile {
      * @param state the tile state (usually rotation, refer to the {@link Tile.Type} enum for more information)
      */
     Tile(Tile.Type type, int state) {
+        if (type == null) throw new IllegalArgumentException("Tile type can't be null");
+
         this.type = type;
         this.state = this.initialState = state;
         this.collision = this.initialCollision = Objects.requireNonNullElseGet(type.getCollision(), () -> state == 1);
@@ -142,7 +144,7 @@ public class Tile {
     public void interact(int button, Map<Pair<Integer, Integer>, Tile> tiles) {
 
         switch (this.type) {
-            case MIRROR -> state = button == PConstants.LEFT ? (state + 3) % 4 : (state + 1) % 4;
+            case MIRROR -> state = button == PConstants.LEFT ? (4 + state % 4 + 3) % 4 : (4 + state % 4 + 1) % 4;
 
             case SWITCH_CYAN, SWITCH_YELLOW, SWITCH_MAGENTA -> tiles.values().stream()
                     .filter(t -> t.type.equals(this.type))
@@ -154,12 +156,12 @@ public class Tile {
             case SWITCH_RED, SWITCH_GREEN, SWITCH_BLUE -> {
                 if (button != 0)
                     throw new IllegalArgumentException("This tile cannot be interacted with manually.");
-                state = (initialState + 1) % 2;
+                state = (2 + initialState + 1) % 2;
                 collision = !initialCollision;
             }
 
             case TUNNELS_LEFT, TUNNELS_RIGHT -> {
-                this.state = (this.state + 1) % 2;
+                this.state = (2 + this.state + 1) % 2;
                 this.collision = !this.collision;
             }
 

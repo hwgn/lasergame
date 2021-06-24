@@ -60,6 +60,7 @@ public record Laser(Color color, List<Pair<Integer, Integer>> points, boolean is
      */
     private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation,
                                                      Map<Pair<Integer, Integer>, Tile> tiles, List<Pair<Integer, Integer>> points) {
+
         Pair<Integer, Integer> newPos;
 
         while (tiles.get(pos) != null && (newPos = tiles.get(pos).getLaserStep(pos, rotation)) != null) {
