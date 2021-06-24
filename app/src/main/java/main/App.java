@@ -5,7 +5,6 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -172,9 +171,7 @@ public class App extends PApplet {
     public void mouseReleased() {
         if (engine.isCompleted() && boardManager.mirrorsFinished()) {
             requestLevel(0);
-            return;
-        }
-        try {
+        } else try {
             engine.registerInteraction(boardManager.tileOfVector(new PVector(mouseX, mouseY)), mouseButton);
         } catch (IllegalStateException | IllegalArgumentException ignored) {
         }

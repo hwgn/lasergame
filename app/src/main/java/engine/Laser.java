@@ -36,7 +36,8 @@ public record Laser(Color color, List<Pair<Integer, Integer>> points, boolean is
         if (tiles.get(pos) == null || !tiles.get(pos).getType().isLaserSource())
             throw new IllegalArgumentException("Laser source does not exist!");
 
-        Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN).get(tiles.get(pos).getType());
+        Color color = Map.of(LASER_RED, Color.RED, LASER_BLUE, Color.BLUE, LASER_GREEN, Color.GREEN)
+                .get(tiles.get(pos).getType());
 
         List<Pair<Integer, Integer>> points = new ArrayList<>(List.of(pos));
 
@@ -57,7 +58,8 @@ public record Laser(Color color, List<Pair<Integer, Integer>> points, boolean is
      * @param points   the points list. This list will be appended to during the method execution.
      * @return the position the laser stopped at.
      */
-    private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation, Map<Pair<Integer, Integer>, Tile> tiles, List<Pair<Integer, Integer>> points) {
+    private static Pair<Integer, Integer> pathFinder(Pair<Integer, Integer> pos, int rotation,
+                                                     Map<Pair<Integer, Integer>, Tile> tiles, List<Pair<Integer, Integer>> points) {
         Pair<Integer, Integer> newPos;
 
         while (tiles.get(pos) != null && (newPos = tiles.get(pos).getLaserStep(pos, rotation)) != null) {

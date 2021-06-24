@@ -142,6 +142,9 @@ class GameEngineTest {
                 "Bad interaction (bad position input) threw unexpected or no exception");
     }
 
+    /**
+     * Testing if the engine will allow interactions when the level is completed (which shouldn't be).
+     */
     @Test
     void interactingWhenComplete() {
         GameEngine engine = new GameEngine(testLevels);

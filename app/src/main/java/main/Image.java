@@ -145,7 +145,8 @@ enum Image {
     public static void initialise(App a) {
         app = a;
         Arrays.stream(Image.values())
-                .forEach(i -> Arrays.stream(i.filenames).forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
+                .forEach(i -> Arrays.stream(i.filenames)
+                        .forEach(s -> i.images.add(app.loadImage(IMAGE_PATH + s))));
     }
 
     /**

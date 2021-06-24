@@ -112,14 +112,16 @@ final class BoardManager {
             g.square(pos.x - getTileSize(), pos.y - getTileSize(), getTileSize() * 2);
         });
 
-        // Draws a floor image for all transparent tiles
-        tileMap.entrySet().stream().filter(e -> e.getValue().getType().equals(Tile.Type.FLOOR) || Image.valueOf(e.getValue().getType().toString()).isTransparent())
+        // Draws a floor image with a pattern for all transparent tiles
+        tileMap.entrySet().stream().filter(e -> e.getValue().getType().equals(Tile.Type.FLOOR)
+                || Image.valueOf(e.getValue().getType().toString()).isTransparent())
                 .map(Map.Entry::getKey)
                 .forEach(key -> Image.FLOOR.draw(vectorOfTile(key.x(), key.y()), (key.x() + key.y()) % 4));
 
         // Draws all tiles once
         tileMap.entrySet().stream()
-                .filter(set -> !(set.getValue().getType().equals(Tile.Type.MIRROR) || set.getValue().getType().equals(Tile.Type.FLOOR)))
+                .filter(set -> !(set.getValue().getType().equals(Tile.Type.MIRROR)
+                        || set.getValue().getType().equals(Tile.Type.FLOOR)))
                 .forEach(set ->
                         Image.valueOf(set.getValue().getType().toString())
                                 .draw(vectorOfTile(set.getKey().x(), set.getKey().y()), set.getValue().getState()));
@@ -137,7 +139,8 @@ final class BoardManager {
         tileMap.entrySet().stream()
                 .filter(t -> t.getValue().hasCollision() && !t.getValue().getType().isLaserSource())
                 .filter(t -> !t.getValue().getType().equals(Tile.Type.STONE_TARGET) && !t.getValue().getType().equals(Tile.Type.MIRROR))
-                .forEach(t -> Image.valueOf(t.getValue().getType().toString()).draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
+                .forEach(t -> Image.valueOf(t.getValue().getType().toString())
+                        .draw(vectorOfTile(t.getKey().x(), t.getKey().y()), t.getValue().getState()));
 
         // Reloads the previously pushed matrix
         g.popMatrix();

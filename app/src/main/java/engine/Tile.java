@@ -76,9 +76,10 @@ public class Tile {
      * @return new position one step into the given direction, from the given position.
      */
     private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
-        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0)).get(rotation);
+        Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0))
+                .get(rotation);
 
-        return Pair.of(move.x() + pos.x(), move.y() + pos.y());
+        return Pair.of(pos.x() + move.x(), pos.y() + move.y());
     }
 
     /**
