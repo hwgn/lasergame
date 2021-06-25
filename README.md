@@ -161,19 +161,21 @@ SUM:                            23            418            892          22238
 
 ## Quellen
 
-* [Processing Reference](https://processing.org/reference/) *
-* [Processing Javadocs (for advanced features like resizable windows)](https://processing.github.io/processing-javadocs/core/) *
-* [OpenProcessing (strictly used for inspiration before deciding on a project, no single idea was taken from there)](https://openprocessing.org/) *
-* [*Pixilart* - Tool used to create all graphics](https://www.pixilart.com/) *
-* [FontSpace: Edge Of The Galaxy Font (public domain, by QD Fonts)](https://www.fontspace.com/edge-of-the-galaxy-font-f45748) *
-* [OpenJDK: About Records, an OpenJDK 16 feature (used for classes Laser, Pair and Level)](https://openjdk.java.net/jeps/395) *
-* [StackOverflow: Public / Protected / Private](https://stackoverflow.com/questions/215497/what-is-the-difference-between-public-protected-package-private-and-private-in) *
-* [StackExchange Mathematics: Shortest direction to rotation target (used for mirror animations)](https://math.stackexchange.com/questions/1366869/calculating-rotation-direction-between-two-angles) *
-* [StackOverflow: Using tuples in Java (this inspired the Pair class)](https://stackoverflow.com/questions/2670982/using-pairs-or-2-tuples-in-java) *
-* [StackOverflow: Java collection of value pairs / tuples?](https://stackoverflow.com/questions/521171/a-java-collection-of-value-pairs-tuples) *
-* [StackOverflow: Iterating over two items of a Stream at once (I asked this question - so don't worry if you see very similar code in the drawLaser method)](https://stackoverflow.com/questions/67643914/how-can-i-iterate-over-two-items-of-a-stream-at-once) *
+* [Processing Reference](https://processing.org/reference/) ²
+* [Processing Javadocs (for advanced features like resizable windows)](https://processing.github.io/processing-javadocs/core/) ²
+* [JUnit 5 Documentation](https://junit.org/junit5/docs/current/user-guide/) ³
+* [OpenProcessing (strictly used for inspiration before deciding on a project, no single idea was taken from there)](https://openprocessing.org/) ²
+* [Pixilart - Tool used to create all graphics](https://www.pixilart.com/) ²
+* [FontSpace: Edge Of The Galaxy Font (public domain, by QD Fonts)](https://www.fontspace.com/edge-of-the-galaxy-font-f45748) ²
+* [OpenJDK: About Records, an OpenJDK 16 feature (used for classes Laser, Pair and Level)](https://openjdk.java.net/jeps/395) ²
+* [StackOverflow: Public / Protected / Private](https://stackoverflow.com/questions/215497/what-is-the-difference-between-public-protected-package-private-and-private-in) ²
+* [StackExchange Mathematics: Shortest direction to rotation target (used for mirror animations)](https://math.stackexchange.com/questions/1366869/calculating-rotation-direction-between-two-angles) ²
+* [StackOverflow: Using tuples in Java (this inspired the Pair class)](https://stackoverflow.com/questions/2670982/using-pairs-or-2-tuples-in-java) ²
+* [StackOverflow: Java collection of value pairs / tuples?](https://stackoverflow.com/questions/521171/a-java-collection-of-value-pairs-tuples) ²
+* [StackOverflow: Iterating over two items of a Stream at once (I asked this question - so don't worry if you see very similar code in the drawLaser method)](https://stackoverflow.com/questions/67643914/how-can-i-iterate-over-two-items-of-a-stream-at-once) ²
 
-`*` Zuletzt am 22.06.2021 abgerufen
+² Zuletzt am 22.06.2021 abgerufen  
+³ Zuletzt am 25.06.2021 abgerufen
 
 ... zudem wurden die Inhalte der Vorlesungen PiS und OOP verwendet, besonders für Streams.
 
