@@ -130,33 +130,37 @@ Levels können jederzeit mit den Pfeil-Buttons der Tastatur gewechselt werden. D
 \gradle\wrapper\gradle-wrapper.properties
 ```
 
-### LOC des `app/src/main/java` Verzeichnis
-
-```
--------------------------------------------------------------------------------
-Language                     files          blank        comment           code
--------------------------------------------------------------------------------
-Java                            11            216            802            635
--------------------------------------------------------------------------------
-SUM:                            11            216            802            635
--------------------------------------------------------------------------------
-```
-
-### LOC des gesamten Ordners
+### LOC des `app/src/main/` Verzeichnis
 
 ```
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 JSON                             1              0              0          20870
-Java                            17            338            832            990
-Markdown                         1             25              0            158
-Bourne Shell                     1             23             36            126
-DOS Batch                        1             21              2             66
-Gradle                           2             11             22             28
+Java                            11            220            787            638
 -------------------------------------------------------------------------------
-SUM:                            23            418            892          22238
+SUM:                            12            220            787          21508
 -------------------------------------------------------------------------------
+
+```
+
+### LOC des `app` Verzeichnis
+
+```
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+JSON                             1              0              0          20870
+Java                            17            381            820           1132
+HTML                             8              0              0           1082
+CSS                              2             49              0            214
+JavaScript                       1             45              1            148
+XML                              6              0              0             76
+Gradle                           1             10             14             26
+-------------------------------------------------------------------------------
+SUM:                            36            485            835          23548
+-------------------------------------------------------------------------------
+
 ```
 
 ## Quellen
@@ -178,6 +182,9 @@ SUM:                            23            418            892          22238
 ³ Zuletzt am 25.06.2021 abgerufen
 
 ... zudem wurden die Inhalte der Vorlesungen PiS und OOP verwendet, besonders für Streams.
+
+> Für das Erstellen von Levels wurde ein zusätzlicher Level-Editor entwickelt. 
+> Dieser Editor könnte problemlos in die Hauptanwendung integriert werden, ist derzeit (zur Abgabe) aus Platzgründen aber ein separates Projekt.
 
 # Eigenständigkeitserklärung
 
