@@ -31,7 +31,7 @@ class TileTest {
         Tile t = new Tile(MIRROR, Integer.MAX_VALUE);
         assertDoesNotThrow(t::getState, "Tile failed to fetch max state");
         assertEquals(Integer.MAX_VALUE, t.getState(), "Tile did not store max value state");
-        assertDoesNotThrow(() -> t.interact(1, null),  "Interaction with tile of max value state threw exception");
+        assertDoesNotThrow(() -> t.interact(1, null), "Interaction with tile of max value state threw exception");
         assertTrue(t.getState() < 4 && t.getState() >= 0, "Interaction didn't return state to allowed range");
 
         Tile u = new Tile(MIRROR, Integer.MIN_VALUE);
@@ -78,7 +78,7 @@ class TileTest {
         Tile d = new Tile(SWITCH_RED, 0);
 
         List<Pair<Integer, Integer>> pl = List.of(Pair.of(0, 0), Pair.of(1, 0), Pair.of(2, 0), Pair.of(3, 0));
-        Map<Pair<Integer, Integer>, Tile> map = Map.of(pl.get(0), a, pl.get(1), b, pl.get(2), c ,pl.get(3), d);
+        Map<Pair<Integer, Integer>, Tile> map = Map.of(pl.get(0), a, pl.get(1), b, pl.get(2), c, pl.get(3), d);
 
         assertEquals(a, b, "Tiles were instantiated equal but are no longer considered as such");
 
@@ -97,7 +97,7 @@ class TileTest {
         Tile d = new Tile(SWITCH_YELLOW, 0);
 
         List<Pair<Integer, Integer>> pl = List.of(Pair.of(0, 0), Pair.of(1, 0), Pair.of(2, 0), Pair.of(3, 0));
-        Map<Pair<Integer, Integer>, Tile> map = Map.of(pl.get(0), a, pl.get(1), b, pl.get(2), c ,pl.get(3), d);
+        Map<Pair<Integer, Integer>, Tile> map = Map.of(pl.get(0), a, pl.get(1), b, pl.get(2), c, pl.get(3), d);
 
         assertEquals(a, b, "Tiles were instantiated equal but are no longer considered as such");
 
