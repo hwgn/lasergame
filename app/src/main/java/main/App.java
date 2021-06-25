@@ -90,8 +90,7 @@ public class App extends PApplet {
 
         boardManager.execute(TILE_PADDING, TILE_PADDING, width - TILE_PADDING, height - (BOTTOM_OFFSET + TILE_PADDING));
 
-        if (engine.isCompleted() && boardManager.mirrorsFinished())
-            drawGameOver();
+        if (engine.isCompleted() && boardManager.mirrorsFinished()) drawGameOver();
 
         drawMenuBox();
 
