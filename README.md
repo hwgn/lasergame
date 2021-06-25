@@ -12,10 +12,10 @@ Der/die Spieler:in kann mit der Maus auf Elemente klicken und sie so ggf. beeinf
 Einige Elemente werden durch Laser beeinflusst, welche auf ein Zielblock treffen.
 Andere Elemente sind fest verankert und müssen mit eingeplant werden, um das Puzzle zu lösen.
 
-Die Reihenfolge der Level ist so gestaltet, dass Spieler:innen die verschiedenen Elemente nachvollziehen und anwenden können.
+Die Reihenfolge der Level ist so gestaltet, dass Spieler:innen die verschiedenen Elemente kennenlernen und nachvollziehen können.
 Entsprechend der Anzahl von benötigten Bewegungsschritten wird dem/der Spieler:in eine Medaille verliehen (unten rechts).
-Nur die bestmögliche Anzahl Bewegungsschritten resultiert in eine Goldmedaille.
-*(117 Wörter)*
+Nur die bestmögliche Anzahl von Bewegungsschritten resultiert in eine Goldmedaille.
+*(118 Wörter)*
 
 ## Screenshot
 
@@ -31,7 +31,7 @@ Dies ist besonders relevant, wenn die Goldmedaille erzielt werden soll.
 
 Links neben der derzeitigen Medaille wird die derzeitigen Bewegungsschritte über der bestmöglichen Anzahl von Schritten angezeigt.
 
-Mit Schaltern, die den Farben Cyan, Gelb und Lila entsprechen, kann mit der Maus interagiert werden.
+Mit Schaltern, die den Farben Cyan, Gelb und Magenta entsprechen, kann mit der Maus interagiert werden.
 Schalter, wessen Farbe der eines Lasers entspricht, werden aktiviert, sobald ein Laser dieser Farbe auf einen Zielblock trifft.
 
 Levels können jederzeit mit den Pfeil-Buttons der Tastatur gewechselt werden. Dabei agieren die Knöpfe `UP` und `DOWN` als "Neu Starten", und `LEFT` und `RIGHT` als vorheriges bzw. nächstes Level.

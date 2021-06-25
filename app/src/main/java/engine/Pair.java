@@ -6,10 +6,10 @@ package engine;
  * Note that records are final and therefore don't need a clone() method.
  * Note also that The {@link #equals(Object)} method is already implemented for records.
  *
- * @param <T1> Type of first value.
- * @param <T2> Type of second value.
+ * @param <T> Type of first value.
+ * @param <U> Type of second value.
  */
-public record Pair<T1, T2>(T1 x, T2 y) {
+public record Pair<T, U>(T x, U y) {
     /**
      * Returns a new Pair instance.
      *

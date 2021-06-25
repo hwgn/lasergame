@@ -128,14 +128,71 @@ class TileTest {
 
     @Test
     void getLaserStep() {
+        Tile a = Tile.of(FLOOR, 0);
+        Tile b = Tile.of(SWITCH_YELLOW, 0);
+        Tile c = Tile.of(STONE, 0);
+        Tile d = Tile.of(SWITCH_YELLOW, 1);
+
+        assertEquals(Pair.of(4, 1), a.getLaserStep(Pair.of(3, 1), 1), "Non collision tile did not return next step in given direction");
+        assertEquals(Pair.of(4, 4), b.getLaserStep(Pair.of(4, 3), 2), "Retracted switch did not return next step in given direction");
+
+        assertNull(c.getLaserStep(Pair.of(2, 2), 1), "Collision tile did not return null");
+        assertNull(d.getLaserStep(Pair.of(4, 3), 2), "Extended switch did not return null");
+    }
+
+    @Test
+    void laserStepAcrossMirror() {
+        Tile m = Tile.of(MIRROR, 1);
+
+        assertEquals(Pair.of(4, 6), m.getLaserStep(Pair.of(4, 5), 1), "Laser step did not yield expected direction for mirror reflection EAST -> SOUTH");
+        assertEquals(Pair.of(3, 5), m.getLaserStep(Pair.of(4, 5), 0), "Laser step did not yield expected direction for mirror reflection NORTH -> WEST");
+        assertNull(m.getLaserStep(Pair.of(4, 5), 2), "Laser step did not hit against a badly rotated mirror");
+        assertNull(m.getLaserStep(Pair.of(4, 5), 3), "Laser step did not hit against a badly rotated mirror");
+    }
+
+    @Test
+    void laserStepAcrossRedirect() {
+        Tile r = Tile.of(REDIRECT, 0);
+
+        assertEquals(Pair.of(4, 3), r.getLaserStep(Pair.of(3, 3), 0), "Redirect unexpected result NORTH");
+        assertEquals(Pair.of(3, 4), r.getLaserStep(Pair.of(3, 3), 1), "Redirect unexpected result EAST");
+        assertEquals(Pair.of(2, 3), r.getLaserStep(Pair.of(3, 3), 2), "Redirect unexpected result SOUTH");
+        assertEquals(Pair.of(3, 2), r.getLaserStep(Pair.of(3, 3), 3), "Redirect unexpected result WEST");
+    }
+
+    @Test
+    void laserStepAcrossTunnels() {
+        Tile t = Tile.of(TUNNELS_RIGHT, 1);
+
+        assertEquals(Pair.of(2, 3), t.getLaserStep(Pair.of(3, 3), 0), "Tunnels Right unexpected result NORTH");
+        assertEquals(Pair.of(3, 4), t.getLaserStep(Pair.of(3, 3), 1), "Tunnels Right unexpected result EAST");
+        assertEquals(Pair.of(4, 3), t.getLaserStep(Pair.of(3, 3), 2), "Tunnels Right unexpected result SOUTH");
+        assertEquals(Pair.of(3, 2), t.getLaserStep(Pair.of(3, 3), 3), "Tunnels Right unexpected result WEST");
     }
 
     @Test
     void testClone() {
+        Tile t = Tile.of(TUNNELS_LEFT, 1);
+        t.interact(0, Map.of());
+
+        Tile t2 = t.clone();
+
+        assertEquals(t, t2, "Cloned tile was not considered equal");
+
+        t.resetState();
+
+        assertNotEquals(t, t2, "Tiles were considered equal after reset of interaction");
+
+        t2.resetState();
+
+        assertEquals(t, t2, "Cloned tile was not considered equal after both reset state");
     }
 
     @Test
     void getNextPosition() {
-
+        assertEquals(Pair.of(1, 0), Tile.getNextPosition(Pair.of(1, 1), 0), "Unexpected next position for NORTH");
+        assertEquals(Pair.of(2, 1), Tile.getNextPosition(Pair.of(1, 1), 1), "Unexpected next position for EAST");
+        assertEquals(Pair.of(1, 2), Tile.getNextPosition(Pair.of(1, 1), 2), "Unexpected next position for SOUTH");
+        assertEquals(Pair.of(0, 1), Tile.getNextPosition(Pair.of(1, 1), 3), "Unexpected next position for WEST");
     }
 }

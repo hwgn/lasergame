@@ -77,7 +77,7 @@ public class Tile {
      * @param rotation current rotation.
      * @return new position one step into the given direction, from the given position.
      */
-    private static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
+    static Pair<Integer, Integer> getNextPosition(Pair<Integer, Integer> pos, int rotation) {
         Pair<Integer, Integer> move = List.of(Pair.of(0, -1), Pair.of(1, 0), Pair.of(0, 1), Pair.of(-1, 0))
                 .get(rotation);
 
