@@ -1,7 +1,5 @@
 # Laser Temple (PiS, SoSe 2021)
 
-> Autor: Hendrik Wagner, 5328402
-
 ## Kurzbeschreibung der Anwendung
 
 *Laser Temple* ist ein Puzzlespiel, indem der/die Spieler:in versuchen muss, einen oder mehrere Laser zu Zielblöcken zu
@@ -42,96 +40,6 @@ als "Neu Starten", und `LEFT` und `RIGHT` als vorheriges bzw. nächstes Level.
 > Das Fenster ist dynamisch und kann in der Größe angepasst werden.
 > Dabei können sehr kleine Fenstergrößen (kleiner als 500 x 500) dazu führen, dass das Spiel nicht gut spielbar ist.
 > Ebenso können sehr größe Fenster (größer als 1500 x 1500), abhängig von verfügbarer Rechenleistung, zu Framerate-Einbrüchen führen.
-
-## Übersicht Dateien und LOC
-
-```
-\gradlew
-\gradlew.bat
-\README.md
-\settings.gradle
-\app\build.gradle
-\app\core.jar
-\app\src\main\java\engine\Engine.java
-\app\src\main\java\engine\GameEngine.java
-\app\src\main\java\engine\Laser.java
-\app\src\main\java\engine\Level.java
-\app\src\main\java\engine\package-info.java
-\app\src\main\java\engine\Pair.java
-\app\src\main\java\engine\Tile.java
-\app\src\main\java\main\App.java
-\app\src\main\java\main\BoardManager.java
-\app\src\main\java\main\Image.java
-\app\src\main\java\main\package-info.java
-\app\src\main\resources\EdgeOfTheGalaxy.otf
-\app\src\main\resources\levels.json
-\app\src\main\resources\img\bronze.png
-\app\src\main\resources\img\double_mirror_left.png
-\app\src\main\resources\img\double_mirror_left_grounded.png
-\app\src\main\resources\img\double_mirror_right.png
-\app\src\main\resources\img\double_mirror_right_grounded.png
-\app\src\main\resources\img\floor_0.png
-\app\src\main\resources\img\floor_180.png
-\app\src\main\resources\img\floor_270.png
-\app\src\main\resources\img\floor_90.png
-\app\src\main\resources\img\floor_blue.png
-\app\src\main\resources\img\floor_cyan.png
-\app\src\main\resources\img\floor_green.png
-\app\src\main\resources\img\floor_magenta.png
-\app\src\main\resources\img\floor_red.png
-\app\src\main\resources\img\floor_yellow.png
-\app\src\main\resources\img\gold.png
-\app\src\main\resources\img\laser_blue_0.png
-\app\src\main\resources\img\laser_blue_180.png
-\app\src\main\resources\img\laser_blue_270.png
-\app\src\main\resources\img\laser_blue_90.png
-\app\src\main\resources\img\laser_green_0.png
-\app\src\main\resources\img\laser_green_180.png
-\app\src\main\resources\img\laser_green_270.png
-\app\src\main\resources\img\laser_green_90.png
-\app\src\main\resources\img\laser_red_0.png
-\app\src\main\resources\img\laser_red_180.png
-\app\src\main\resources\img\laser_red_270.png
-\app\src\main\resources\img\laser_red_90.png
-\app\src\main\resources\img\mirror_0.png
-\app\src\main\resources\img\mirror_180.png
-\app\src\main\resources\img\mirror_270.png
-\app\src\main\resources\img\mirror_90.png
-\app\src\main\resources\img\none.png
-\app\src\main\resources\img\null.png
-\app\src\main\resources\img\redirect_left.png
-\app\src\main\resources\img\redirect_right.png
-\app\src\main\resources\img\rubble_0.png
-\app\src\main\resources\img\rubble_180.png
-\app\src\main\resources\img\rubble_270.png
-\app\src\main\resources\img\rubble_90.png
-\app\src\main\resources\img\silver.png
-\app\src\main\resources\img\stone_blue.png
-\app\src\main\resources\img\stone_broken1_0.png
-\app\src\main\resources\img\stone_broken1_180.png
-\app\src\main\resources\img\stone_broken1_270.png
-\app\src\main\resources\img\stone_broken1_90.png
-\app\src\main\resources\img\stone_chipped_0.png
-\app\src\main\resources\img\stone_chipped_180.png
-\app\src\main\resources\img\stone_chipped_270.png
-\app\src\main\resources\img\stone_chipped_90.png
-\app\src\main\resources\img\stone_clean.png
-\app\src\main\resources\img\stone_cyan.png
-\app\src\main\resources\img\stone_green.png
-\app\src\main\resources\img\stone_laser.png
-\app\src\main\resources\img\stone_magenta.png
-\app\src\main\resources\img\stone_red.png
-\app\src\main\resources\img\stone_target.png
-\app\src\main\resources\img\stone_yellow.png
-\app\src\test\java\engine\GameEngineTest.java
-\app\src\test\java\engine\LaserTest.java
-\app\src\test\java\engine\LevelTest.java
-\app\src\test\java\engine\PairTest.java
-\app\src\test\java\engine\TileTest.java
-\app\src\test\java\engine\TileTypeTest.java
-\gradle\wrapper\gradle-wrapper.jar
-\gradle\wrapper\gradle-wrapper.properties
-```
 
 ### LOC des `app/src/main/` Verzeichnis
 
@@ -197,13 +105,3 @@ SUM:                            36            485            835          23548
 
 > Für das Erstellen von Levels wurde ein zusätzlicher Level-Editor entwickelt.
 > Dieser Editor könnte problemlos in die Hauptanwendung integriert werden, ist derzeit (zur Abgabe) aus Platzgründen aber ein separates Projekt.
-
-# Eigenständigkeitserklärung
-
-Hiermit bestätige ich, dass ich die vorgelegte Projektarbeit eigenständig und ohne fremde Hilfe erstellt habe. Ich
-erkläre explizit, dass ich kein Plagiat begangen habe, d.h. dass ich keinen Code/Text aus nicht dokumentierten Quellen
-verwendet habe und dass nicht umfängliche Teile des Codes (>= 20%) eine “Kopierleistung” sind. Quellen, die ich benutzt
-habe, sind vollständig in der Dokumentation angegeben. Ich bestätige außerdem, dass die Projektarbeit nicht vor dem SoSe
-2021 entstanden ist und noch nirgends als Prüfungs- oder Zulassungsleistung (wie z.B. zur Klausurzulassung) vorgelegt
-worden ist. Mir ist klar, dass die abgegebene Prüfungsleistung für PiS annulliert wird, sollte ich keine Zulassung für
-PiS besitzen.
